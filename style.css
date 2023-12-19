@@ -11,12 +11,16 @@
 }
 
 body {
+    
     background-color: var(--background);
-    display: grid;
-    height: 100vh;
-    margin: 0px;
+    height: 100px;
     font-size: 16px;
     font-family: 'Red Hat Display', sans-serif;
+}
+
+.rowss{
+    display: flex;
+flex-direction: row;
 }
 
 .container {
