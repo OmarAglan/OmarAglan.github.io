@@ -359,12 +359,12 @@
 				<div class="qualification__container container">
 					<div class="qualification__tabs">
 
-						<div class="qualification_button button--flex">
+						<div class="qualification__button button--flex qualification__active" data-target="#eduction">
 							<i class="uil uil-graduation-cap qualification__icon"></i>
 							Eduction
 						</div>
 
-						<div class="qualification_button button--flex">
+						<div class="qualification__button button--flex" data-target="#work">
 							<i class="uil uil-briefcase-alt qualification__icon"></i>
 							Work
 						</div>
@@ -375,19 +375,19 @@
 					<div class="qualification__sections">
 
 						<!--==================== Qualification Content 1 ====================-->
-						<div class="qualification__content">
+						<div class="qualification__content qualification__active" data-content id="eduction">
 
 							<!--==================== Qualification 1 ====================-->
 							<div class="qualification__data">
 								<div>
-									<h3 class="qualification__title">Computer Engineer</h3>
-									<span class="qualification__subtitle">To add</span>
+									<h3 class="qualification__title">Management Information Systems</h3>
+									<span class="qualification__subtitle">Higher Institute of Management Information Systems</span>
 									<div class="qualification__calendar">
 										<i class="uil uil-calendar-alt"></i>
-										2019 - 2022
+										2018 - 2021
 									</div>
 								</div>
-
+								<!-- 1 -->
 								<div>
 									<span class="qualification__rounder"></span>
 									<span class="qualification__line"></span>
@@ -396,78 +396,55 @@
 
 							<!--==================== Qualification 2 ====================-->
 							<div class="qualification__data">
-								<div></div>
 
+								<div></div>
+								<!-- 2 -->
 								<div>
 									<span class="qualification__rounder"></span>
 									<span class="qualification__line"></span>
 								</div>
 
-
 								<div>
-									<h3 class="qualification__title">Game Developer</h3>
-									<span class="qualification__subtitle">Freelancer</span>
+									<h3 class="qualification__title">Full Stack Software Engineering Program</h3>
+									<span class="qualification__subtitle">ALX Cairo</span>
 									<div class="qualification__calendar">
 										<i class="uil uil-calendar-alt"></i>
-										2022 - Now
+										2023 - Now
 									</div>
+
 								</div>
 
-								
 							</div>
 
 							<!--==================== Qualification 3 ====================-->
 							<div class="qualification__data">
 								<div>
-									<h3 class="qualification__title">Web Developer</h3>
-									<span class="qualification__subtitle">Freelancer</span>
+									<h3 class="qualification__title">Game Developer</h3>
+									<span class="qualification__subtitle">Self Taught</span>
 									<div class="qualification__calendar">
 										<i class="uil uil-calendar-alt"></i>
 										2023 - now
 									</div>
 								</div>
-
-								<div>
-									<span class="qualification__rounder"></span>
-									<span class="qualification__line"></span>
-								</div>
-							</div>
-
-							<!--==================== Qualification 3 ====================-->
-							<div class="qualification__data">
-								<div></div>
-
 								<div>
 									<span class="qualification__rounder"></span>
 									<!-- <span class="qualification__line"></span> -->
-								</div>
-
-
-								<div>
-									<h3 class="qualification__title">Full-Stack Developer</h3>
-									<span class="qualification__subtitle">Freelancer</span>
-									<div class="qualification__calendar">
-										<i class="uil uil-calendar-alt"></i>
-										2023 - now
-									</div>
-								</div>
-
-								
+								</div>		
 							</div>
-
 						</div>
 
 						<!--==================== Qualification Content 2 ====================-->
-						<div class="qualification__content">
+						<div class="qualification__content" data-content id="work">
 
 							<!--==================== Qualification 1 ====================-->
 							<div class="qualification__data">
+								
 								<div>
-									<h3 class="qualification__title">Computer Engineer</h3>
-									<span class="qualification__subtitle">To add</span>
+									<h3 class="qualification__title">Junior Full-Stack Developer</h3>
+									<span class="qualification__subtitle">Freelancer</span>
 									<div class="qualification__calendar">
 										<i class="uil uil-calendar-alt"></i>
-										2019 - 2022
+										2018 - 2022
 									</div>
 								</div>
 
@@ -488,11 +465,11 @@
 
 
 								<div>
-									<h3 class="qualification__title">Game Developer</h3>
-									<span class="qualification__subtitle">Freelancer</span>
+									<h3 class="qualification__title">Unity Game Developer</h3>
+									<span class="qualification__subtitle">WOLF EVIL STUDIO - Cairo</span>
 									<div class="qualification__calendar">
 										<i class="uil uil-calendar-alt"></i>
-										2022 - Now
+										2023 - Now
 									</div>
 								</div>
 
@@ -501,43 +478,22 @@
 
 							<!--==================== Qualification 3 ====================-->
 							<div class="qualification__data">
-								<div>
-									<h3 class="qualification__title">Web Developer</h3>
-									<span class="qualification__subtitle">Freelancer</span>
-									<div class="qualification__calendar">
-										<i class="uil uil-calendar-alt"></i>
-										2023 - now
-									</div>
-								</div>
-
-								<div>
-									<span class="qualification__rounder"></span>
-									<span class="qualification__line"></span>
-								</div>
-							</div>
-
-							<!--==================== Qualification 3 ====================-->
-							<div class="qualification__data">
-								<div></div>
-
-								<div>
-									<span class="qualification__rounder"></span>
-									<!-- <span class="qualification__line"></span> -->
-								</div>
-
-
+								
+								
 								<div>
 									<h3 class="qualification__title">Full-Stack Developer</h3>
 									<span class="qualification__subtitle">Freelancer</span>
 									<div class="qualification__calendar">
 										<i class="uil uil-calendar-alt"></i>
-										2023 - now
+										2023 - Now
 									</div>
 								</div>
 
-								
+								<div>
+									<span class="qualification__rounder"></span>
+									<!-- <span class="qualification__line"></span> -->
+								</div>
 							</div>
-
 						</div>
 
 					</div>
@@ -545,7 +501,11 @@
 			</section>
 
 			<!--==================== SERVICES ====================-->
-			<section class="services section" id="services"></section>
+			<section class="services section" id="services">
+				<h2 class="section__title">Services</h2>
+				<span class="section__subtitle">What I Can Do For You</span>
+				
+			</section>
 
 			<!--==================== PORTFOLIO ====================-->
 			<section class="portfolio section" id="portfolio"></section>
