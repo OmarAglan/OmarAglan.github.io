@@ -1,2 +1,2 @@
 The page is here
-https://omaranwa.github.io/
+https://OmarAglan.github.io/
