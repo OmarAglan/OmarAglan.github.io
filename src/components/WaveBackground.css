@@ -1,0 +1,69 @@
+.wave-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #0f1424 0%, #1a1f35 100%);
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  left: 20%;
+  background: rgba(65, 105, 225, 0.3);
+  border-radius: 40%;
+  transform-origin: 50% 48%;
+}
+
+.wave1 {
+  bottom: -45%;
+  animation: rotate 20s infinite linear;
+  background: rgba(65, 105, 225, 0.15);
+}
+
+.wave2 {
+  bottom: -43%;
+  animation: rotate 15s infinite linear;
+  background: rgba(65, 105, 225, 0.1);
+}
+
+.wave3 {
+  bottom: -41%;
+  animation: rotate 10s infinite linear;
+  background: rgba(65, 105, 225, 0.05);
+}
+
+.wave4 {
+  bottom: -39%;
+  animation: rotate 8s infinite linear;
+  background: rgba(65, 105, 225, 0.025);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .wave {
+    width: 80vw;
+    height: 80vw;
+    left: 10%;
+  }
+  
+  .wave1 { bottom: -60%; }
+  .wave2 { bottom: -58%; }
+  .wave3 { bottom: -56%; }
+  .wave4 { bottom: -54%; }
+}
