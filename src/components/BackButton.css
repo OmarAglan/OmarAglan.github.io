@@ -1,7 +1,7 @@
 .back-button {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     background: rgba(65, 105, 225, 0.2);
     border: 2px solid rgba(65, 105, 225, 0.5);
@@ -12,6 +12,7 @@
     cursor: pointer;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .back-button:hover {
@@ -19,10 +20,13 @@
     border-color: rgba(65, 105, 225, 0.7);
 }
 
+.back-button svg {
+    width: 1.2em;
+    height: 1.2em;
+}
+
 @media (max-width: 768px) {
     .back-button {
-        top: 1rem;
-        left: 1rem;
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
     }

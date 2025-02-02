@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   padding: 1.5rem;
   z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  background: rgba(15, 20, 36, 0.8);
+  backdrop-filter: blur(10px);
 }
 
 .title-container {

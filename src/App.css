@@ -22,7 +22,7 @@ body {
 .main-content {
   max-width: 1800px;
   margin: 0 auto;
-  padding: 6rem 2rem 2rem;
+  padding: 2rem;
   min-height: calc(100vh - 4rem);
   display: flex;
   align-items: center;
@@ -43,10 +43,12 @@ body {
 }
 
 .projects-grid {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  width: 100%;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 4rem auto;
 }
 
 .project-button {
@@ -107,22 +109,18 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.blog-section-container {
-  margin-top: 4rem;
-  padding: 2rem;
+/* Remove these blog section styles since they're now in BlogSection.css */
+.blog-section,
+.blog-content,
+.blog-grid {
 }
 
-.section-separator {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  margin: 2rem auto;
-  width: 80%;
-  max-width: 1200px;
+.project-detail {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  margin-top: 2rem;
 }
 
 /* Category-specific styles */
@@ -140,14 +138,6 @@ body {
 
 .project-button.web-dev {
   background-color: #2a6547;
-}
-
-.project-detail {
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  margin-top: 2rem;
 }
 
 /* Loading and Error States */
@@ -178,9 +168,8 @@ body {
 /* Responsive design */
 @media (max-width: 1200px) {
   .projects-grid {
-    flex-direction: column;
-    gap: 3rem;
-    padding: 1.5rem;
+    grid-template-columns: 1fr;
+    padding: 1rem;
   }
 
   .portfolio-page {
@@ -198,14 +187,14 @@ body {
 }
 
 @media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
   .home-container {
     padding: 1rem;
     gap: 2rem;
-  }
-
-  .projects-grid {
-    flex-direction: column;
-    align-items: center;
   }
 
   .project-button {
@@ -236,6 +225,65 @@ body {
   .blog-container {
     margin-top: 2rem;
     padding-top: 1rem;
+  }
+}
+
+/* Section Divider */
+.section-divider {
+  width: 100%;
+  max-width: 1200px;
+  margin: 4rem auto;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  position: relative;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(100, 181, 246, 0.1);
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(45deg, #64b5f6, #2196f3);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
   }
 }
 

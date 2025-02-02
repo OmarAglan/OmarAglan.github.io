@@ -1,89 +1,144 @@
-import { BlogPost } from '../types';
+export type BlogCategory = 
+  | 'Web Development'
+  | 'Game Development'
+  | 'UI/UX Design'
+  | 'Tech Tips'
+  | 'Career Insights'
+  | 'Project Showcase'
+  | 'Mobile Development'
+  | 'DevOps & Cloud'
+  | 'AI & Machine Learning'
+  | 'Cybersecurity'
+  | 'Blockchain'
+  | 'Software Architecture';
 
+export interface BlogPost {
+  id: string;
+  title: string;
+  category: BlogCategory;
+  date: string;
+  readTime: number;
+  excerpt: string;
+  coverImage: string;
+  tags: string[];
+  content: string;
+  author?: string;
+  featured?: boolean;
+  views?: number;
+  likes?: number;
+}
+
+export const blogCategories: BlogCategory[] = [
+  'Web Development',
+  'Game Development',
+  'UI/UX Design',
+  'Mobile Development',
+  'DevOps & Cloud',
+  'AI & Machine Learning',
+  'Tech Tips',
+  'Career Insights',
+  'Project Showcase',
+  'Cybersecurity',
+  'Blockchain',
+  'Software Architecture'
+];
+
+export const commonTags = [
+  'React',
+  'TypeScript',
+  'JavaScript',
+  'Python',
+  'Unity',
+  'C#',
+  'Node.js',
+  'AWS',
+  'Docker',
+  'Kubernetes',
+  'CI/CD',
+  'Git',
+  'Design Patterns',
+  'Performance',
+  'Security',
+  'Testing',
+  'Mobile',
+  'Web',
+  'Backend',
+  'Frontend',
+  'Database',
+  'API',
+  'UI',
+  'UX',
+  'Accessibility',
+  'Best Practices'
+];
+
+export type SortOption = 
+  | 'date-desc'
+  | 'date-asc'
+  | 'views-desc'
+  | 'likes-desc'
+  | 'title-asc'
+  | 'title-desc';
+
+export const sortOptions: { value: SortOption; label: string }[] = [
+  { value: 'date-desc', label: 'Newest First' },
+  { value: 'date-asc', label: 'Oldest First' },
+  { value: 'views-desc', label: 'Most Viewed' },
+  { value: 'likes-desc', label: 'Most Liked' },
+  { value: 'title-asc', label: 'Title (A-Z)' },
+  { value: 'title-desc', label: 'Title (Z-A)' }
+];
+
+// Import markdown files
+import gameDevContent from './posts/getting-started-game-dev.md?raw';
+import webDevContent from './posts/web-development-best-practices.md?raw';
+import uxDesignContent from './posts/ux-design-principles.md?raw';
+
+// This will be our central registry of blog posts
 export const blogPosts: BlogPost[] = [
   {
-    id: 'getting-started-with-game-dev',
+    id: 'getting-started-game-dev',
     title: 'Getting Started with Game Development',
-    summary: 'My journey into game development and key learnings along the way.',
+    category: 'Game Development',
     date: '2024-01-15',
-    readTime: '5 min read',
-    tags: ['Game Dev', 'Unity', 'Beginner'],
-    content: `
-      Game development is an exciting journey that combines creativity with technical skills. Here's my story and what I've learned along the way.
-
-      The Beginning
-      -------------
-      I started my game development journey with Unity, drawn to its powerful features and extensive community support. The first steps were both challenging and rewarding.
-
-      Key Learnings
-      ------------
-      • Start Small: Begin with simple projects to build confidence
-      • Learn the Fundamentals: Understanding core programming concepts is crucial
-      • Join Communities: The game dev community is incredibly supportive
-      • Practice Regularly: Consistency is key to improvement
-
-      Tools and Resources
-      -----------------
-      Here are some essential tools and resources that helped me:
-      • Unity Game Engine
-      • Visual Studio Code
-      • Unity Asset Store
-      • Game Development Forums
-
-      Future Goals
-      -----------
-      I'm continuing to expand my skills in:
-      • Advanced Game Mechanics
-      • 3D Modeling
-      • Shader Programming
-      • Game Design Patterns
-
-      Stay tuned for more updates on my game development journey!
-    `
+    readTime: 8,
+    excerpt: 'A comprehensive guide to beginning your journey in game development, covering essential tools and concepts.',
+    coverImage: '/blog/game-dev-cover.jpg',
+    tags: ['Unity', 'C#', 'Game Design', 'Beginner'],
+    content: gameDevContent,
+    author: 'Omar Aglan',
+    featured: true,
+    views: 1250,
+    likes: 45
   },
   {
     id: 'web-development-best-practices',
-    title: 'Web Development Best Practices',
-    summary: 'Essential practices I follow for clean and maintainable code.',
+    title: 'Modern Web Development Best Practices',
+    category: 'Web Development',
     date: '2024-01-22',
-    readTime: '4 min read',
-    tags: ['Web Dev', 'React', 'TypeScript'],
-    content: `
-      After years of web development, I've learned that following certain practices can significantly improve code quality and maintainability.
-
-      Type Safety with TypeScript
-      -------------------------
-      TypeScript has become an essential tool in my development workflow. Here's why:
-      • Catch errors early in development
-      • Better IDE support and autocompletion
-      • Improved code documentation
-      • Enhanced refactoring capabilities
-
-      Component Architecture
-      --------------------
-      When building React applications, I follow these principles:
-      • Single Responsibility
-      • DRY (Don't Repeat Yourself)
-      • Composition over Inheritance
-      • Proper State Management
-
-      Performance Optimization
-      ---------------------
-      Key areas I focus on:
-      • Code splitting
-      • Lazy loading
-      • Memoization
-      • Bundle size optimization
-
-      Testing Strategies
-      ----------------
-      A robust testing strategy includes:
-      • Unit Tests
-      • Integration Tests
-      • End-to-End Tests
-      • Performance Tests
-
-      Stay tuned for more web development insights!
-    `
+    readTime: 10,
+    excerpt: 'Explore the latest best practices in web development, from performance optimization to responsive design.',
+    coverImage: '/blog/web-dev-cover.jpg',
+    tags: ['React', 'TypeScript', 'Performance', 'Best Practices'],
+    content: webDevContent,
+    author: 'Omar Aglan',
+    featured: true,
+    views: 2100,
+    likes: 89
+  },
+  {
+    id: 'ux-design-principles',
+    title: 'Essential UX Design Principles',
+    category: 'UI/UX Design',
+    date: '2024-02-01',
+    readTime: 6,
+    excerpt: 'Learn the fundamental principles of UX design that can transform your digital products.',
+    coverImage: '/blog/ux-design-cover.jpg',
+    tags: ['UX', 'Design', 'User Research', 'Prototyping'],
+    content: uxDesignContent,
+    author: 'Omar Aglan',
+    featured: false,
+    views: 850,
+    likes: 32
   }
 ];

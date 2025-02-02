@@ -7,12 +7,17 @@ import Header from './components/Header';
 import WaveBackground from './components/WaveBackground';
 import BlogSection from './components/Blog/BlogSection';
 import VideoButton from './components/VideoButton';
+import AboutMe from './components/AboutMe';
+import Contact from './components/Contact/Contact';
+import Footer from './components/Footer';
+import BlogPage from './pages/BlogPage';
 import './App.css';
 
 // Lazy load components
 const FullStackPortfolio = lazy(() => import('./components/FullStackPortfolio'));
 const GameDevPortfolio = lazy(() => import('./components/GameDevPortfolio'));
-const BlogPost = lazy(() => import('./components/Blog/BlogPost'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+const ProjectDetails = lazy(() => import('./components/ProjectDetails'));
 
 const projects = [
   {
@@ -33,7 +38,8 @@ const projects = [
 
 const HomePage = () => (
   <div className="home-container">
-    {/* Current video buttons */}
+    <AboutMe />
+    <div className="section-divider" />
     <motion.div 
       className="projects-grid"
       initial={{ opacity: 0 }}
@@ -50,36 +56,34 @@ const HomePage = () => (
         />
       ))}
     </motion.div>
-
+    <div className="section-divider" />
+    <Contact />
+    <div className="section-divider" />
     <BlogSection />
   </div>
 );
 
-function App() {
+const App = () => {
   return (
     <ErrorBoundary>
-      <Suspense fallback={<LoadingState isLoading={true} loadingText="Loading Portfolio..." />}>
-        <Router>
-          <div className="app-container">
-            <WaveBackground />
-            <Header />
-            <main className="main-content">
+      <Suspense fallback={<LoadingState />}>
+      <Router>
+        <div className="app-container">
+          <WaveBackground />
+          <Header />
+          <main className="main-content">
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/portfolio/fullstack" element={<FullStackPortfolio />} />
                 <Route path="/portfolio/gamedev" element={<GameDevPortfolio />} />
-                <Route 
-                  path="/blog/:postId" 
-                  element={
-                    <Suspense fallback={<LoadingState isLoading={true} loadingText="Loading Post..." />}>
-                      <BlogPost />
-                    </Suspense>
-                  } 
-                />
+                <Route path="/blog" element={<BlogPage />} />
+                <Route path="/blog/:id" element={<BlogPost />} />
+                <Route path="/project/:id" element={<ProjectDetails />} />
               </Routes>
-            </main>
-          </div>
-        </Router>
+          </main>
+          <Footer />
+        </div>
+      </Router>
       </Suspense>
     </ErrorBoundary>
   );
