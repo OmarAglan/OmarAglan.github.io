@@ -47,7 +47,6 @@ const BlogPost: React.FC = () => {
           <div className="post-info">
             <span className="post-date">{post.date}</span>
             <span className="post-read-time">{post.readTime} min read</span>
-            {post.author && <span className="post-author">By {post.author}</span>}
           </div>
           <div className="post-tags">
             {post.tags.map((tag, index) => (
@@ -60,7 +59,7 @@ const BlogPost: React.FC = () => {
       <div className="blog-post-content">
         <ReactMarkdown
           components={{
-            code({node, inline, className, children, ...props}) {
+            code({inline, className, children, ...props}) {
               const match = /language-(\w+)/.exec(className || '');
               return !inline && match ? (
                 <SyntaxHighlighter

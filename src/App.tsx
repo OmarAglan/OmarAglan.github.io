@@ -23,14 +23,14 @@ const projects = [
   {
     id: 'fullstack',
     videoUrl: '/assets/videos/fullstack-preview.mp4',
-    buttonText: 'FULL STACK',
+    buttonText: 'Full-Stack Portfolio',
     category: 'fullstack',
     path: '/portfolio/fullstack'
   },
   {
     id: 'gamedev',
     videoUrl: '/assets/videos/gamedev-preview.mp4',
-    buttonText: 'GAME DEV',
+    buttonText: 'Game Development Portfolio',
     category: 'gamedev',
     path: '/portfolio/gamedev'
   }

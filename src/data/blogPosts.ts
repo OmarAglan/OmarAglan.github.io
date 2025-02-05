@@ -22,10 +22,6 @@ export interface BlogPost {
   coverImage: string;
   tags: string[];
   content: string;
-  author?: string;
-  featured?: boolean;
-  views?: number;
-  likes?: number;
 }
 
 export const blogCategories: BlogCategory[] = [
@@ -39,7 +35,6 @@ export const blogCategories: BlogCategory[] = [
   'Career Insights',
   'Project Showcase',
   'Cybersecurity',
-  'Blockchain',
   'Software Architecture'
 ];
 
@@ -75,16 +70,12 @@ export const commonTags = [
 export type SortOption = 
   | 'date-desc'
   | 'date-asc'
-  | 'views-desc'
-  | 'likes-desc'
   | 'title-asc'
   | 'title-desc';
 
 export const sortOptions: { value: SortOption; label: string }[] = [
   { value: 'date-desc', label: 'Newest First' },
   { value: 'date-asc', label: 'Oldest First' },
-  { value: 'views-desc', label: 'Most Viewed' },
-  { value: 'likes-desc', label: 'Most Liked' },
   { value: 'title-asc', label: 'Title (A-Z)' },
   { value: 'title-desc', label: 'Title (Z-A)' }
 ];
@@ -106,10 +97,7 @@ export const blogPosts: BlogPost[] = [
     coverImage: '/blog/game-dev-cover.jpg',
     tags: ['Unity', 'C#', 'Game Design', 'Beginner'],
     content: gameDevContent,
-    author: 'Omar Aglan',
     featured: true,
-    views: 1250,
-    likes: 45
   },
   {
     id: 'web-development-best-practices',
@@ -121,10 +109,7 @@ export const blogPosts: BlogPost[] = [
     coverImage: '/blog/web-dev-cover.jpg',
     tags: ['React', 'TypeScript', 'Performance', 'Best Practices'],
     content: webDevContent,
-    author: 'Omar Aglan',
-    featured: true,
-    views: 2100,
-    likes: 89
+    featured: true
   },
   {
     id: 'ux-design-principles',
@@ -136,9 +121,6 @@ export const blogPosts: BlogPost[] = [
     coverImage: '/blog/ux-design-cover.jpg',
     tags: ['UX', 'Design', 'User Research', 'Prototyping'],
     content: uxDesignContent,
-    author: 'Omar Aglan',
-    featured: false,
-    views: 850,
-    likes: 32
+    featured: false
   }
 ];
