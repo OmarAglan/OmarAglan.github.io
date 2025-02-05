@@ -19,10 +19,13 @@ export const getBlogPosts = (): BlogPost[] => {
         id: filename.replace('.md', ''),
         title: data.title,
         date: data.date,
+        slug: filename.replace('.md', ''),
+        content,
+        excerpt: data.summary || '',
         readTime: data.readTime,
         tags: data.tags,
         summary: data.summary,
-        content
+        featured: data.featured || false
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -40,10 +43,13 @@ export const getBlogPost = (id: string): BlogPost | null => {
       id,
       title: data.title,
       date: data.date,
+      slug: id,
+      content,
+      excerpt: data.summary || '',
       readTime: data.readTime,
       tags: data.tags,
       summary: data.summary,
-      content
+      featured: data.featured || false
     };
   } catch (error) {
     return null;

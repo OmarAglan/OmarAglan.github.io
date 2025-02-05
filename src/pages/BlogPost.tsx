@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { blogPosts } from '../data/blogPosts';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import './BlogPost.css';
 
 const BlogPost: React.FC = () => {
@@ -20,6 +20,18 @@ const BlogPost: React.FC = () => {
   }, [post, navigate]);
 
   if (!post) return null;
+
+  const renderCodeBlock = ({ language, value }: { language: string; value: string }) => {
+    return (
+      <SyntaxHighlighter
+        language={language}
+        style={atomOneDark}
+        customStyle={{ margin: '1em 0', padding: '1em' }}
+      >
+        {value}
+      </SyntaxHighlighter>
+    );
+  };
 
   return (
     <motion.article 
@@ -62,14 +74,7 @@ const BlogPost: React.FC = () => {
             code({inline, className, children, ...props}) {
               const match = /language-(\w+)/.exec(className || '');
               return !inline && match ? (
-                <SyntaxHighlighter
-                  style={vscDarkPlus}
-                  language={match[1]}
-                  PreTag="div"
-                  {...props}
-                >
-                  {String(children).replace(/\n$/, '')}
-                </SyntaxHighlighter>
+                renderCodeBlock({ language: match[1], value: String(children).replace(/\n$/, '') })
               ) : (
                 <code className={className} {...props}>
                   {children}
