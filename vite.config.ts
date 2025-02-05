@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react-swc';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/OmarAglan.github.io/',
   plugins: [
     react(),
   ],
@@ -14,6 +13,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    chunkSizeWarningLimit: 2000,
     rollupOptions: {
       output: {
         manualChunks: {
