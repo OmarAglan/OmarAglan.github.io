@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { blogPosts, blogCategories, commonTags, sortOptions, type SortOption, type BlogCategory } from '../data/blogPosts';
 import './BlogPage.css';
 
@@ -212,26 +212,13 @@ const BlogPage: React.FC = () => {
               transition={{ duration: 0.3, delay: index * 0.1 }}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
-              {post.coverImage && (
-                <div className="blog-card-image">
-                  <img 
-                    src={post.coverImage} 
-                    alt={post.title}
-                    loading="lazy"
-                    width="400"
-                    height="225"
-                  />
-                  <span className="blog-category">{post.category}</span>
-                  {post.featured && <span className="featured-badge">Featured</span>}
-                </div>
-              )}
               <div className="blog-card-content">
+                <h2>{post.title}</h2>
+                <p>{post.excerpt}</p>
                 <div className="blog-meta">
                   <span className="blog-date">{post.date}</span>
                   <span className="blog-read-time">{post.readTime} min read</span>
                 </div>
-                <h2>{post.title}</h2>
-                <p>{post.excerpt}</p>
                 <div className="blog-tags">
                   {post.tags.map((tag, index) => (
                     <span 

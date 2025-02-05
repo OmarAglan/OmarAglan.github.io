@@ -1,22 +1,52 @@
 import { useState, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { BlogPost } from '../../types';
 import { blogPosts } from '../../data/blogPosts';
 import './BlogSection.css';
 
-const ITEMS_PER_PAGE = 4;
+interface BlogCardProps {
+  post: BlogPost;
+}
 
-const BlogSection = () => {
+const BlogCard: React.FC<BlogCardProps> = ({ post }) => (
+  <motion.div
+    className="blog-card"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+  >
+    <Link to={`/blog/${post.slug}`} className="blog-card-link">
+      <div className="blog-card-content">
+        <h3>{post.title}</h3>
+        <p className="blog-excerpt">{post.excerpt}</p>
+        <div className="blog-meta">
+          <span>{post.date}</span>
+          {post.readTime && (
+            <span>{post.readTime} min read</span>
+          )}
+        </div>
+        <div className="blog-tags">
+          {post.tags?.map((tag) => (
+            <span key={tag} className="tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </Link>
+  </motion.div>
+);
+
+const BlogSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [visiblePosts, setVisiblePosts] = useState(ITEMS_PER_PAGE);
+  const [visiblePosts, setVisiblePosts] = useState(4);
 
-  // Memoize categories to prevent recalculation
   const categories = useMemo(() => {
     const allCategories = blogPosts.map(post => post.category);
     return ['All', ...new Set(allCategories)].filter(Boolean);
   }, []);
 
-  // Memoize filtered posts for performance
   const filteredPosts = useMemo(() => {
     return blogPosts
       .filter(post => activeCategory === 'All' || post.category === activeCategory)
@@ -25,11 +55,11 @@ const BlogSection = () => {
 
   const handleCategoryClick = useCallback((category: string) => {
     setActiveCategory(category);
-    setVisiblePosts(ITEMS_PER_PAGE);
+    setVisiblePosts(4);
   }, []);
 
   const loadMore = useCallback(() => {
-    setVisiblePosts(prev => prev + ITEMS_PER_PAGE);
+    setVisiblePosts(prev => prev + 4);
   }, []);
 
   const hasMorePosts = filteredPosts.length < 
@@ -67,56 +97,8 @@ const BlogSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <AnimatePresence mode="wait">
-            {filteredPosts.map((post, index) => (
-              <motion.article
-                key={post.id}
-                className="blog-card"
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                {post.coverImage && (
-                  <div className="blog-card-image">
-                    <img 
-                      src={post.coverImage} 
-                      alt={post.title}
-                      loading="lazy"
-                      width="400"
-                      height="225"
-                    />
-                    {post.category && (
-                      <span className="blog-category">{post.category}</span>
-                    )}
-                  </div>
-                )}
-                <div className="blog-card-content">
-                  <div className="blog-meta">
-                    <span className="blog-date">{post.date}</span>
-                    {post.readTime && (
-                      <span className="blog-read-time">{post.readTime} min read</span>
-                    )}
-                  </div>
-                  <h3>{post.title}</h3>
-                  <p>{post.excerpt}</p>
-                  <div className="blog-tags">
-                    {post.tags?.map((tag, index) => (
-                      <span key={index} className="blog-tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <Link to={`/blog/${post.id}`} className="read-more">
-                    Read More
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"/>
-                      <polyline points="12 5 19 12 12 19"/>
-                    </svg>
-                  </Link>
-                </div>
-              </motion.article>
+            {filteredPosts.map((post) => (
+              <BlogCard key={post.id} post={post} />
             ))}
           </AnimatePresence>
         </motion.div>

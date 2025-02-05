@@ -73,4 +73,7 @@ export interface BlogPost {
   readTime: string;
   tags: string[];
   content: string;
+  featured: boolean;
+  slug: string;
+  excerpt: string;
 }

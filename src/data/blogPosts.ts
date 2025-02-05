@@ -17,11 +17,13 @@ export interface BlogPost {
   title: string;
   category: BlogCategory;
   date: string;
-  readTime: number;
+  readTime: string;
   excerpt: string;
-  coverImage: string;
   tags: string[];
   content: string;
+  featured: boolean;
+  slug: string;
+  summary: string;
 }
 
 export const blogCategories: BlogCategory[] = [
@@ -90,37 +92,40 @@ export const blogPosts: BlogPost[] = [
   {
     id: 'getting-started-game-dev',
     title: 'Getting Started with Game Development',
-    category: 'Game Development',
+    summary: 'A comprehensive guide to beginning your journey in game development.',
     date: '2024-01-15',
-    readTime: 8,
+    readTime: '8 min read',
     excerpt: 'A comprehensive guide to beginning your journey in game development, covering essential tools and concepts.',
-    coverImage: '/blog/game-dev-cover.jpg',
     tags: ['Unity', 'C#', 'Game Design', 'Beginner'],
     content: gameDevContent,
     featured: true,
+    slug: 'getting-started-game-dev',
+    category: 'Game Development'
   },
   {
     id: 'web-development-best-practices',
     title: 'Modern Web Development Best Practices',
-    category: 'Web Development',
+    summary: 'Explore the latest best practices in web development.',
     date: '2024-01-22',
-    readTime: 10,
+    readTime: '10 min read',
     excerpt: 'Explore the latest best practices in web development, from performance optimization to responsive design.',
-    coverImage: '/blog/web-dev-cover.jpg',
     tags: ['React', 'TypeScript', 'Performance', 'Best Practices'],
     content: webDevContent,
-    featured: true
+    featured: true,
+    slug: 'web-development-best-practices',
+    category: 'Web Development'
   },
   {
     id: 'ux-design-principles',
     title: 'Essential UX Design Principles',
-    category: 'UI/UX Design',
+    summary: 'Learn the fundamental principles of UX design.',
     date: '2024-02-01',
-    readTime: 6,
+    readTime: '6 min read',
     excerpt: 'Learn the fundamental principles of UX design that can transform your digital products.',
-    coverImage: '/blog/ux-design-cover.jpg',
     tags: ['UX', 'Design', 'User Research', 'Prototyping'],
     content: uxDesignContent,
-    featured: false
+    featured: false,
+    slug: 'ux-design-principles',
+    category: 'UI/UX Design'
   }
 ];

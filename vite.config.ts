@@ -1,26 +1,24 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import mdPlugin from 'vite-plugin-markdown'
+import react from '@vitejs/plugin-react-swc';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/OmarAglan.github.io/',
   plugins: [
     react(),
-    [mdPlugin()]
   ],
   optimizeDeps: {
-    include: ['@splinetool/runtime', '@splinetool/react-spline'],
+    include: [],
     exclude: []
   },
   build: {
+    outDir: 'dist',
     sourcemap: true,
-    commonjsOptions: {
-      include: [/@splinetool\/*/]
-    },
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+        },
       }
     }
   },
