@@ -1,15 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import markdown from 'vite-plugin-markdown';
+import mdPlugin from 'vite-plugin-markdown'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/OmarAglan.github.io/',
   plugins: [
     react(),
-    markdown({
-      mode: ['html', 'raw']
-    })
+    [mdPlugin()]
   ],
   optimizeDeps: {
     include: ['@splinetool/runtime', '@splinetool/react-spline'],
