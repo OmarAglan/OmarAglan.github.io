@@ -66,6 +66,18 @@ const BlogPost = memo(() => {
     }
   };
 
+  const renderCodeBlock = ({ language, value }: { language: string; value: string }) => {
+    return (
+      <SyntaxHighlighter
+        language={language}
+        style={atomOneDark}
+        customStyle={{ margin: '1em 0' }}
+      >
+        {value}
+      </SyntaxHighlighter>
+    );
+  };
+
   return (
     <motion.div
       className="blog-post-container"
@@ -113,7 +125,7 @@ const BlogPost = memo(() => {
             switch (section.type) {
               case 'heading': {
                 const headingId = section.content[0].toLowerCase().replace(/[^a-z0-9]+/g, '-');
-                const [ref, inView] = sectionRefs[index] || [];
+                const [ref] = sectionRefs[index] || [];
                 return (
                   <motion.h2
                     ref={ref}
@@ -148,13 +160,7 @@ const BlogPost = memo(() => {
               case 'code':
                 return (
                   <div key={index} className="section-code">
-                    <SyntaxHighlighter
-                      language={section.meta?.language || 'typescript'}
-                      style={atomOneDark}
-                      showLineNumbers
-                    >
-                      {section.content.join('\n')}
-                    </SyntaxHighlighter>
+                    {renderCodeBlock({ language: section.meta?.language || 'typescript', value: section.content.join('\n') })}
                   </div>
                 );
 
