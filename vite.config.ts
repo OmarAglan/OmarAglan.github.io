@@ -6,6 +6,7 @@ import mdPlugin from 'vite-plugin-markdown';
 export default defineConfig({
   plugins: [
     react(),
+    base:'OmarAglan.github.io',
     mdPlugin.plugin({
       mode: ['html', 'raw']
     })
