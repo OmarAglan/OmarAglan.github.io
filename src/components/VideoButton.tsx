@@ -17,7 +17,6 @@ const VideoButton: React.FC<VideoButtonProps> = memo(({
   videoUrl, 
   buttonText, 
   className = '', 
-  onClick, 
   projectPath 
 }: VideoButtonProps): JSX.Element => {
   const [isHovering, setIsHovering] = useState<boolean>(false);

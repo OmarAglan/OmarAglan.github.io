@@ -41,7 +41,7 @@ const Footer = () => {
     >
       <div className="footer-content">
         <div className="social-links">
-          {socialLinks.map((link, index) => (
+          {socialLinks.map((link) => (
             <motion.a
               key={link.name}
               href={link.url}

@@ -66,7 +66,7 @@ const HomePage = () => (
 const App = () => {
   return (
     <ErrorBoundary>
-      <Suspense fallback={<LoadingState />}>
+      <Suspense fallback={<LoadingState isLoading={true}><div>Loading...</div></LoadingState>}>
       <Router>
         <div className="app-container">
           <WaveBackground />

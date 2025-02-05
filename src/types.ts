@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface VideoButtonProps {
   videoUrl: string;
   buttonText: string;
@@ -8,7 +10,7 @@ export interface VideoButtonProps {
 
 export interface LoadingStateProps {
   isLoading: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export interface BlogPost {
@@ -18,4 +20,18 @@ export interface BlogPost {
   content: string;
   excerpt: string;
   featured?: boolean;
+  id?: string;
+  readTime?: string;
+  tags?: string[];
+  summary?: string;
+}
+
+export interface BackButtonProps {
+  onClick?: () => void;
+  className?: string;
+}
+
+export interface WaveBackgroundProps {
+  className?: string;
+  children?: ReactNode;
 }

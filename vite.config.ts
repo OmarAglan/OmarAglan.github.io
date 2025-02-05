@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import mdPlugin from 'vite-plugin-markdown';
+import markdown from 'vite-plugin-markdown';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/OmarAglan.github.io/',
   plugins: [
     react(),
-    mdPlugin.plugin({
+    markdown({
       mode: ['html', 'raw']
     })
   ],
