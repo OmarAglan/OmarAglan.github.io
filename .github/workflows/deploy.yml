@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - main
-permissions:
-  contents: write
-  pages: write
-  id-token: write
 
 jobs:
   build:
@@ -20,12 +16,9 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        uses: bahmutov/npm-install@v1
 
       - name: Build project
         run: npm run build
