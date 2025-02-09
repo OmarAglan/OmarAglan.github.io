@@ -534,46 +534,67 @@ img {
     width: 90%;
 }
 
-.skills__css {
-    width: 70%;
-}
-
 .skills__js {
-    width: 65%;
-}
-
-.skills__react {
     width: 90%;
 }
 
+.skills__react {
+    width: 80%;
+}
+
+.skills__reactnative {
+    width: 80%;
+}
+
+.skills__next {
+    width: 70%;
+}
+
+.skills__vue {
+    width: 70%;
+}
+
+.skills__nuxt {
+    width: 60%;
+}
+
+
 
 /* Backend */
-
-.skills__php {
-    width: 50%;
-}
 
 .skills__node {
     width: 90%;
 }
 
-.skills__firebase {
-    width: 60%;
+.skills__express {
+    width: 85%;
 }
 
-.skills__python {
+.skills__mongodb {
+    width: 85%;
+}
+
+.skills__php {
     width: 70%;
 }
 
-.skills__charp {
-    width: 85%;
+.skills__django {
+    width: 60%;
+}
+
+.skills__flask {
+    width: 60%;
+}
+
+.skills__dotnet {
+    width: 50%;
 }
 
 
 /* Game */
 
 .skills__unity {
-    width: 80%;
+    width: 90%;
 }
 
 .skills__unreal {
@@ -586,7 +607,7 @@ img {
 }
 
 .skills__gameengine {
-    width: 40%;
+    width: 50%;
 }
 
 .skills__cppcharp {
