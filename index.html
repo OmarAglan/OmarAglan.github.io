@@ -15,6 +15,29 @@
     <!--==================== CSS ====================-->
     <link rel="stylesheet" href="assets/css/styles.css" />
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+          // https://dashboard.emailjs.com/admin/account
+          emailjs.init({
+            publicKey: "ZIalrcivTy9lQg5ZX",
+          });
+      })();
+  </script>
+  <script type="text/javascript">
+      window.onload = function() {
+          document.getElementById('contact-form').addEventListener('submit', function(event) {
+              event.preventDefault();
+              // these IDs from the previous steps
+              emailjs.sendForm('service_bxugq1a', 'template_tmydnql', this)
+                  .then(() => {
+                      console.log('SUCCESS!');
+                  }, (error) => {
+                      console.log('FAILED...', error);
+                  });
+          });
+      }
+  </script>
     <title>Omar Aglan Portfolio</title>
   </head>
 
@@ -955,7 +978,7 @@
             </div>
           </div>
 
-          <form action="" class="contact__form grid">
+          <form action="" class="contact__form grid" id="contact-form">
             <div class="contact__inputs grid">
               <div class="contact__content">
                 <label for="" class="contact__label">Name</label>
@@ -988,10 +1011,10 @@
             </div>
 
             <div>
-              <a href="#" class="button button--flex">
+              <button type="submit" class="button button--flex">
                 Send Message
                 <i class="uil uil-message button__icon"></i>
-              </a>
+              </button>
             </div>
           </form>
         </div>
@@ -1054,6 +1077,9 @@
 
     <!--==================== SWIPER JS ====================-->
     <script src="assets/js/swiper-bundle.min.js"></script>
+
+
+    
 
     <!--==================== MAIN JS ====================-->
     <script src="assets/js/main.js"></script>
