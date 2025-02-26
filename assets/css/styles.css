@@ -6,24 +6,25 @@
     --header-height: 3rem;
 
     /*========== Colors ==========*/
-    /* Change favorite color */
-    /* UnUsed */
-    --hue-color: 230;
-    /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+    /* Custom Color Palette */
+    --color-darkest: #1B262C;
+    --color-dark: #0F4C75;
+    --color-medium: #3282B8;
+    --color-light: #BBE1FA;
 
-    /* HSL color mode */
-    --first-color: hsl(var(--hue-color), 69%, 61%);
-    --first-color-second: hsl(var(--hue-color), 69%, 61%);
-    --first-color-alt: hsl(var(--hue-color), 57%, 53%);
-    --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
-    --title-color: hsl(var(--hue-color), 8%, 15%);
-    --text-color: hsl(var(--hue-color), 8%, 45%);
-    --text-color-light: hsl(var(--hue-color), 8%, 65%);
-    --input-color: hsl(var(--hue-color), 70%, 96%);
-    --body-color: hsl(var(--hue-color), 60%, 99%);
+    /* Theme Colors */
+    --first-color: var(--color-medium);
+    --first-color-second: var(--color-dark);
+    --first-color-alt: var(--color-darkest);
+    --first-color-lighter: var(--color-light);
+    --title-color: var(--color-darkest);
+    --text-color: var(--color-dark);
+    --text-color-light: var(--color-medium);
+    --input-color: var(--color-light);
+    --body-color: #ffffff;
     --container-color: #fff;
-    --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
-    --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+    --scroll-bar-color: var(--color-light);
+    --scroll-thumb-color: var(--color-medium);
 
     /*========== Font and typography ==========*/
     --body-font: 'Poppins', sans-serif;
@@ -73,14 +74,17 @@
 
 /*========== Variables Dark theme ==========*/
 body.dark-theme {
-    --first-color-second: hsl(var(--hue-color), 30%, 8%);
-    --title-color: hsl(var(--hue-color), 8%, 95%);
-    --text-color: hsl(var(--hue-color), 8%, 75%);
-    --input-color: hsl(var(--hue-color), 29%, 16%);
-    --body-color: hsl(var(--hue-color), 28%, 12%);
-    --container-color: hsl(var(--hue-color), 29%, 16%);
-    --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
-    --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
+    --first-color: var(--color-light);
+    --first-color-second: var(--color-medium);
+    --first-color-alt: var(--color-dark);
+    --first-color-lighter: var(--color-light);
+    --title-color: var(--color-light);
+    --text-color: var(--color-medium);
+    --input-color: var(--color-dark);
+    --body-color: var(--color-darkest);
+    --container-color: var(--color-dark);
+    --scroll-bar-color: var(--color-medium);
+    --scroll-thumb-color: var(--color-dark);
 }
 
 
@@ -109,8 +113,51 @@ body.dark-theme {
     margin: 0;
 }
 
+/* Add smooth scrolling behavior to the entire page */
 html {
     scroll-behavior: smooth;
+}
+
+/* Add transition effects to interactive elements */
+.nav__link,
+.button,
+.home__social-icon,
+.skills__icon,
+.services__icon,
+.contact__button {
+    transition: all 0.3s ease;
+}
+
+/* Enhance hover effects */
+.nav__link:hover,
+.home__social-icon:hover,
+.contact__button:hover {
+    transform: translateY(-3px);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Add loading animation for images */
+.home__img,
+.about__img,
+.portfolio__img {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 body {
@@ -224,7 +271,32 @@ img {
         padding: 2rem 1.5rem 4rem;
         box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
         border-radius: 1.5rem 1.5rem 0 0;
-        transition: 0.3s;
+        transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav__link {
+        position: relative;
+        padding: 0.5rem;
+    }
+
+    .nav__link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: var(--first-color);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .nav__link:active::after {
+        width: 50%;
+    }
+
+    .nav__item:active {
+        transform: scale(0.95);
     }
 }
 
@@ -366,7 +438,7 @@ img {
 /*==================== BUTTONS ====================*/
 .button {
     display: inline-block;
-    background-color: var(--first-color);
+    background-color: var(--color-dark);
     color: #fff;
     padding: 1rem;
     border-radius: .5rem;
@@ -520,13 +592,12 @@ img {
 }
 
 .skills__bar {
-    background-color: var(--first-color-lighter);
-
+    background-color: var(--color-light);
 }
 
 .skills__percentage {
     display: block;
-    background-color: var(--first-color);
+    background-color: var(--color-dark);
 }
 
 /* Frontend */
@@ -850,7 +921,7 @@ img {
     right: -.5rem;
 }
 
-.swiper-horizontal > .swiper-pagination-bullets {
+.swiper-horizontal>.swiper-pagination-bullets {
     bottom: -2.5rem;
 }
 
@@ -999,10 +1070,12 @@ img {
 .footer__title {
     font-size: var(--h1-font-size);
     margin-bottom: var(--mb-0-25);
+    color: #fff;
 }
 
 .footer__subtitle {
     font-size: var(--small-font-size);
+    color: var(--first-color-lighter);
 }
 
 .footer__links {
@@ -1011,24 +1084,50 @@ img {
     row-gap: 1.5rem;
 }
 
-.footer__link:hover {
+.footer__link {
     color: var(--first-color-lighter);
+    transition: 0.3s;
+}
+
+.footer__link:hover {
+    color: var(--first-color-alt);
+    transform: translateX(0.25rem);
+}
+
+.footer__socials {
+    display: flex;
+    column-gap: 1.5rem;
 }
 
 .footer__social {
     font-size: 1.25rem;
-    margin-right: var(--mb-1-5);
+    color: var(--first-color-lighter);
+    transition: 0.3s;
 }
 
 .footer__social:hover {
-    color: var(--first-color-lighter);
+    color: var(--first-color-alt);
+    transform: translateY(-0.25rem);
 }
 
 .footer__copy {
     font-size: var(--smaller-font-size);
     text-align: center;
-    color: var(--text-color-light);
+    color: var(--first-color-lighter);
     margin-top: var(--mb-3);
+}
+
+/* For medium devices */
+@media screen and (min-width: 568px) {
+    .footer__container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer__links {
+        flex-direction: row;
+        column-gap: 2rem;
+        justify-content: center;
+    }
 }
 
 .footer__title,
@@ -1377,6 +1476,7 @@ img {
 
 /* For large devices */
 @media screen and (min-width: 1024px) {
+
     .header,
     .main,
     .footer__container {
@@ -1411,7 +1511,7 @@ img {
         right: -3.5rem;
     }
 
-    .swiper-container-horizontal > .swiper-pagination-bullets {
+    .swiper-container-horizontal>.swiper-pagination-bullets {
         bottom: -4.5rem;
     }
 

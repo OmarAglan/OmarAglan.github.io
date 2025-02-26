@@ -1,0 +1,16 @@
+{
+  "name": "Omar Aglan Portfolio",
+  "short_name": "Omar Portfolio",
+  "description": "Omar Aglan's Portfolio - Full Stack Developer and Game Developer",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6e57e0",
+  "icons": [
+    {
+      "src": "assets/img/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
