@@ -79,12 +79,15 @@ body.dark-theme {
     --first-color-alt: var(--color-dark);
     --first-color-lighter: var(--color-light);
     --title-color: var(--color-light);
-    --text-color: var(--color-medium);
+    --text-color: var(--color-light);
+    --text-color-light: var(--color-medium);
     --input-color: var(--color-dark);
     --body-color: var(--color-darkest);
     --container-color: var(--color-dark);
     --scroll-bar-color: var(--color-medium);
     --scroll-thumb-color: var(--color-dark);
+    --button-color: var(--color-medium);
+    --button-color-hover: var(--color-dark);
 }
 
 
@@ -438,15 +441,26 @@ img {
 /*==================== BUTTONS ====================*/
 .button {
     display: inline-block;
-    background-color: var(--color-dark);
-    color: #fff;
+    background-color: var(--first-color);
+    color: #FFF;
     padding: 1rem;
     border-radius: .5rem;
     font-weight: var(--font-medium);
+    transition: .3s;
 }
 
 .button:hover {
     background-color: var(--first-color-alt);
+}
+
+/* Dark mode specific button styles */
+body.dark-theme .button {
+    background-color: var(--button-color);
+    color: var(--color-light);
+}
+
+body.dark-theme .button:hover {
+    background-color: var(--button-color-hover);
 }
 
 .button__icon {
@@ -455,31 +469,22 @@ img {
     transition: .3s;
 }
 
-.button--white {
-    background-color: #fff;
-    color: var(--first-color);
-}
-
-.button--white:hover {
-    background-color: #fff;
-}
-
 .button--flex {
     display: inline-flex;
     align-items: center;
 }
 
-.button__small {
+.button--small {
     padding: .75rem 1rem;
 }
 
-.button__link {
+.button--link {
     padding: 0;
     background-color: transparent;
     color: var(--first-color);
 }
 
-.button__link:hover {
+.button--link:hover {
     background-color: transparent;
     color: var(--first-color-alt);
 }
@@ -1139,7 +1144,7 @@ img {
 
 /*========== SCROLL UP ==========*/
 
-.scrollUp {
+.scrollup {
     position: fixed;
     right: 1rem;
     bottom: -20%;
@@ -1151,18 +1156,16 @@ img {
     transition: .4s;
 }
 
-.scrollUp:hover {
+.scrollup:hover {
     background-color: var(--first-color-alt);
 }
 
-.scrollUp__icon {
+.scrollup__icon {
     font-size: 1.5rem;
     color: #fff;
 }
 
-
 /* Show scroll */
-
 .show-scroll {
     bottom: 5rem;
 }
