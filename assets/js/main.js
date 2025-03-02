@@ -43,12 +43,49 @@ function toggleSkills() {
 
   if (itemClass === 'skills__content skills__close') {
     this.parentNode.className = 'skills__content skills__open';
+    
+    // Get all skill percentages in the opened section
+    const skillBars = this.parentNode.querySelectorAll('.skills__percentage');
+    
+    // Reset width to 0 and then animate them in sequence
+    skillBars.forEach((bar, index) => {
+      const originalWidth = bar.style.width || getComputedStyle(bar).width;
+      
+      // Reset width
+      bar.style.width = '0';
+      
+      // Animate width with a staggered delay
+      setTimeout(() => {
+        bar.style.width = originalWidth;
+      }, 100 + (index * 100)); // 100ms delay between each bar animation
+    });
   }
 }
 
 skillsHeader.forEach((el) => {
   el.addEventListener('click', toggleSkills);
 });
+
+// Initialize the first skills section as open on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all skill percentages in the first section (already open by default)
+  const firstSection = document.querySelector('.skills__content.skills__open');
+  if (firstSection) {
+    const skillBars = firstSection.querySelectorAll('.skills__percentage');
+    
+    // Animate width with a staggered delay
+    skillBars.forEach((bar, index) => {
+      // Start with 0 width
+      bar.style.width = '0';
+      
+      // Animate to full width with delay
+      setTimeout(() => {
+        bar.style.width = getComputedStyle(bar).width;
+      }, 500 + (index * 100)); // 500ms initial delay + 100ms between each
+    });
+  }
+});
+
 /*==================== QUALIFICATION TABS ====================*/
 const tabs = document.querySelectorAll('[data-target]'),
   tabContents = document.querySelectorAll('[data-content]');
