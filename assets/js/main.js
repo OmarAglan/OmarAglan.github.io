@@ -57,13 +57,26 @@ tabs.forEach((tab) => {
   tab.addEventListener('click', () => {
     const target = document.querySelector(tab.dataset.target);
 
+    // Add a class for the fade-out animation
     tabContents.forEach((tabContent) => {
-      tabContent.classList.remove('qualification__active');
+      if (tabContent.classList.contains('qualification__active')) {
+        tabContent.classList.add('qualification__fade-out');
+        
+        // Remove the active class after the animation completes
+        setTimeout(() => {
+          tabContent.classList.remove('qualification__active');
+          tabContent.classList.remove('qualification__fade-out');
+        }, 300);
+      }
     });
-    target.classList.add('qualification__active');
 
-    tabs.forEach((tab) => {
-      tab.classList.remove('qualification__active');
+    // Add the active class to the target with a delay for smooth transition
+    setTimeout(() => {
+      target.classList.add('qualification__active');
+    }, 300);
+
+    tabs.forEach((t) => {
+      t.classList.remove('qualification__active');
     });
     tab.classList.add('qualification__active');
   });
@@ -74,22 +87,80 @@ const modelViews = document.querySelectorAll('.services__model'),
   modelBtns = document.querySelectorAll('.service__button'),
   modelCloses = document.querySelectorAll('.services__model-close');
 
-let modal = function (modalClick) {
-  modelViews[modalClick].classList.add('active-modal');
+// Fix modal function to properly handle the opening animation
+let modal = function (modalIndex) {
+  if (modelViews[modalIndex]) {
+    // Show the modal first
+    modelViews[modalIndex].classList.add('active-modal');
+    
+    // Prevent body scrolling when modal is open
+    document.body.style.overflow = 'hidden';
+  }
 };
 
-modelBtns.forEach((modelBtn, i) => {
-  modelBtn.addEventListener('click', () => {
-    modal(i);
+// Improved event listeners for opening modals
+modelBtns.forEach((modelBtn) => {
+  modelBtn.addEventListener('click', (e) => {
+    // Prevent event bubbling
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Get the service index from the data attribute
+    const serviceIndex = modelBtn.getAttribute('data-service');
+    if (serviceIndex !== null) {
+      modal(parseInt(serviceIndex));
+    }
   });
 });
 
+// Improved close function for modals
+const closeModal = function(modalEl) {
+  if (modalEl && modalEl.classList.contains('active-modal')) {
+    // Add closing animation class
+    modalEl.classList.add('closing-modal');
+    
+    // Remove classes after animation completes
+    setTimeout(() => {
+      modalEl.classList.remove('active-modal');
+      modalEl.classList.remove('closing-modal');
+      
+      // Restore body scrolling
+      document.body.style.overflow = '';
+    }, 300);
+  }
+};
+
+// Close button event listeners
 modelCloses.forEach((modelClose) => {
-  modelClose.addEventListener('click', () => {
-    modelViews.forEach((modelView) => {
-      modelView.classList.remove('active-modal');
-    });
+  modelClose.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Find the parent modal
+    const modalEl = modelClose.closest('.services__model');
+    closeModal(modalEl);
   });
+});
+
+// Close modal when clicking outside the content
+modelViews.forEach((modelView) => {
+  modelView.addEventListener('click', (e) => {
+    // Only close if clicking on the overlay (not the content)
+    if (e.target === modelView) {
+      closeModal(modelView);
+    }
+  });
+});
+
+// Close modal with ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    // Find any open modal and close it
+    const openModal = document.querySelector('.services__model.active-modal');
+    if (openModal) {
+      closeModal(openModal);
+    }
+  }
 });
 
 /*==================== PORTFOLIO SWIPER  ====================*/
