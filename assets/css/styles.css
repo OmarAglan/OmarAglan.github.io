@@ -17,7 +17,8 @@
     --first-color-second: var(--color-dark);
     --first-color-alt: var(--color-darkest);
     --first-color-lighter: var(--color-light);
-    --first-color-rgb: 50, 130, 184; /* RGB values for --color-medium */
+    --first-color-rgb: 50, 130, 184;
+    /* RGB values for --color-medium */
     --title-color: var(--color-darkest);
     --text-color: var(--color-dark);
     --text-color-light: var(--color-medium);
@@ -79,7 +80,8 @@ body.dark-theme {
     --first-color-second: var(--color-medium);
     --first-color-alt: var(--color-dark);
     --first-color-lighter: var(--color-light);
-    --first-color-rgb: 187, 225, 250; /* RGB values for --color-light */
+    --first-color-rgb: 187, 225, 250;
+    /* RGB values for --color-light */
     --title-color: var(--color-light);
     --text-color: var(--color-light);
     --text-color-light: var(--color-medium);
@@ -502,9 +504,12 @@ img {
 }
 
 @keyframes bounce {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(5px);
     }
@@ -606,18 +611,18 @@ body.dark-theme .button:hover {
     transition: all 0.3s ease;
 }
 
-.about__info > div {
+.about__info>div {
     transition: all 0.3s ease;
     padding: 0.5rem;
     border-radius: 0.5rem;
 }
 
-.about__info > div:hover {
+.about__info>div:hover {
     transform: translateY(-5px);
     background-color: rgba(var(--first-color-rgb), 0.05);
 }
 
-.about__info > div:hover .about__info-title {
+.about__info>div:hover .about__info-title {
     color: var(--first-color);
     transform: scale(1.05);
 }
@@ -757,6 +762,7 @@ body.dark-theme .button:hover {
 .skills__percentage {
     height: 8px;
     border-radius: 0.5rem;
+    transition: width 0.5s ease-in-out;
 }
 
 .skills__bar {
@@ -774,7 +780,7 @@ body.dark-theme .button:hover {
     display: block;
     background-color: var(--first-color);
     position: relative;
-    transition: width 1s ease-in-out;
+    transition: width 0.2s ease-in-out;
 }
 
 .skills__percentage::after {
@@ -970,8 +976,8 @@ body.dark-theme .button:hover {
     justify-items: end;
 }
 
-.qualification__data > div:first-child,
-.qualification__data > div:last-child {
+.qualification__data>div:first-child,
+.qualification__data>div:last-child {
     background-color: var(--container-color);
     padding: 1.5rem;
     border-radius: 1rem;
@@ -979,10 +985,10 @@ body.dark-theme .button:hover {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    
+
 }
 
-.qualification__data > div:empty {
+.qualification__data>div:empty {
     height: 0;
     padding: 0;
     margin: 0;
@@ -990,8 +996,8 @@ body.dark-theme .button:hover {
     background-color: transparent;
 }
 
-.qualification__data > div:first-child::before,
-.qualification__data > div:last-child::before {
+.qualification__data>div:first-child::before,
+.qualification__data>div:last-child::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1002,13 +1008,13 @@ body.dark-theme .button:hover {
     transition: height 0.3s ease;
 }
 
-.qualification__data > div:first-child:hover::before,
-.qualification__data > div:last-child:hover::before {
+.qualification__data>div:first-child:hover::before,
+.qualification__data>div:last-child:hover::before {
     height: 100%;
 }
 
-.qualification__data > div:first-child:hover,
-.qualification__data > div:last-child:hover {
+.qualification__data>div:first-child:hover,
+.qualification__data>div:last-child:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
@@ -1110,6 +1116,7 @@ body.dark-theme .button:hover {
         opacity: 1;
         transform: translateY(0);
     }
+
     to {
         opacity: 0;
         transform: translateY(10px);
@@ -1466,7 +1473,7 @@ body.dark-theme .portfolio__tech-tag {
     .swiper-portfolio-icon {
         font-size: 1.5rem;
     }
-    
+
     .portfolio__content {
         min-height: 300px;
     }
@@ -1788,12 +1795,12 @@ body.dark-theme .portfolio__tech-tag {
     .portfolio-sections__container {
         grid-template-columns: 1fr;
     }
-    
+
     .portfolio-sections__container .portfolio.section {
         margin-bottom: var(--mb-2);
         padding: 1rem;
     }
-    
+
     .portfolio-sections__container .section__title {
         font-size: var(--h3-font-size);
     }
@@ -1973,15 +1980,15 @@ body.dark-theme .portfolio__tech-tag {
         grid-template-columns: .5fr;
         max-width: 650px;
     }
-    
+
     .qualification__data {
         column-gap: 2rem;
     }
-    
+
     .qualification__title {
         font-size: calc(var(--normal-font-size) * 1.1);
     }
-    
+
     .qualification__subtitle {
         font-size: calc(var(--small-font-size) * 1.1);
     }
@@ -2011,12 +2018,12 @@ body.dark-theme .portfolio__tech-tag {
     .portfolio__content {
         align-items: center;
     }
-    
+
     .portfolio-sections__container {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
-    
+
     .portfolio-sections__container .portfolio.section {
         padding: 1.5rem;
     }
@@ -2183,11 +2190,11 @@ body.dark-theme .portfolio__tech-tag {
     .portfolio-sections__container .swiper-button-prev {
         left: -0.5rem;
     }
-    
+
     .portfolio-sections__container .swiper-button-next {
         right: -0.5rem;
     }
-    
+
     .portfolio-sections__container .swiper-portfolio-icon {
         font-size: 1.5rem;
     }
@@ -2198,7 +2205,7 @@ body.dark-theme .portfolio__tech-tag {
     .portfolio-sections__container {
         grid-template-columns: 1fr;
     }
-    
+
     .portfolio-sections__container .portfolio.section:first-child {
         margin-bottom: 2rem;
     }
@@ -2288,8 +2295,8 @@ body.dark-theme .portfolio-sections__container .portfolio.section:hover {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
     transform: translateY(-30px) scale(0.95);
     opacity: 0;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-modal.active-modal .portfolio-modal__content {
@@ -2380,11 +2387,11 @@ body.dark-theme .portfolio-modal__tech-tag {
     .portfolio-modal__content {
         padding: 1.5rem;
     }
-    
+
     .portfolio-modal__title {
         font-size: var(--h3-font-size);
     }
-    
+
     .portfolio-modal__buttons {
         flex-direction: column;
         gap: 0.5rem;
@@ -2438,30 +2445,30 @@ body {
         row-gap: 1.5rem;
     }
 
-    .qualification__data > div:nth-child(2) {
+    .qualification__data>div:nth-child(2) {
         display: none;
     }
 
-    .qualification__data > div:empty {
+    .qualification__data>div:empty {
         display: none;
     }
 
-    .qualification__data > div:first-child,
-    .qualification__data > div:last-child {
+    .qualification__data>div:first-child,
+    .qualification__data>div:last-child {
         position: relative;
         padding-left: 2.5rem;
     }
 
-    .qualification__data > div:first-child::before,
-    .qualification__data > div:last-child::before {
+    .qualification__data>div:first-child::before,
+    .qualification__data>div:last-child::before {
         left: 0;
         top: 0;
         height: 100%;
         width: 1px;
     }
 
-    .qualification__data > div:first-child::after,
-    .qualification__data > div:last-child::after {
+    .qualification__data>div:first-child::after,
+    .qualification__data>div:last-child::after {
         content: '';
         position: absolute;
         left: -7px;

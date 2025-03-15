@@ -43,21 +43,22 @@ function toggleSkills() {
 
   if (itemClass === 'skills__content skills__close') {
     this.parentNode.className = 'skills__content skills__open';
-    
+
     // Get all skill percentages in the opened section
     const skillBars = this.parentNode.querySelectorAll('.skills__percentage');
-    
+
     // Reset width to 0 and then animate them in sequence
     skillBars.forEach((bar, index) => {
-      const originalWidth = bar.style.width || getComputedStyle(bar).width;
-      
+      const percentage =
+        bar.parentNode.querySelector('.skills__number').textContent;
+
       // Reset width
       bar.style.width = '0';
-      
+
       // Animate width with a staggered delay
       setTimeout(() => {
-        bar.style.width = originalWidth;
-      }, 100 + (index * 100)); // 100ms delay between each bar animation
+        bar.style.width = percentage;
+      }, 100 + index * 100); // 100ms delay between each bar animation
     });
   }
 }
@@ -67,21 +68,23 @@ skillsHeader.forEach((el) => {
 });
 
 // Initialize the first skills section as open on page load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Get all skill percentages in the first section (already open by default)
   const firstSection = document.querySelector('.skills__content.skills__open');
   if (firstSection) {
     const skillBars = firstSection.querySelectorAll('.skills__percentage');
-    
+
     // Animate width with a staggered delay
     skillBars.forEach((bar, index) => {
+      const percentage =
+        bar.parentNode.querySelector('.skills__number').textContent;
       // Start with 0 width
       bar.style.width = '0';
-      
+
       // Animate to full width with delay
       setTimeout(() => {
-        bar.style.width = getComputedStyle(bar).width;
-      }, 500 + (index * 100)); // 500ms initial delay + 100ms between each
+        bar.style.width = percentage;
+      }, 500 + index * 100); // 500ms initial delay + 100ms between each
     });
   }
 });
@@ -98,7 +101,7 @@ tabs.forEach((tab) => {
     tabContents.forEach((tabContent) => {
       if (tabContent.classList.contains('qualification__active')) {
         tabContent.classList.add('qualification__fade-out');
-        
+
         // Remove the active class after the animation completes
         setTimeout(() => {
           tabContent.classList.remove('qualification__active');
@@ -129,7 +132,7 @@ let modal = function (modalIndex) {
   if (modelViews[modalIndex]) {
     // Show the modal first
     modelViews[modalIndex].classList.add('active-modal');
-    
+
     // Prevent body scrolling when modal is open
     document.body.style.overflow = 'hidden';
   }
@@ -141,7 +144,7 @@ modelBtns.forEach((modelBtn) => {
     // Prevent event bubbling
     e.preventDefault();
     e.stopPropagation();
-    
+
     // Get the service index from the data attribute
     const serviceIndex = modelBtn.getAttribute('data-service');
     if (serviceIndex !== null) {
@@ -151,16 +154,16 @@ modelBtns.forEach((modelBtn) => {
 });
 
 // Improved close function for modals
-const closeModal = function(modalEl) {
+const closeModal = function (modalEl) {
   if (modalEl && modalEl.classList.contains('active-modal')) {
     // Add closing animation class
     modalEl.classList.add('closing-modal');
-    
+
     // Remove classes after animation completes
     setTimeout(() => {
       modalEl.classList.remove('active-modal');
       modalEl.classList.remove('closing-modal');
-      
+
       // Restore body scrolling
       document.body.style.overflow = '';
     }, 300);
@@ -172,7 +175,7 @@ modelCloses.forEach((modelClose) => {
   modelClose.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     // Find the parent modal
     const modalEl = modelClose.closest('.services__model');
     closeModal(modalEl);
@@ -246,14 +249,18 @@ function scrollActive() {
     const sectionTop = current.offsetTop - 50;
     sectionId = current.getAttribute('id');
 
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document
-        .querySelector('.nav__menu a[href*=' + sectionId + ']')
-        .classList.add('active-link');
-    } else {
-      document
-        .querySelector('.nav__menu a[href*=' + sectionId + ']')
-        .classList.remove('active-link');
+    // Find the menu link that corresponds to this section
+    const navLink = document.querySelector(
+      '.nav__menu a[href*=' + sectionId + ']'
+    );
+
+    // Only try to modify the classList if the element exists
+    if (navLink) {
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLink.classList.add('active-link');
+      } else {
+        navLink.classList.remove('active-link');
+      }
     }
   });
 }
