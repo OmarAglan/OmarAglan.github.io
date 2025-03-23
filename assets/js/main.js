@@ -90,35 +90,40 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /*==================== QUALIFICATION TABS ====================*/
-const tabs = document.querySelectorAll('[data-target]'),
-  tabContents = document.querySelectorAll('[data-content]');
+const qualificationTabs = document.querySelectorAll('.qualification__tab'),
+  qualificationPanels = document.querySelectorAll('.qualification__panel');
 
-tabs.forEach((tab) => {
+qualificationTabs.forEach((tab) => {
   tab.addEventListener('click', () => {
     const target = document.querySelector(tab.dataset.target);
 
-    // Add a class for the fade-out animation
-    tabContents.forEach((tabContent) => {
-      if (tabContent.classList.contains('qualification__active')) {
-        tabContent.classList.add('qualification__fade-out');
+    // First remove active class from all tabs
+    qualificationTabs.forEach(t => {
+      t.classList.remove('active');
+    });
+    
+    // Add active class to clicked tab
+    tab.classList.add('active');
 
-        // Remove the active class after the animation completes
+    // Hide all panels first with a fade out effect
+    qualificationPanels.forEach(panel => {
+      if (panel.classList.contains('active')) {
+        // Add fade out animation
+        panel.style.animation = 'fadeOut 0.3s forwards';
+        
+        // Remove active class after animation
         setTimeout(() => {
-          tabContent.classList.remove('qualification__active');
-          tabContent.classList.remove('qualification__fade-out');
+          panel.classList.remove('active');
+          panel.style.animation = '';
         }, 300);
       }
     });
 
-    // Add the active class to the target with a delay for smooth transition
+    // Show target panel with fade in effect after a short delay
     setTimeout(() => {
-      target.classList.add('qualification__active');
+      target.classList.add('active');
+      target.style.animation = 'fadeIn 0.5s forwards';
     }, 300);
-
-    tabs.forEach((t) => {
-      t.classList.remove('qualification__active');
-    });
-    tab.classList.add('qualification__active');
   });
 });
 
