@@ -13,9 +13,11 @@ export default defineNuxtConfig({
     buildAssetsDir: 'assets',
   },
   ssr: false, // Disable server-side rendering for static site generation
-  modules: [
-    '@nuxtjs/i18n',
-  ],
+  modules: ['@nuxtjs/i18n', ['@nuxtjs/google-fonts', {
+    families: {
+      Rubik: [400, 700],
+    }
+  }]],
   i18n: {
     bundle: {
       optimizeTranslationDirective: false,

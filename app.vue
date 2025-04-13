@@ -65,6 +65,10 @@ function switchLanguage(event: Event) {
 </script>
 
 <style>
+* {
+  font-family: Rubik;
+}
+
 .router-link-active {
   font-weight: 600;
   position: relative;
