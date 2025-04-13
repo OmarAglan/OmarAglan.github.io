@@ -105,7 +105,7 @@
       :href="platform.url" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="group relative flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary-dark dark:from-primary-dark dark:to-primary overflow-hidden transition-all duration-300 hover:scale-110 hover:rotate-3"
+      class="group relative flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary-dark dark:from-primary-dark dark:to-primary overflow-hidden transition-all duration-300 hover:scale-110"
     >
       <FontAwesomeIcon :icon="platform.icon" class="text-2xl text-white"></FontAwesomeIcon>
       <span class="absolute bottom-0 left-0 right-0 py-1 px-2 text-xs text-white bg-black/50 backdrop-blur-sm transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
