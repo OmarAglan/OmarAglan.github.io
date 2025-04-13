@@ -96,17 +96,24 @@
             </p>
           </HighlightedCard>
         </section>
-
         <section class="mb-12">
-          <h2 class="text-3xl font-semibold mb-4 text-primary dark:text-primary-dark animate-fadeIn">{{ $t("home.connect") }}</h2>
-          <div class="flex flex-wrap gap-4">
-            <a v-for="(link, platform) in personalInfo.accounts" :key="platform" :href="link" target="_blank"
-              rel="noopener noreferrer"
-              class="bg-primary dark:bg-primary-dark text-white px-4 py-2 rounded-full hover:bg-primary-dark dark:hover:bg-primary transition-colors animate-fadeIn">
-              {{ platform }}
-            </a>
-          </div>
-        </section>
+  <h2 class="text-3xl font-semibold mb-6 text-primary dark:text-primary-dark animate-fadeIn">{{ $t("home.connect") }}</h2>
+  <div class="flex flex-wrap gap-6">
+    <a 
+      v-for="(platform, _) in personalInfo.accounts as Record<string, Record<string, string>>" 
+      :key="platform.name" 
+      :href="platform.url" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="group relative flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary-dark dark:from-primary-dark dark:to-primary overflow-hidden transition-all duration-300 hover:scale-110 hover:rotate-3"
+    >
+      <FontAwesomeIcon :icon="platform.icon" class="text-2xl text-white"></FontAwesomeIcon>
+      <span class="absolute bottom-0 left-0 right-0 py-1 px-2 text-xs text-white bg-black/50 backdrop-blur-sm transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        {{ platform.name }}
+      </span>
+    </a>
+  </div>
+</section>
       </main>
     </template>
     <template #fallback>
@@ -120,7 +127,7 @@
 <script setup lang="ts">
 import { HighlightPosition } from '~/common/enums';
 import { usePersonalInfo } from '~/common/utils';
-
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 const personalInfo = await usePersonalInfo()
 
 useHead({
