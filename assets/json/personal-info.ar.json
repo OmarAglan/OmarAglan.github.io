@@ -153,25 +153,35 @@
         ]
     },
     "accounts": {
+        "Email": {
+            "icon": "fa-solid fa-envelope",
+            "name": "البريد الإلكتروني",
+            "url": "mailto:s@sy.sa"
+        },
+        "Telegram": {
+            "icon": "fa-brands fa-telegram",
+            "name": "تيليجرام",
+            "url": "https://t.me/xlmnxp"
+        },
         "x-twitter": {
             "icon": "fa-brands fa-x-twitter",
-            "name": "X",
+            "name": "تويتر او اكس",
             "url": "https://x.com/xlmnxp"
         },
         "Github": {
             "icon": "fa-brands fa-github",
-            "name": "GitHub",
+            "name": "جيت هاب",
             "url": "https://github.com/xlmnxp"
+        },
+        "LinkedIn": {
+            "icon": "fa-brands fa-linkedin",
+            "name": "لينكد إن",
+            "url": "https://sa.linkedin.com/in/salem-yaslem-98b494193"
         },
         "Bahr": {
             "icon": "fa-solid fa-question",
             "name": "بحر",
             "url": "https://bahr.sa/en/profile/freelancer/0190c221-fb0f-7c50-ba46-a8f616ab7917"
-        },
-        "LinkedIn": {
-            "icon": "fa-brands fa-linkedin",
-            "name": "LinkedIn",
-            "url": "https://sa.linkedin.com/in/salem-yaslem-98b494193"
         }
     }
 }
