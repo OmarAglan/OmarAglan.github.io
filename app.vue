@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-200"
+  <div class="min-h-screen transition-colors duration-200"
     :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'">
     <header
       class="bg-primary/10 dark:bg-primary/5 text-primary dark:text-primary-dark py-4 px-4 sm:px-6 relative overflow-hidden">
@@ -14,7 +14,7 @@
               personalInfo.title }}</p>
           </div>
         </div>
-        <div class="flex items-center">
+        <div class="flex items-center print:hidden">
           <nav class="flex items-center mx-2">
             <NuxtLink :to="localePath('/')"
               class="text-primary dark:text-primary-dark hover:text-primary-dark dark:hover:text-primary transition-colors mx-2">
@@ -42,7 +42,7 @@
 
     <NuxtPage />
 
-    <footer class="bg-primary text-white text-center p-4 mt-8">
+    <footer class="bg-primary text-white text-center p-4 mt-8 print:hidden">
       <p>
         &copy; {{ new Date().getFullYear() }} {{ personalInfo.name }}. {{ $t('home.allRightsReserved') }}
       </p>
@@ -65,6 +65,10 @@ function switchLanguage(event: Event) {
 </script>
 
 <style>
+body {
+  @apply bg-gray-100 dark:bg-gray-900;
+}
+
 * {
   font-family: Rubik;
 }
