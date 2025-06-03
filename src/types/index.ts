@@ -43,6 +43,7 @@ export type BlogCategory =
   | 'Game Development'
   | 'UI/UX Design'
   | 'Tech Tips'
+  | 'Technical'
   | 'Career Insights'
   | 'Project Showcase'
   | 'Mobile Development'

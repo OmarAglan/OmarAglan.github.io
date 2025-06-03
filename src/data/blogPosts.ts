@@ -17,6 +17,7 @@ export const blogCategories: BlogCategory[] = [
   'DevOps & Cloud',
   'AI & Machine Learning',
   'Tech Tips',
+  'Technical',
   'Career Insights',
   'Project Showcase',
   'Cybersecurity',
@@ -63,9 +64,23 @@ export const sortOptions: { value: SortOption; label: string }[] = [
 import gameDevContent from './posts/getting-started-game-dev.md?raw';
 import webDevContent from './posts/web-development-best-practices.md?raw';
 import uxDesignContent from './posts/ux-design-principles.md?raw';
+import enhancedMarkdownContent from './posts/enhanced-markdown-features.md?raw';
 
 // This will be our central registry of blog posts
 export const blogPosts: BlogPost[] = [
+  {
+    id: 'enhanced-markdown-features',
+    title: 'Enhanced Markdown Features Demo',
+    summary: 'Demonstrating the enhanced markdown parsing capabilities including tables, inline formatting, and more.',
+    date: '2024-01-15',
+    readTime: '8 min read',
+    excerpt: 'Demonstrating the enhanced markdown parsing capabilities including tables, inline formatting, and more.',
+    tags: ['React', 'TypeScript', 'Web', 'Demo'],
+    content: enhancedMarkdownContent,
+    featured: true,
+    slug: 'enhanced-markdown-features',
+    category: 'Technical'
+  },
   {
     id: 'getting-started-game-dev',
     title: 'Getting Started with Game Development',
@@ -73,7 +88,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-01-15',
     readTime: '8 min read',
     excerpt: 'A comprehensive guide to beginning your journey in game development, covering essential tools and concepts.',
-    tags: ['Unity', 'C#', 'Game Design', 'Beginner'],
+    tags: ['Unity', 'C#', 'Game Dev', 'Best Practices'],
     content: gameDevContent,
     featured: true,
     slug: 'getting-started-game-dev',

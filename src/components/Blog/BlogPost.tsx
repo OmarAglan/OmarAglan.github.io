@@ -5,7 +5,8 @@ import { useInView } from 'react-intersection-observer';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { blogPosts } from '../../data/blogPosts';
-import { parseContent, generateTableOfContents } from '../../utils/contentParser';
+import { parseContent, extractHeadings, generateHeadingId } from '../../utils/contentParser';
+import { renderInlineMarkdown, renderTable } from '../../utils/markdownRenderer';
 import BackButton from '../BackButton';
 import './Blog.css';
 
@@ -17,6 +18,9 @@ import css from 'react-syntax-highlighter/dist/esm/languages/hljs/css';
 import html from 'react-syntax-highlighter/dist/esm/languages/hljs/xml';
 import csharp from 'react-syntax-highlighter/dist/esm/languages/hljs/csharp';
 import glsl from 'react-syntax-highlighter/dist/esm/languages/hljs/glsl';
+import json from 'react-syntax-highlighter/dist/esm/languages/hljs/json';
+import bash from 'react-syntax-highlighter/dist/esm/languages/hljs/bash';
+import sql from 'react-syntax-highlighter/dist/esm/languages/hljs/sql';
 
 // Register languages
 SyntaxHighlighter.registerLanguage('javascript', javascript);
@@ -26,6 +30,9 @@ SyntaxHighlighter.registerLanguage('css', css);
 SyntaxHighlighter.registerLanguage('html', html);
 SyntaxHighlighter.registerLanguage('csharp', csharp);
 SyntaxHighlighter.registerLanguage('glsl', glsl);
+SyntaxHighlighter.registerLanguage('json', json);
+SyntaxHighlighter.registerLanguage('bash', bash);
+SyntaxHighlighter.registerLanguage('sql', sql);
 
 const BlogPost = memo(() => {
   const { postId } = useParams<{ postId: string }>();
@@ -42,9 +49,8 @@ const BlogPost = memo(() => {
       </div>
     );
   }
-
   const parsedContent = parseContent(post.content);
-  const tableOfContents = generateTableOfContents(parsedContent);
+  const tableOfContents = extractHeadings(parsedContent);
 
   // Create a ref for each heading
   const sectionRefs = tableOfContents.map(() => useInView({
@@ -118,49 +124,60 @@ const BlogPost = memo(() => {
               <span key={index} className="tag">{tag}</span>
             ))}
           </div>
-        </div>
-
-        <div className="blog-post-content">
+        </div>        <div className="blog-post-content">
           {parsedContent.map((section, index) => {
             switch (section.type) {
               case 'heading': {
-                const headingId = section.content[0].toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                const headingId = generateHeadingId(section.content[0]);
                 const [ref] = sectionRefs[index] || [];
+                const HeadingTag = `h${Math.min(section.meta?.level || 1, 6)}` as keyof JSX.IntrinsicElements;
+                
                 return (
-                  <motion.h2
+                  <motion.div
                     ref={ref}
-                    id={headingId}
                     key={index}
-                    className="section-heading"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index }}
                   >
-                    {section.content[0]}
-                  </motion.h2>
+                    <HeadingTag
+                      id={headingId}
+                      className="section-heading"
+                    >
+                      {section.content[0]}
+                    </HeadingTag>
+                  </motion.div>
                 );
               }
 
               case 'paragraph':
                 return (
-                  <p key={index} className="section-paragraph">
-                    {section.content.join(' ')}
-                  </p>
+                  <div key={index} className="section-paragraph">
+                    {section.content.map((line, lineIndex) => (
+                      <p key={lineIndex}>
+                        {renderInlineMarkdown(line)}
+                      </p>
+                    ))}
+                  </div>
                 );
 
               case 'list':
+                const ListTag = section.meta?.ordered ? 'ol' : 'ul';
                 return (
-                  <ul key={index} className="section-list">
+                  <ListTag key={index} className={`section-list ${section.meta?.ordered ? 'ordered' : 'unordered'}`}>
                     {section.content.map((item, i) => (
-                      <li key={i}>{item}</li>
+                      <li key={i}>{renderInlineMarkdown(item)}</li>
                     ))}
-                  </ul>
+                  </ListTag>
                 );
 
               case 'code':
                 return (
                   <div key={index} className="section-code">
-                    {renderCodeBlock({ language: section.meta?.language || 'typescript', value: section.content.join('\n') })}
+                    {renderCodeBlock({ 
+                      language: section.meta?.language || 'text', 
+                      value: section.content.join('\n') 
+                    })}
                   </div>
                 );
 
@@ -169,13 +186,46 @@ const BlogPost = memo(() => {
                   <figure key={index} className="section-image">
                     <img
                       src={section.meta?.src}
-                      alt={section.meta?.alt}
+                      alt={section.meta?.alt || ''}
+                      title={section.meta?.title}
                       loading="lazy"
+                      style={{
+                        width: section.meta?.width || 'auto',
+                        height: section.meta?.height || 'auto'
+                      }}
                     />
-                    {section.meta?.alt && (
-                      <figcaption>{section.meta.alt}</figcaption>
+                    {(section.meta?.alt || section.meta?.title) && (
+                      <figcaption>{section.meta?.title || section.meta?.alt}</figcaption>
                     )}
                   </figure>
+                );
+
+              case 'blockquote':
+                return (
+                  <blockquote key={index} className="section-blockquote">
+                    {section.content.map((line, lineIndex) => (
+                      <p key={lineIndex}>{renderInlineMarkdown(line)}</p>
+                    ))}
+                  </blockquote>
+                );
+
+              case 'table':
+                return (
+                  <div key={index} className="section-table">
+                    {renderTable(section)}
+                  </div>
+                );
+
+              case 'hr':
+                return <hr key={index} className="section-hr" />;
+
+              case 'html':
+                return (
+                  <div 
+                    key={index} 
+                    className="section-html"
+                    dangerouslySetInnerHTML={{ __html: section.content.join('\n') }}
+                  />
                 );
 
               default:

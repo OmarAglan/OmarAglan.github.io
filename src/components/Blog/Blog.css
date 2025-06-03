@@ -265,22 +265,240 @@
 }
 
 .section-image {
-  margin: 2.5rem 0; /* Increased margins */
+  margin: 3rem 0;
   text-align: center;
 }
 
 .section-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.section-image img:hover {
+  transform: scale(1.02);
 }
 
 .section-image figcaption {
-  margin-top: 1rem; /* Increased margin */
+  margin-top: 1rem;
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
   font-style: italic;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Enhanced markdown content styles */
+
+/* Table styles */
+.section-table {
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.markdown-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.markdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.02);
+  font-size: 0.9rem;
+}
+
+.markdown-table-header {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-weight: 600;
+  padding: 1rem 0.75rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.markdown-table-header.center {
+  text-align: center;
+}
+
+.markdown-table-header.right {
+  text-align: right;
+}
+
+.markdown-table-cell {
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  vertical-align: top;
+}
+
+.markdown-table-cell.center {
+  text-align: center;
+}
+
+.markdown-table-cell.right {
+  text-align: right;
+}
+
+.markdown-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Horizontal rule styles */
+.section-hr {
+  margin: 3rem 0;
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+/* HTML content styles */
+.section-html {
+  margin: 1.5rem 0;
+}
+
+.section-html * {
+  color: inherit;
+}
+
+/* Enhanced inline markdown styles */
+.inline-code {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ff6b6b;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.85em;
+}
+
+.markdown-link {
+  color: #4ecdc4;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.markdown-link:hover {
+  color: #5fd3cc;
+  border-bottom-color: currentColor;
+}
+
+.markdown-link[target="_blank"]::after {
+  content: " ↗";
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+mark {
+  background: rgba(255, 235, 59, 0.3);
+  color: #fff;
+  padding: 0.1em 0.2em;
+  border-radius: 2px;
+}
+
+sub, sup {
+  font-size: 0.7em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+del {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: line-through;
+}
+
+/* Enhanced blockquote styles */
+.section-blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  border-left: 4px solid #4ecdc4;
+  background: rgba(78, 205, 196, 0.05);
+  border-radius: 0 8px 8px 0;
+  position: relative;
+}
+
+.section-blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 3rem;
+  color: rgba(78, 205, 196, 0.3);
+  font-family: serif;
+}
+
+.section-blockquote p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+}
+
+.section-blockquote p:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+/* Enhanced list styles */
+.section-list {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.section-list.ordered {
+  list-style-type: decimal;
+}
+
+.section-list.unordered {
+  list-style-type: disc;
+}
+
+.section-list li {
+  margin: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.section-list li::marker {
+  color: #4ecdc4;
+}
+
+/* Responsive adjustments for new content */
+@media (max-width: 768px) {
+  .markdown-table-wrapper {
+    font-size: 0.8rem;
+  }
+  
+  .markdown-table-header,
+  .markdown-table-cell {
+    padding: 0.5rem 0.4rem;
+  }
+  
+  .section-blockquote {
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .section-blockquote::before {
+    font-size: 2rem;
+    top: -5px;
+    left: 5px;
+  }
+  
+  .section-list {
+    padding-left: 1.5rem;
+  }
 }
 
 @media (max-width: 1024px) {

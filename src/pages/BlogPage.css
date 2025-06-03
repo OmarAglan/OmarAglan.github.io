@@ -2,6 +2,20 @@
   padding: 4rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.blog-navigation {
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 20px;
+  z-index: 10;
+}
+
+.blog-navigation .back-button {
+  width: auto;
+  display: inline-flex;
 }
 
 .blog-header {
@@ -43,6 +57,7 @@
   color: #fff;
   font-size: 1rem;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .search-bar input:focus {
@@ -157,6 +172,7 @@
   border-radius: 12px;
   padding: 1rem;
   width: 300px;
+  max-width: calc(100vw - 4rem);
   max-height: 400px;
   overflow-y: auto;
   z-index: 10;
@@ -164,6 +180,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
+  box-sizing: border-box;
 }
 
 .tag-option {
@@ -239,6 +256,9 @@
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .blog-card {
@@ -247,6 +267,9 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .blog-card-image {
@@ -435,6 +458,11 @@
     padding: 3rem 1rem;
   }
 
+  .blog-navigation {
+    margin-bottom: 1.5rem;
+    position: static;
+  }
+
   .blog-header h1 {
     font-size: 2.5rem;
   }
@@ -445,6 +473,7 @@
 
   .blog-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .category-button {
@@ -458,10 +487,16 @@
   }
 
   .tags-menu {
-    width: 280px;
+    width: calc(100vw - 2rem);
+    max-width: 280px;
     left: 50%;
+    right: auto;
     transform: translateX(-50%);
     grid-template-columns: 1fr;
+  }
+
+  .selected-tags {
+    justify-content: flex-start;
   }
 }
 
