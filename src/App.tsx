@@ -1,3 +1,6 @@
+// src/App.tsx
+// EDITED FILE CONTENT
+
 import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -17,7 +20,8 @@ import './App.css';
 // Lazy load components
 const FullStackPortfolio = lazy(() => import('./components/FullStackPortfolio'));
 const GameDevPortfolio = lazy(() => import('./components/GameDevPortfolio'));
-const BlogPost = lazy(() => import('./pages/BlogPost'));
+// Use the more advanced BlogPost component from src/components/Blog
+const BlogPost = lazy(() => import('./components/Blog/BlogPost'));
 const ProjectDetails = lazy(() => import('./components/ProjectDetails'));
 
 const HomePage = () => (
@@ -60,7 +64,8 @@ const App = () => (
               <Route path="/portfolio/fullstack" element={<FullStackPortfolio />} />
               <Route path="/portfolio/gamedev" element={<GameDevPortfolio />} />
               <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blog/:id" element={<BlogPost />} />
+              {/* UPDATED Route to use AdvancedBlogPost and its expected param 'postId' */}
+              <Route path="/blog/:postId" element={<BlogPost />} />
               <Route path="/project/:id" element={<ProjectDetails />} />
             </Routes>
           </main>
