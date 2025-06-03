@@ -1,0 +1,36 @@
+name: PR Quality Check
+
+on:
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run TypeScript check
+        run: npm run type-check
+
+      - name: Build project
+        run: npm run build
+
+      - name: Check build size
+        run: |
+          echo "Build size report:"
+          du -sh dist/
+          find dist/ -name "*.js" -exec ls -lh {} \; | head -10
