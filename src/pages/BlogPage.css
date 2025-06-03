@@ -11,11 +11,39 @@
   position: sticky;
   top: 20px;
   z-index: 10;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .blog-navigation .back-button {
   width: auto;
   display: inline-flex;
+}
+
+.home-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--theme-transition);
+}
+
+.home-button:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.home-button svg {
+  width: 1.2em;
+  height: 1.2em;
 }
 
 .blog-header {
