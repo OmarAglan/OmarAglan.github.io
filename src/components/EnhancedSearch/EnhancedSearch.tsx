@@ -123,7 +123,6 @@ export function EnhancedSearch({
           }
         } else if (selectedIndex < results.length) {
           // Navigate to selected result
-          const selectedResult = results[selectedIndex];
           saveRecentSearch(query);
           setIsOpen(false);
           // Navigation will be handled by Link component
@@ -291,7 +290,7 @@ export function EnhancedSearch({
                   <span>Articles ({results.length})</span>
                 </div>
                 <div className="search-results">
-                  {highlightedResults.map((result, index) => (
+                  {highlightedResults.map((result) => (
                     <Link
                       key={result.id}
                       to={`/blog/${result.id}`}

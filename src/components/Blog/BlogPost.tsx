@@ -1,7 +1,6 @@
 import { memo, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useInView } from 'react-intersection-observer';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { blogPosts } from '../../data/blogPosts';
@@ -54,18 +53,33 @@ const BlogPost = memo(() => {
   const parsedContent = parseContent(post.content);
   const tableOfContents = extractHeadings(parsedContent);
 
-  // Create a ref for each heading
-  const sectionRefs = tableOfContents.map(() => useInView({
-    threshold: 0.5,
-  }));
 
   // Update active section based on scroll position
   useEffect(() => {
-    const activeIndex = sectionRefs.findIndex(({ inView }) => inView);
-    if (activeIndex !== -1) {
-      setActiveSection(tableOfContents[activeIndex].id);
-    }
-  }, [sectionRefs, tableOfContents]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            if (id) {
+              setActiveSection(id);
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    // Observe all heading elements
+    tableOfContents.forEach(({ id }) => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [tableOfContents]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -131,12 +145,10 @@ const BlogPost = memo(() => {
             switch (section.type) {
               case 'heading': {
                 const headingId = generateHeadingId(section.content[0]);
-                const [ref] = sectionRefs[index] || [];
                 const HeadingTag = `h${Math.min(section.meta?.level || 1, 6)}` as keyof JSX.IntrinsicElements;
                 
                 return (
                   <motion.div
-                    ref={ref}
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
