@@ -1,0 +1,213 @@
+/* Linear Reading Progress */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.reading-progress-track {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.reading-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(65, 105, 225, 0.5);
+}
+
+.reading-progress-text {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Circular Reading Progress */
+.circular-reading-progress {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.circular-reading-progress:hover {
+  transform: scale(1.1);
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-background {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.progress-ring-progress {
+  fill: none;
+  stroke: var(--accent-color);
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px rgba(65, 105, 225, 0.5));
+}
+
+.progress-percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* Reading Time Components */
+.reading-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.reading-time svg {
+  color: var(--accent-color);
+  opacity: 0.8;
+}
+
+.reading-time-remaining {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+/* Theme-specific adjustments */
+:root.light .reading-progress-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+:root.light .progress-ring-background {
+  stroke: rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .circular-reading-progress {
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  .progress-percentage {
+    font-size: 0.65rem;
+  }
+  
+  .reading-progress-text {
+    display: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .reading-progress-fill,
+  .progress-ring-progress {
+    transition: none;
+  }
+  
+  .circular-reading-progress:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .reading-progress-fill {
+    background: #0000ff;
+    box-shadow: none;
+  }
+  
+  .progress-ring-progress {
+    stroke: #0000ff;
+    filter: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .reading-progress,
+  .circular-reading-progress {
+    display: none;
+  }
+}
+
+/* Scroll-to-top functionality for circular progress */
+.circular-reading-progress.clickable {
+  cursor: pointer;
+}
+
+.circular-reading-progress.clickable:hover::after {
+  content: '↑';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  pointer-events: none;
+}
+
+/* Animation keyframes */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(65, 105, 225, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(65, 105, 225, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(65, 105, 225, 0.5);
+  }
+}
+
+.reading-progress-fill.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Custom scrollbar to complement reading progress */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(65, 105, 225, 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(65, 105, 225, 0.8);
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(65, 105, 225, 0.6) rgba(255, 255, 255, 0.05);
+}

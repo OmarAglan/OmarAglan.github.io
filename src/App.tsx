@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
 import { LoadingState } from './components/LoadingState/LoadingState';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { ReadingProgress } from './components/ReadingProgress/ReadingProgress';
 import Header from './components/Header';
 import WaveBackground from './components/WaveBackground';
 import BlogSection from './components/Blog/BlogSection';
@@ -53,26 +55,29 @@ const HomePage = () => (
 
 const App = () => (
   <ErrorBoundary>
-    <Suspense fallback={<LoadingState isLoading={true}><div>Loading...</div></LoadingState>}>
-      <Router>
-        <div className="app-container">
-          <WaveBackground />
-          <Header />
-          <main className="main-content">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/portfolio/fullstack" element={<FullStackPortfolio />} />
-              <Route path="/portfolio/gamedev" element={<GameDevPortfolio />} />
-              <Route path="/blog" element={<BlogPage />} />
-              {/* UPDATED Route to use AdvancedBlogPost and its expected param 'postId' */}
-              <Route path="/blog/:postId" element={<BlogPost />} />
-              <Route path="/project/:id" element={<ProjectDetails />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
-    </Suspense>
+    <ThemeProvider>
+      <Suspense fallback={<LoadingState isLoading={true}><div>Loading...</div></LoadingState>}>
+        <Router>
+          <div className="app-container">
+            <ReadingProgress />
+            <WaveBackground />
+            <Header />
+            <main className="main-content">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/portfolio/fullstack" element={<FullStackPortfolio />} />
+                <Route path="/portfolio/gamedev" element={<GameDevPortfolio />} />
+                <Route path="/blog" element={<BlogPage />} />
+                {/* UPDATED Route to use AdvancedBlogPost and its expected param 'postId' */}
+                <Route path="/blog/:postId" element={<BlogPost />} />
+                <Route path="/project/:id" element={<ProjectDetails />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </Suspense>
+    </ThemeProvider>
   </ErrorBoundary>
 );
 

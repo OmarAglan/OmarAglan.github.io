@@ -7,6 +7,8 @@ import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { blogPosts } from '../../data/blogPosts';
 import { parseContent, extractHeadings, generateHeadingId } from '../../utils/contentParser';
 import { renderInlineMarkdown, renderTable } from '../../utils/markdownRenderer';
+import { SocialShare } from '../SocialShare/SocialShare';
+import { RelatedPosts } from '../RelatedPosts/RelatedPosts';
 import BackButton from '../BackButton';
 import './Blog.css';
 
@@ -233,7 +235,33 @@ const BlogPost = memo(() => {
             }
           })}
         </div>
+        
+        {/* Social Share Section */}
+        <div className="blog-post-footer">
+          <SocialShare 
+            variant="horizontal"
+            showLabels={true}
+            title={post.title}
+            hashtags={post.tags}
+            className="post-social-share"
+          />
+          
+          {/* Related Posts */}
+          <RelatedPosts 
+            currentPost={post}
+            allPosts={blogPosts}
+            maxPosts={3}
+            className="post-related"
+          />
+        </div>
       </article>
+      
+      {/* Floating Social Share */}
+      <SocialShare 
+        variant="floating"
+        title={post.title}
+        hashtags={post.tags}
+      />
     </motion.div>
   );
 });

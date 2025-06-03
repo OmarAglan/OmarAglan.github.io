@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { ThemeToggle } from '../contexts/ThemeContext';
 import './Header.css';
 
 const Header = () => {
@@ -44,67 +45,79 @@ const Header = () => {
   };
 
   return (
-    <motion.header 
-      className="header"
-      variants={headerVariants}
-      initial="initial"
-      animate="animate"
-    >
-      <motion.div 
-        className="title-container"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
+    <>
+      <motion.header 
+        className="header"
+        variants={headerVariants}
+        initial="initial"
+        animate="animate"
       >
-        <div className="title-wrapper">
-          <h1 className="title">
-            {"Omar".split('').map((letter, i) => (
-              <motion.span
-                key={`omar-${i}`}
-                className="letter"
+        <motion.div 
+          className="title-container"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
+          <div className="title-wrapper">
+            <h1 className="title">
+              {"Omar".split('').map((letter, i) => (
+                <motion.span
+                  key={`omar-${i}`}
+                  className="letter"
+                  variants={letterVariants}
+                  initial="initial"
+                  animate="animate"
+                  whileHover="hover"
+                  custom={i}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+              <motion.span 
+                className="letter space"
                 variants={letterVariants}
                 initial="initial"
                 animate="animate"
-                whileHover="hover"
-                custom={i}
+                custom={4}
               >
-                {letter}
+                {" "}
               </motion.span>
-            ))}
-            <motion.span 
-              className="letter space"
-              variants={letterVariants}
-              initial="initial"
-              animate="animate"
-              custom={4}
+              {"Aglan".split('').map((letter, i) => (
+                <motion.span
+                  key={`aglan-${i}`}
+                  className="letter"
+                  variants={letterVariants}
+                  initial="initial"
+                  animate="animate"
+                  whileHover="hover"
+                  custom={i + 5}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </h1>
+            <motion.p 
+              className="subtitle"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.5 }}
             >
-              {" "}
-            </motion.span>
-            {"Aglan".split('').map((letter, i) => (
-              <motion.span
-                key={`aglan-${i}`}
-                className="letter"
-                variants={letterVariants}
-                initial="initial"
-                animate="animate"
-                whileHover="hover"
-                custom={i + 5}
-              >
-                {letter}
-              </motion.span>
-            ))}
-          </h1>
-          <motion.p 
-            className="subtitle"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.5 }}
-          >
-            Full Stack Dev & Game Dev
-          </motion.p>
-        </div>
+              Full Stack Dev & Game Dev
+            </motion.p>
+          </div>
+        </motion.div>
+      </motion.header>
+      
+      {/* Floating Theme Toggle */}
+      <motion.div
+        className="floating-theme-toggle"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.0, duration: 0.5 }}
+      >
+        <ThemeToggle />
       </motion.div>
-    </motion.header>
+    </>
   );
 };
 
