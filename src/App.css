@@ -34,28 +34,28 @@
 /* Light Theme */
 :root.light {
   --bg-primary: #f8fafc;
-  --bg-secondary: rgba(0, 0, 0, 0.02);
-  --bg-tertiary: rgba(0, 0, 0, 0.05);
-  --text-primary: #1a202c;
-  --text-secondary: rgba(26, 32, 44, 0.8);
-  --text-tertiary: rgba(26, 32, 44, 0.6);
+  --bg-secondary: rgba(65, 105, 225, 0.03);
+  --bg-tertiary: rgba(65, 105, 225, 0.08);
+  --text-primary: #1e293b;
+  --text-secondary: rgba(30, 41, 59, 0.85);
+  --text-tertiary: rgba(30, 41, 59, 0.65);
   --accent-color: #4169E1;
   --accent-hover: #2952cc;
-  --border-color: rgba(0, 0, 0, 0.1);
-  --shadow-color: rgba(0, 0, 0, 0.1);
-  --code-bg: rgba(0, 0, 0, 0.05);
+  --border-color: rgba(65, 105, 225, 0.15);
+  --shadow-color: rgba(65, 105, 225, 0.1);
+  --code-bg: rgba(65, 105, 225, 0.05);
   --search-highlight: rgba(255, 235, 59, 0.6);
   
   /* Wave Background Colors - Light */
   --wave-gradient: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-  --wave-color-base: rgba(65, 105, 225, 0.1);
-  --wave-color-1: rgba(65, 105, 225, 0.08);
-  --wave-color-2: rgba(65, 105, 225, 0.06);
-  --wave-color-3: rgba(65, 105, 225, 0.04);
-  --wave-color-4: rgba(65, 105, 225, 0.02);
+  --wave-color-base: rgba(65, 105, 225, 0.12);
+  --wave-color-1: rgba(65, 105, 225, 0.10);
+  --wave-color-2: rgba(65, 105, 225, 0.08);
+  --wave-color-3: rgba(65, 105, 225, 0.06);
+  --wave-color-4: rgba(65, 105, 225, 0.04);
   
   /* Header Colors - Light */
-  --header-bg: rgba(248, 250, 252, 0.9);
+  --header-bg: rgba(248, 250, 252, 0.95);
   --header-border: rgba(65, 105, 225, 0.3);
   --header-shadow: rgba(65, 105, 225, 0.15);
 }
@@ -364,4 +364,73 @@ body {
 
 .fade-in {
   animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 25px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--theme-transition);
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  transition: var(--theme-transition);
+}
+
+.theme-label {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+/* Responsive adjustments for theme toggle */
+@media (max-width: 768px) {
+  .theme-toggle {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .theme-toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .theme-label {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-toggle {
+    padding: 0.5rem 0.7rem;
+  }
+  
+  .theme-label {
+    display: none; /* Hide label on very small screens */
+  }
 }

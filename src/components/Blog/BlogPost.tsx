@@ -41,7 +41,7 @@ const BlogPost = memo(() => {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState<string>('');
 
-  const post = blogPosts.find(p => p.id === postId);
+  const post = blogPosts.find(p => p.slug === postId);
 
   if (!post) {
     return (

@@ -60,11 +60,24 @@ export const sortOptions: { value: SortOption; label: string }[] = [
   { value: 'title-desc', label: 'Title (Z-A)' }
 ];
 
-// Import markdown files
-import gameDevContent from './posts/getting-started-game-dev.md?raw';
-import webDevContent from './posts/web-development-best-practices.md?raw';
-import uxDesignContent from './posts/ux-design-principles.md?raw';
-import enhancedMarkdownContent from './posts/enhanced-markdown-features.md?raw';
+// Import markdown files and strip frontmatter
+import gameDevContentRaw from './posts/getting-started-game-dev.md?raw';
+import webDevContentRaw from './posts/web-development-best-practices.md?raw';
+import uxDesignContentRaw from './posts/ux-design-principles.md?raw';
+import enhancedMarkdownContentRaw from './posts/enhanced-markdown-features.md?raw';
+
+// Function to strip frontmatter from markdown content
+const stripFrontmatter = (content: string): string => {
+  const frontMatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
+  const match = content.match(frontMatterRegex);
+  return match ? match[2].trim() : content;
+};
+
+// Process the imported content to remove frontmatter
+const gameDevContent = stripFrontmatter(gameDevContentRaw);
+const webDevContent = stripFrontmatter(webDevContentRaw);
+const uxDesignContent = stripFrontmatter(uxDesignContentRaw);
+const enhancedMarkdownContent = stripFrontmatter(enhancedMarkdownContentRaw);
 
 // This will be our central registry of blog posts
 export const blogPosts: BlogPost[] = [

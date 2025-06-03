@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import './ThemeContext.css';
 
 export type Theme = 'light' | 'dark' | 'system';
 

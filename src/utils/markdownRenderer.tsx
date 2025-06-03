@@ -279,7 +279,7 @@ export const renderInlineMarkdown = (text: string): React.ReactNode => {
   // Highlight/mark text
   parts = parts.flatMap(part => {
     if (typeof part !== 'string') return [part];
-    return part.split(/(==[^=]+==[^=])/).map((segment, index) => {
+    return part.split(/(==[^=]+==)/).map((segment, index) => {
       if (segment.startsWith('==') && segment.endsWith('==')) {
         return <mark key={`mark-${index}`}>{segment.slice(2, -2)}</mark>;
       }
