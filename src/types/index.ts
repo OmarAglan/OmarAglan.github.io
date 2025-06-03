@@ -1,21 +1,20 @@
-// Project Types
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  videoSrc: string;
-  thumbnailSrc: string;
-  technologies: string[];
-  githubUrl?: string;
-  liveUrl?: string;
-  category: 'fullstack' | 'gamedev';
+// src/types/index.ts
+// THIS IS THE NEW CONTENT FOR THIS FILE
+
+import { ReactNode } from 'react';
+
+// --- Component Props ---
+export interface VideoButtonProps {
+  videoUrl: string;
+  buttonText: string;
+  className?: string;
+  projectPath: string;
 }
 
-// Component Props Types
-export interface VideoButtonProps {
-  project: Project;
-  onClick?: (project: Project) => void;
-  className?: string;
+export interface LoadingStateProps {
+  isLoading: boolean;
+  children: ReactNode;
+  loadingText?: string;
 }
 
 export interface BackButtonProps {
@@ -23,57 +22,52 @@ export interface BackButtonProps {
   className?: string;
 }
 
-export interface HeaderProps {
-  className?: string;
-}
-
 export interface WaveBackgroundProps {
   className?: string;
+  children?: ReactNode; // Kept from src/types.ts, though not currently used in WaveBackground.tsx
 }
 
-export interface PortfolioProps {
-  projects: Project[];
-  category: 'fullstack' | 'gamedev';
-}
+// Note: HeaderProps, PortfolioProps, AnimationProps, AppState, ApiResponse, RouteParams
+// from the original src/types/index.ts were very generic or not clearly used by existing
+// components. They can be re-added if a specific need arises.
+// The Project type was also very generic and conflicted with more specific project types
+// in data files. It's better to define project types closer to their data or use
+// more specific names if they are to be shared.
 
-// Animation Types
-export interface AnimationProps {
-  initial?: Record<string, unknown>;
-  animate?: Record<string, unknown>;
-  exit?: Record<string, unknown>;
-  transition?: Record<string, unknown>;
-}
+// --- Blog Related Types ---
+// These type definitions are now the single source of truth.
+// The actual data arrays (like blogCategories, sortOptions) remain in src/data/blogPosts.ts
 
-// State Types
-export interface AppState {
-  selectedProject: Project | null;
-  isLoading: boolean;
-  error: string | null;
-}
+export type BlogCategory =
+  | 'Web Development'
+  | 'Game Development'
+  | 'UI/UX Design'
+  | 'Tech Tips'
+  | 'Career Insights'
+  | 'Project Showcase'
+  | 'Mobile Development'
+  | 'DevOps & Cloud'
+  | 'AI & Machine Learning'
+  | 'Cybersecurity'
+  | 'Blockchain'
+  | 'Software Architecture';
 
-// API Response Types
-export interface ApiResponse<T> {
-  data: T;
-  status: number;
-  message: string;
-}
-
-// Route Types
-export interface RouteParams {
-  category?: string;
-  projectId?: string;
-}
-
-// Blog Types
 export interface BlogPost {
   id: string;
   title: string;
-  summary: string;
+  category: BlogCategory;
   date: string;
   readTime: string;
+  excerpt: string;
   tags: string[];
-  content: string;
+  content: string; // This will be the raw markdown string
   featured: boolean;
   slug: string;
-  excerpt: string;
+  summary: string;
 }
+
+export type SortOption =
+  | 'date-desc'
+  | 'date-asc'
+  | 'title-asc'
+  | 'title-desc';

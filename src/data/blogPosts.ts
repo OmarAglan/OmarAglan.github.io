@@ -1,30 +1,13 @@
-export type BlogCategory = 
-  | 'Web Development'
-  | 'Game Development'
-  | 'UI/UX Design'
-  | 'Tech Tips'
-  | 'Career Insights'
-  | 'Project Showcase'
-  | 'Mobile Development'
-  | 'DevOps & Cloud'
-  | 'AI & Machine Learning'
-  | 'Cybersecurity'
-  | 'Blockchain'
-  | 'Software Architecture';
+// src/data/blogPosts.ts
+// EDITED FILE CONTENT
 
-export interface BlogPost {
-  id: string;
-  title: string;
-  category: BlogCategory;
-  date: string;
-  readTime: string;
-  excerpt: string;
-  tags: string[];
-  content: string;
-  featured: boolean;
-  slug: string;
-  summary: string;
-}
+// Import types from the consolidated type definition file
+import type { BlogPost, BlogCategory, SortOption } from '../types/index';
+
+// Export types if they are needed by other files that import directly from here
+// (though ideally, they'd import from ../types/index)
+export type { BlogPost, BlogCategory, SortOption };
+
 
 export const blogCategories: BlogCategory[] = [
   'Web Development',
@@ -68,12 +51,6 @@ export const commonTags = [
   'Accessibility',
   'Best Practices'
 ];
-
-export type SortOption = 
-  | 'date-desc'
-  | 'date-asc'
-  | 'title-asc'
-  | 'title-desc';
 
 export const sortOptions: { value: SortOption; label: string }[] = [
   { value: 'date-desc', label: 'Newest First' },

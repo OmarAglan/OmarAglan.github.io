@@ -1,7 +1,10 @@
+// src/components/BackButton.tsx
+// EDITED FILE CONTENT (Only the import line changes)
+
 import { memo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { BackButtonProps } from '../types';
+import { BackButtonProps } from '../types/index'; // Updated import
 import './BackButton.css';
 
 /**

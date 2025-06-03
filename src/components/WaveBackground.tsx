@@ -1,6 +1,9 @@
+// src/components/WaveBackground.tsx
+// EDITED FILE CONTENT (Only the import line changes)
+
 import { memo } from 'react';
 import { motion } from 'framer-motion';
-import { WaveBackgroundProps } from '../types';
+import { WaveBackgroundProps } from '../types/index'; // Updated import
 import './WaveBackground.css';
 
 /**

@@ -1,7 +1,10 @@
+// src/components/VideoButton.tsx
+// EDITED FILE CONTENT (Only the import line changes)
+
 import { useState, useRef, useEffect, useCallback, memo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { VideoButtonProps } from '../types';
+import { VideoButtonProps } from '../types/index'; // Updated import
 import './VideoButton.css';
 
 /**

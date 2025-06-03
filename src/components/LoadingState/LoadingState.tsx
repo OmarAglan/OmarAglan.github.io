@@ -1,12 +1,10 @@
+// src/components/LoadingState/LoadingState.tsx
+// EDITED FILE CONTENT (Only the import line changes)
+
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
-
-interface LoadingStateProps {
-  isLoading: boolean;
-  children: ReactNode;
-  loadingText?: string;
-}
+import { LoadingStateProps } from '../../types/index'; // Updated import
 
 export const LoadingState = ({
   isLoading,
