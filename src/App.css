@@ -7,8 +7,9 @@
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.8);
   --text-tertiary: rgba(255, 255, 255, 0.6);
-  --accent-color: #4169E1;
-  --accent-hover: #2952cc;
+  --accent-color: #3050C0;
+  --accent-hover: #1F3DAA;
+  --text-on-accent: #ffffff;
   --border-color: rgba(255, 255, 255, 0.1);
   --shadow-color: rgba(0, 0, 0, 0.1);
   --code-bg: rgba(255, 255, 255, 0.05);
@@ -33,31 +34,32 @@
 
 /* Light Theme */
 :root.light {
-  --bg-primary: #f8fafc;
-  --bg-secondary: rgba(65, 105, 225, 0.03);
-  --bg-tertiary: rgba(65, 105, 225, 0.08);
-  --text-primary: #1e293b;
-  --text-secondary: rgba(30, 41, 59, 0.85);
-  --text-tertiary: rgba(30, 41, 59, 0.65);
-  --accent-color: #4169E1;
-  --accent-hover: #2952cc;
-  --border-color: rgba(65, 105, 225, 0.15);
-  --shadow-color: rgba(65, 105, 225, 0.1);
-  --code-bg: rgba(65, 105, 225, 0.05);
+  --bg-primary: #0f1424;
+  --bg-secondary: rgba(255, 255, 255, 0.02);
+  --bg-tertiary: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-tertiary: rgba(255, 255, 255, 0.6);
+  --accent-color: #3050C0;
+  --accent-hover: #1F3DAA;
+  --text-on-accent: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --code-bg: rgba(255, 255, 255, 0.05);
   --search-highlight: rgba(255, 235, 59, 0.6);
   
-  /* Wave Background Colors - Light */
-  --wave-gradient: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-  --wave-color-base: rgba(65, 105, 225, 0.12);
-  --wave-color-1: rgba(65, 105, 225, 0.10);
-  --wave-color-2: rgba(65, 105, 225, 0.08);
-  --wave-color-3: rgba(65, 105, 225, 0.06);
-  --wave-color-4: rgba(65, 105, 225, 0.04);
+  /* Wave Background Colors - Light (adapted for dark background) */
+  --wave-gradient: linear-gradient(180deg, #0f1424 0%, #1a1f35 100%);
+  --wave-color-base: rgba(65, 105, 225, 0.3);
+  --wave-color-1: rgba(65, 105, 225, 0.15);
+  --wave-color-2: rgba(65, 105, 225, 0.1);
+  --wave-color-3: rgba(65, 105, 225, 0.05);
+  --wave-color-4: rgba(65, 105, 225, 0.025);
   
-  /* Header Colors - Light */
-  --header-bg: rgba(248, 250, 252, 0.95);
-  --header-border: rgba(65, 105, 225, 0.3);
-  --header-shadow: rgba(65, 105, 225, 0.15);
+  /* Header Colors - Light (adapted for dark background) */
+  --header-bg: rgba(15, 20, 36, 0.8);
+  --header-border: rgba(65, 105, 225, 0.2);
+  --header-shadow: rgba(65, 105, 225, 0.1);
 }
 
 /* Reset and base styles */
@@ -188,19 +190,23 @@ body {
 
 /* Category-specific styles */
 .project-button.fullstack {
-  background: #4169E1;
+  background: var(--accent-color);
+  color: var(--text-on-accent);
 }
 
 .project-button.gamedev {
-  background: #4169E1;
+  background: var(--accent-color);
+  color: var(--text-on-accent);
 }
 
 .project-button.game-dev {
   background-color: #2a4365;
+  color: var(--text-on-accent);
 }
 
 .project-button.web-dev {
   background-color: #2a6547;
+  color: var(--text-on-accent);
 }
 
 /* Loading and Error States */
@@ -211,6 +217,7 @@ body {
 
 .error-container button:hover {
   background-color: #B91C1C;
+  color: var(--text-on-accent);
   transform: translateY(-1px);
 }
 
