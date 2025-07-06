@@ -4,10 +4,10 @@
         <div class="container mx-auto relative z-10 flex sm:flex-row items-center justify-between gap-4 sm:gap-0">
             <div class="flex sm:flex-row items-center text-start">
                 <img src="/profile-photo.jpg" alt="Salem Yaslem Al-saiari"
-                    class="w-20 h-20 sm:w-24 sm:h-24 rounded-full me-6 border-2 border-primary dark:border-primary-dark shadow-lg animate-fadeIn mb-2 sm:mb-0">
+                    class="w-16 h-16 sm:w-20 sm:h-20 rounded-full me-4 border-2 border-primary dark:border-primary-dark shadow-lg animate-fadeIn">
                 <div>
-                    <h1 class="text-2xl sm:text-3xl font-bold animate-slideInFromRight">{{ personalInfo.name }}</h1>
-                    <p class="text-lg sm:text-xl mt-1 animate-slideInFromRight text-primary-dark dark:text-primary">{{
+                    <h1 class="text-base sm:text-3xl font-bold animate-slideInFromRight">{{ personalInfo.name }}</h1>
+                    <p class="text-xs sm:text-xl mt-1 animate-slideInFromRight text-primary-dark dark:text-primary">{{
                         personalInfo.title }}</p>
                 </div>
             </div>
