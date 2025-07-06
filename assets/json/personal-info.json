@@ -28,7 +28,8 @@
             "endDate": "Present",
             "responsibilities": [
                 "Developed and implemented Zatca Phase 2 integration using Django",
-                "Managed DevOps processes for Django-based applications"
+                "Managed DevOps processes for Django-based applications",
+                "Oversaw DevOps processes for web applications using Kubernetes"
             ]
         },
         {
