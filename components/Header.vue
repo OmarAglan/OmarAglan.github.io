@@ -11,14 +11,6 @@
                         personalInfo.title }}</p>
                 </div>
             </div>
-            <!-- Hamburger button for mobile -->
-            <button
-                class="sm:hidden mx-1 px-3 py-1 rounded-md text-sm font-medium text-primary dark:text-primary-dark hover:bg-primary/10 dark:hover:bg-primary/5 transition-colors items-center"
-                @click="menuOpen = !menuOpen" aria-label="Toggle navigation">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
             <!-- Desktop nav -->
             <div class="hidden sm:flex items-center print:hidden">
                 <nav class="flex items-center mx-2">
@@ -42,6 +34,18 @@
                     {{ $i18n.locale === 'en' ? 'العربية' : 'English' }}
                 </button>
                 <ThemeToggle />
+            </div>
+            <!-- Hamburger button for mobile -->
+            <div class="sm:hidden flex flex-row">
+                <ThemeToggle />
+                <button
+                    class="mx-1 px-3 py-1 rounded-md text-sm font-medium text-primary dark:text-primary-dark hover:bg-primary/10 dark:hover:bg-primary/5 transition-colors items-center"
+                    @click="menuOpen = !menuOpen" aria-label="Toggle navigation">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
         </div>
         <!-- Mobile nav fullscreen overlay -->
@@ -78,9 +82,6 @@
                             </svg>
                             {{ $i18n.locale === 'en' ? 'العربية' : 'English' }}
                         </button>
-                        <div class="mt-4">
-                            <ThemeToggle />
-                        </div>
                     </nav>
                 </div>
             </transition>
