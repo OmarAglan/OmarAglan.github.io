@@ -46,9 +46,9 @@
         </div>
         <!-- Mobile nav fullscreen overlay -->
         <Teleport to="body">
-            <transition name="fade">
+            <transition name="fade" enter-active-class="animate-fadeIn" leave-active-class="animate-fadeOut">
                 <div v-if="menuOpen"
-                    class="fixed inset-0 z-50 bg-gray-100/95 dark:bg-gray-900/95 text-primary-dark dark:text-primary flex flex-col items-center justify-center print:hidden animate-fadeIn backdrop-blur-md">
+                    class="fixed inset-0 z-50 bg-gray-100/95 dark:bg-gray-900/95 text-primary-dark dark:text-primary flex flex-col items-center justify-center print:hidden backdrop-blur-md">
                     <button
                         class="fixed bottom-4 px-4 py-2 rounded-full text-lg font-medium text-primary dark:text-primary-dark bg-white/80 dark:bg-gray-800/80 shadow-lg hover:bg-primary/20 dark:hover:bg-primary/10 transition-colors flex items-center z-[60] focus:outline-none focus:ring-2 focus:ring-primary"
                         @click="menuOpen = false" aria-label="Close navigation">
@@ -134,5 +134,9 @@ async function switchLanguage(language: string) {
 
 .animate-fadeIn {
     animation: fadeIn 0.2s ease;
+}
+
+.animate-fadeOut {
+    animation: fadeIn 0.2s ease reverse;
 }
 </style>
