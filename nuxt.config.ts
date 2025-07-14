@@ -9,6 +9,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  site: {  url: 'https://sy.sa',  name: 'Salem AlSaiari'  }, 
   app: {
     buildAssetsDir: 'assets',
   },
@@ -17,7 +18,7 @@ export default defineNuxtConfig({
     families: {
       Rubik: [400, 700],
     }
-  }]],
+  }], '@nuxtjs/sitemap'],
   i18n: {
     bundle: {
       optimizeTranslationDirective: false,
