@@ -24,7 +24,7 @@
                         class="text-primary dark:text-primary-dark hover:text-primary-dark dark:hover:text-primary transition-colors mx-2">
                         {{ $t('navigation.services') }}</NuxtLink>
                 </nav>
-                <button @click="switchLanguage($i18n.locale === 'en' ? 'ar' : 'en')"
+                <a @click="switchLanguage($i18n.locale === 'en' ? 'ar' : 'en'); $event.preventDefault()" :href="switchLocalePath($i18n.locale === 'en' ? 'ar' : 'en')"
                     class="mx-1 px-3 py-1 rounded-md text-sm font-medium text-primary dark:text-primary-dark hover:bg-primary/10 dark:hover:bg-primary/5 transition-colors flex items-center">
                     <svg class="w-5 h-5 me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -32,7 +32,7 @@
                             d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                     </svg>
                     {{ $i18n.locale === 'en' ? 'العربية' : 'English' }}
-                </button>
+                </a>
                 <ThemeToggle />
             </div>
             <!-- Hamburger button for mobile -->
@@ -73,7 +73,7 @@
                             @click="menuOpen = false">
                             {{ $t('navigation.services') }}
                         </NuxtLink>
-                        <button @click="switchLanguage($i18n.locale === 'en' ? 'ar' : 'en'); menuOpen = false"
+                        <a @click="switchLanguage($i18n.locale === 'en' ? 'ar' : 'en'); menuOpen = false; $event.preventDefault()" :href="switchLocalePath($i18n.locale === 'en' ? 'ar' : 'en')"
                             class="px-3 py-1 text-lg font-medium mt-4 rounded-md font-medium text-primary dark:text-primary-dark hover:bg-primary/10 dark:hover:bg-primary/5 transition-colors flex items-center">
                             <svg class="w-5 h-5 me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -81,7 +81,7 @@
                                     d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                             </svg>
                             {{ $i18n.locale === 'en' ? 'العربية' : 'English' }}
-                        </button>
+                        </a>
                     </nav>
                 </div>
             </transition>
