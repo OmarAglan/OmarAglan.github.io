@@ -18,14 +18,19 @@
             "position": "DevOps and Automation Specialist",
             "type": "Part-time",
             "startDate": "February 2025",
-            "endDate": "Present"
+            "endDate": "Present",
+            "responsibilities": [
+                "Develop and maintain Deem Meet backend services and infrastructure using Kubernetes, Helm, and Ansible",
+                "Configure and optimize LiveKit platform for Deem Meet requirements, including performance tuning and issue resolution",
+                "Implement and manage CI/CD pipelines using GitLab CI and ArgoCD for automated deployment processes"
+            ]
         },
         {
             "company": "Jaras",
             "position": "DevOps Engineer",
             "type": "Part-time",
             "startDate": "August 2024",
-            "endDate": "Present",
+            "endDate": "September 2025",
             "responsibilities": [
                 "Developed and implemented Zatca Phase 2 integration using Django",
                 "Managed DevOps processes for Django-based applications",
