@@ -1,74 +1,35 @@
-import { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
-import { LoadingState } from './components/LoadingState/LoadingState';
-import Header from './components/Header';
-import WaveBackground from './components/WaveBackground';
-import BlogSection from './components/Blog/BlogSection';
-import VideoButton from './components/VideoButton';
-import AboutMe from './components/AboutMe';
-import Contact from './components/Contact/Contact';
-import Footer from './components/Footer';
-import BlogPage from './pages/BlogPage';
-import { projects } from './data/projects';
-import './App.css';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
-// Lazy load components
-const FullStackPortfolio = lazy(() => import('./components/FullStackPortfolio'));
-const GameDevPortfolio = lazy(() => import('./components/GameDevPortfolio'));
-const BlogPost = lazy(() => import('./pages/BlogPost'));
-const ProjectDetails = lazy(() => import('./components/ProjectDetails'));
+function App() {
+  const [count, setCount] = useState(0)
 
-const HomePage = () => (
-  <div className="home-container">
-    <AboutMe />
-    <div className="section-divider" />
-    <motion.div 
-      className="projects-grid"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      {projects.map((project) => (
-        <VideoButton
-          key={project.id}
-          videoUrl={project.videoUrl}
-          buttonText={project.buttonText}
-          className={`project-button ${project.category}`}
-          projectPath={project.path}
-        />
-      ))}
-    </motion.div>
-    <div className="section-divider" />
-    <Contact />
-    <div className="section-divider" />
-    <BlogSection />
-  </div>
-);
+  return (
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
+}
 
-const App = () => (
-  <ErrorBoundary>
-    <Suspense fallback={<LoadingState isLoading={true}><div>Loading...</div></LoadingState>}>
-      <Router>
-        <div className="app-container">
-          <WaveBackground />
-          <Header />
-          <main className="main-content">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/portfolio/fullstack" element={<FullStackPortfolio />} />
-              <Route path="/portfolio/gamedev" element={<GameDevPortfolio />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blog/:id" element={<BlogPost />} />
-              <Route path="/project/:id" element={<ProjectDetails />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
-    </Suspense>
-  </ErrorBoundary>
-);
-
-export default App;
+export default App
