@@ -20,13 +20,11 @@ import {
   SiDocker,
   SiGit,
   SiGithub,
-  SiAmazonaws,
-  SiMicrosoftazure,
   SiUnity,
-  SiCplusplus,
-  SiCsharp
+  SiCplusplus
 } from 'react-icons/si';
 import { FaGamepad } from 'react-icons/fa';
+import { TbBrandAws, TbBrandAzure, TbBrandCSharp } from 'react-icons/tb';
 
 type Category = 'Frontend' | 'Backend' | 'Databases' | 'DevOps & Tools' | 'Game Development';
 
@@ -62,13 +60,13 @@ const technologies: Tech[] = [
   { name: 'Docker', icon: SiDocker, category: 'DevOps & Tools' },
   { name: 'Git', icon: SiGit, category: 'DevOps & Tools' },
   { name: 'GitHub', icon: SiGithub, category: 'DevOps & Tools' },
-  { name: 'AWS', icon: SiAmazonaws, category: 'DevOps & Tools' },
-  { name: 'Azure', icon: SiMicrosoftazure, category: 'DevOps & Tools' },
+  { name: 'AWS', icon: TbBrandAws, category: 'DevOps & Tools' },
+  { name: 'Azure', icon: TbBrandAzure, category: 'DevOps & Tools' },
 
   // Game Development
   { name: 'Unity', icon: SiUnity, category: 'Game Development' },
   { name: 'C++', icon: SiCplusplus, category: 'Game Development' },
-  { name: 'C#', icon: SiCsharp, category: 'Game Development' },
+  { name: 'C#', icon: TbBrandCSharp, category: 'Game Development' },
   { name: 'OpenGL/DirectX', icon: FaGamepad, category: 'Game Development' }
 ];
 
