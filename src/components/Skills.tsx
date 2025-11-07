@@ -1,7 +1,7 @@
 import { motion, type Variants } from 'framer-motion';
 import type { JSX } from 'react';
 import type { IconType } from 'react-icons';
-import { FaCode, FaDatabase, FaDocker, FaProjectDiagram, FaReact, FaServer } from 'react-icons/fa';
+import { FaCode, FaDatabase, FaDocker, FaProjectDiagram, FaReact, FaServer, FaGamepad } from 'react-icons/fa';
 
 type SkillCategory = {
   title: string;
