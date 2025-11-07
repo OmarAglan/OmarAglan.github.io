@@ -1,5 +1,5 @@
 import { motion, type Variants } from 'framer-motion';
-import type { JSX } from 'react';
+import type { JSX, CSSProperties } from 'react';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 
 type Project = {
@@ -146,7 +146,7 @@ function Projects(): JSX.Element {
                       WebkitLineClamp: 3,
                       WebkitBoxOrient: 'vertical',
                       overflow: 'hidden'
-                    } as never
+                    } as CSSProperties
                   }
                 >
                   {p.description}
