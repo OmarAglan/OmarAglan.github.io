@@ -9,7 +9,7 @@ import Skills from './components/Skills'
 
 function App(): JSX.Element {
   return (
-    <main className="bg-background text-text">
+    <main className="min-h-screen bg-background text-text font-inter antialiased">
       <Hero />
       <About />
       <Projects />

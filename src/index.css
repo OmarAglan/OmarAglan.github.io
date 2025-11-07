@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Tailwind v4 theme variables (kept) */
 @theme {
   --color-background: #0D1117;
   --color-accent: #00C6FF;
@@ -7,18 +8,268 @@
   --color-text: #E2E8F0;
 }
 
+/* Root tokens and system hints */
+:root {
+  /* Inform UA of dark UI; improves built-in components in dark mode */
+  color-scheme: dark;
+
+  /* Elevation tones for scrollbars/overlays */
+  --bg-elev-1: #0b0f15;
+  --bg-elev-2: #0a0e14;
+
+  /* Sticky header + anchor offset (adjust header height if it changes) */
+  --header-height: 72px;
+  --scroll-margin: calc(var(--header-height) + 16px);
+}
+
+/* Smooth scroll + stable scrollbars (respects reduced motion below) */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--scroll-margin);
+  /* Prevent layout shift when scrollbars appear */
+  scrollbar-gutter: stable both-edges;
+
+  /* Firefox scrollbar defaults */
+  scrollbar-width: thin;
+  /* Fallback then enhanced color-mix */
+  scrollbar-color: var(--color-accent) var(--bg-elev-1);
+  scrollbar-color: color-mix(in oklab, var(--color-accent) 60%, #0b0f15) var(--bg-elev-1);
 }
 
-:root {
-  color-scheme: dark;
+/* Motion reduction: turn off smooth scrolling and CSS animations */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fx-fade-in,
+  .fx-slide-up,
+  .fx-glow,
+  .fx-pulse-accent {
+    animation: none !important;
+  }
 }
 
+/* Box sizing reset (Tailwind preflight covers this; explicit for clarity) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Global typography, background, and rendering polish */
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+
   background-color: var(--color-background);
+  /* Subtle non-intrusive gradient accents */
+  background-image:
+    radial-gradient(800px 400px at 12% -10%, color-mix(in oklab, var(--color-accent) 12%, transparent) 0%, transparent 60%),
+    radial-gradient(700px 360px at 100% 20%, color-mix(in oklab, var(--color-highlight) 10%, transparent) 0%, transparent 55%);
+  background-attachment: fixed, fixed;
+  background-repeat: no-repeat;
+
   color: var(--color-text);
+
+  /* Font stack + rendering optimization */
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Heading + code typography defaults (complement Tailwind utilities) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Anchor target offset so content isn't hidden beneath fixed headers */
+section,
+[id],
+[data-scroll-target] {
+  scroll-margin-top: var(--scroll-margin);
+}
+
+/* Selection styling with accent color (includes Firefox) */
+::selection {
+  background: var(--color-accent);
+  background: color-mix(in oklab, var(--color-accent) 85%, transparent);
+  color: var(--color-background);
+}
+
+::-moz-selection {
+  background: var(--color-accent);
+  background: color-mix(in oklab, var(--color-accent) 85%, transparent);
+  color: var(--color-background);
+}
+
+/* Focus-visible for keyboard users: accessible and consistent */
+:where(a, button, input, textarea, select, summary, [role="button"], [tabindex]):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  /* Fallback shadow for browsers without color-mix */
+  box-shadow: 0 0 0 4px rgba(0, 198, 255, 0.25);
+}
+
+:where(a, button, input, textarea, select, summary, [role="button"], [tabindex]):focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* High-contrast / forced-colors support */
+@media (forced-colors: active) {
+  :where(a, button, input, textarea, select, summary, [role="button"], [tabindex]):focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 3px;
+    box-shadow: none;
+  }
+
+  ::selection {
+    background: Highlight;
+    color: Canvas;
+  }
+}
+
+/* Custom Scrollbar: Chromium/WebKit */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-elev-1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom,
+      color-mix(in oklab, var(--color-accent) 85%, transparent),
+      color-mix(in oklab, var(--color-highlight) 85%, transparent));
+  border-radius: 10px;
+  border: 3px solid var(--bg-elev-1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom,
+      color-mix(in oklab, var(--color-accent) 95%, transparent),
+      color-mix(in oklab, var(--color-highlight) 95%, transparent));
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Global, reusable animation utilities to complement Framer Motion */
+@keyframes fx-fade-in {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+.fx-fade-in {
+  animation: fx-fade-in 500ms ease-out both;
+  will-change: opacity;
+}
+
+@keyframes fx-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+.fx-slide-up {
+  animation: fx-slide-up 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+@keyframes fx-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 198, 255, 0.0)
+  }
+
+  50% {
+    box-shadow: 0 0 24px 0 rgba(0, 198, 255, 0.35)
+  }
+}
+
+.fx-glow {
+  animation: fx-glow 2400ms ease-in-out infinite;
+}
+
+@keyframes fx-pulse {
+
+  0%,
+  100% {
+    transform: scale(1)
+  }
+
+  50% {
+    transform: scale(1.025)
+  }
+}
+
+.fx-pulse-accent {
+  animation: fx-pulse 2s ease-in-out infinite;
+  outline-color: var(--color-accent);
+  will-change: transform;
+}
+
+/* Print styles: remove backgrounds/animations for clarity */
+@media print {
+  :root {
+    color-scheme: light
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  body {
+    background-image: none !important
+  }
+
+  section,
+  [id],
+  [data-scroll-target] {
+    scroll-margin-top: 0
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
