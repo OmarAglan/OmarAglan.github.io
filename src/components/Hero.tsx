@@ -105,7 +105,7 @@ function Hero(): JSX.Element {
   const name = "Omar Aglan";
   const title = "Full Stack Software Engineer & Game Developer";
   const taglineFull =
-    "I build high-performance web systems and immersive digital experiences.";
+    "I architect scalable web systems, AI-powered solutions, and immersive digital experiences.";
 
   const typedTagline = useTypingEffect(taglineFull, 22, 450);
 

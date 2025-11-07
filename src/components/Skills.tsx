@@ -1,7 +1,7 @@
-import type { JSX } from 'react';
 import { motion, type Variants } from 'framer-motion';
+import type { JSX } from 'react';
 import type { IconType } from 'react-icons';
-import { FaCode, FaReact, FaServer, FaDatabase, FaDocker, FaProjectDiagram } from 'react-icons/fa';
+import { FaCode, FaDatabase, FaDocker, FaProjectDiagram, FaReact, FaServer } from 'react-icons/fa';
 
 type SkillCategory = {
   title: string;
@@ -13,22 +13,22 @@ const categories: SkillCategory[] = [
   {
     title: 'Languages',
     icon: FaCode,
-    skills: ['JavaScript', 'TypeScript', 'C#', 'C/C++', 'Python', 'HTML', 'CSS', 'SQL']
+    skills: ['JavaScript', 'TypeScript', 'C', 'C++', 'C#', 'Python', 'Assembly', 'HTML', 'CSS', 'SQL']
   },
   {
     title: 'Frontend',
     icon: FaReact,
-    skills: ['React', 'Next.js', 'Vue.js', 'Tailwind CSS', 'Bootstrap']
+    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS']
   },
   {
     title: 'Backend',
     icon: FaServer,
-    skills: ['Node.js', 'Express.js', 'NestJS', 'ASP.NET Core', 'PHP', 'Firebase']
+    skills: ['Node.js', 'Express.js', 'NestJS', 'ASP.NET Core']
   },
   {
     title: 'Databases',
     icon: FaDatabase,
-    skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'SQL Server']
+    skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'SQL Server', 'Redis']
   },
   {
     title: 'DevOps & Tools',
@@ -38,7 +38,7 @@ const categories: SkillCategory[] = [
   {
     title: 'Architecture & Concepts',
     icon: FaProjectDiagram,
-    skills: ['REST APIs', 'Microservices', 'Authentication (JWT/OAuth2)', 'Testing (Unit/Integration)']
+    skills: ['REST APIs', 'Microservices', 'Authentication (JWT/OAuth2)', 'Testing (Unit/Integration)', 'Compiler Design', 'Low-level Programming']
   }
 ];
 

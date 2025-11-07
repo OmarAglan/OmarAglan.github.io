@@ -1,6 +1,6 @@
-import type { JSX } from 'react';
 import { motion, type Variants } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import type { JSX } from 'react';
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 
 type Project = {
   title: string;
@@ -12,51 +12,51 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: 'Digital Scribe — Hieroglyph Composer',
+    title: 'Digital-Scribe — Hieroglyph Composer',
     description:
-      'A modern digital tool for composing and translating Ancient Egyptian hieroglyphics with an intuitive interface.',
-    tech: ['TypeScript', 'React', 'Vite'],
-    github: 'https://github.com/OmarAglan/DigitalScribe',
+      'An interactive hieroglyph composer with real-time text-to-hieroglyph translation.',
+    tech: ['TypeScript', 'React', 'Node.js'],
+    github: 'https://github.com/Pyramid-Systems-Inc/Digital-Scribe',
     demo: '#'
   },
   {
-    title: 'Myriad Mind — Decentralized AI',
+    title: 'Myriad-Mind — Decentralized AI',
     description:
-      'Decentralized AI platform enabling collaborative machine learning with privacy-first architecture.',
-    tech: ['Python', 'FastAPI', 'TensorFlow', 'Docker'],
-    github: 'https://github.com/OmarAglan/MyriadMind',
+      'A decentralized, emergent AI system featuring hyper-specialized agents.',
+    tech: ['Python'],
+    github: 'https://github.com/Pyramid-Systems-Inc/Myriad-Mind',
+    demo: '#'
+  },
+  {
+    title: 'Pyramid-Engine — Multi-platform Game Engine',
+    description:
+      'A modern, multi-platform game engine.',
+    tech: ['C++', 'OpenGL', 'CMake'],
+    github: 'https://github.com/Pyramid-Systems-Inc/Pyramid-Engine',
     demo: '#'
   },
   {
     title: 'Roshta — Medical SaaS Platform',
     description:
-      'Comprehensive healthcare management system connecting patients, doctors, and pharmacies.',
-    tech: ['.NET Core', 'React', 'PostgreSQL', 'Docker'],
+      'Prescription management system for doctors, patients, and pharmacists.',
+    tech: ['C#', 'ASP.NET Core', 'SQL Server'],
     github: 'https://github.com/OmarAglan/Roshta',
-    demo: '#'
-  },
-  {
-    title: 'Pyramid Engine — Cross-platform Game Engine',
-    description:
-      'High-performance game engine with modern rendering pipeline and cross-platform support.',
-    tech: ['C++', 'OpenGL', 'DirectX', 'CMake'],
-    github: 'https://github.com/OmarAglan/PyramidEngine',
     demo: '#'
   },
   {
     title: 'Flixtor — Netflix Clone',
     description:
-      'Full-stack streaming platform clone with user authentication and content management.',
-    tech: ['Next.js', 'MongoDB', 'TailwindCSS', 'NextAuth'],
+      'A Netflix clone built with Next.js and TypeScript.',
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     github: 'https://github.com/OmarAglan/Flixtor',
     demo: '#'
   },
   {
-    title: 'TaskForge — Project Management System',
+    title: 'Baa Language — Arabic Programming Language',
     description:
-      'Modern project management tool with real-time collaboration and task tracking.',
-    tech: ['React', 'Node.js', 'Express', 'PostgreSQL'],
-    github: 'https://github.com/OmarAglan/TaskForge',
+      'An Arabic programming language similar to C.',
+    tech: ['C'],
+    github: 'https://github.com/OmarAglan/Baa',
     demo: '#'
   }
 ];
@@ -146,7 +146,7 @@ function Projects(): JSX.Element {
                       WebkitLineClamp: 3,
                       WebkitBoxOrient: 'vertical',
                       overflow: 'hidden'
-                    } as any
+                    } as never
                   }
                 >
                   {p.description}
@@ -186,11 +186,10 @@ function Projects(): JSX.Element {
                     aria-disabled={demoDisabled}
                     whileHover={demoDisabled ? undefined : { scale: 1.06 }}
                     whileTap={demoDisabled ? undefined : { scale: 0.98 }}
-                    className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors ${
-                      demoDisabled
+                    className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors ${demoDisabled
                         ? 'cursor-not-allowed border-white/10 text-text/40 bg-white/5'
                         : 'border-highlight/40 bg-highlight/10 text-highlight hover:bg-highlight/20'
-                    }`}
+                      }`}
                     aria-label={
                       demoDisabled ? `${p.title} demo unavailable` : `Open ${p.title} live demo`
                     }

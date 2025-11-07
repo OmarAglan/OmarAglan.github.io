@@ -1,29 +1,29 @@
-import type { JSX } from 'react';
 import { motion, type Variants } from 'framer-motion';
+import type { JSX } from 'react';
 import type { IconType } from 'react-icons';
+import { FaGamepad } from 'react-icons/fa';
 import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiHtml5,
+  SiCplusplus,
   SiCss3,
-  SiNodedotjs,
-  SiNestjs,
-  SiDotnet,
-  SiPython,
-  SiExpress,
-  SiPostgresql,
-  SiMongodb,
-  SiMysql,
-  SiRedis,
   SiDocker,
+  SiDotnet,
+  SiExpress,
   SiGit,
   SiGithub,
-  SiUnity,
-  SiCplusplus
+  SiHtml5,
+  SiMongodb,
+  SiMysql,
+  SiNestjs,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiRedis,
+  SiTailwindcss,
+  SiTypescript,
+  SiUnity
 } from 'react-icons/si';
-import { FaGamepad } from 'react-icons/fa';
 import { TbBrandAws, TbBrandAzure, TbBrandCSharp } from 'react-icons/tb';
 
 type Category = 'Frontend' | 'Backend' | 'Databases' | 'DevOps & Tools' | 'Game Development';
@@ -138,10 +138,16 @@ function About(): JSX.Element {
 
         <div className="mt-6 max-w-3xl space-y-4 text-base sm:text-lg md:text-xl text-text/80">
           <motion.p variants={paragraphVariants(0.05)}>
-            Omar is a passionate Full Stack Developer skilled in React, Node.js, .NET, and TypeScript. He builds scalable, production-ready systems across web, mobile, and desktop platforms.
+            Full-Stack Software Engineer with strong experience in backend-focused web development using Node.js (Express/NestJS), React.js, and ASP.NET Core. I design scalable APIs, manage databases, implement CI/CD pipelines, and deliver complete product lifecycles from architecture to deployment.
           </motion.p>
           <motion.p variants={paragraphVariants(0.15)}>
-            As Founder of <strong className="text-highlight">Pyramid Systems Inc.</strong>, he leads projects spanning AI, game development, and cloud-native applications.
+            As Founder & Lead Software Engineer at <strong className="text-highlight">Pyramid Systems Inc.</strong>, I lead multi-platform products end-to-end—defining technical strategy, mentoring developers, and ensuring quality delivery. Recent work includes <em>Digital-Scribe</em> and <em>Myriad-Mind</em>.
+          </motion.p>
+          <motion.p variants={paragraphVariants(0.25)}>
+            I’m dedicated to advancing Arabic language integration in technology and enjoy building across web, desktop, mobile, and games. My interests span compiler design, low-level programming, and modern UI/UX that blends performance with polish.
+          </motion.p>
+          <motion.p variants={paragraphVariants(0.35)}>
+            Education: ALX Africa — Professional Diploma in Software Engineering (2024–2025). Higher Institute of MIS, Kafr El-Sheikh — B.Sc. Management Information Systems (2018–2022).
           </motion.p>
         </div>
 
