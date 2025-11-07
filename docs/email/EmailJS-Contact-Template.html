@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="color-scheme" content="light only">
+    <meta name="supported-color-schemes" content="light only">
+    <title>New Contact Message</title>
+  </head>
+  <body style="margin:0;padding:0;background-color:#f3f7fb;">
+    <!-- Preheader text: shows in inbox preview, hidden in body -->
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">
+      New message via omardev.engineer — from {{name}} • Subject: {{subject}}
+    </div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f3f7fb;">
+      <tr>
+        <td align="center" style="padding:24px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;background-color:#ffffff;border-radius:12px;border:1px solid #e6eef5;">
+            <tr>
+              <td style="padding:24px 24px 8px 24px;">
+                <h2 style="margin:0;font-size:22px;line-height:1.3;color:#0d1117;font-family:Inter,Segoe UI,Arial,sans-serif;">
+                  New Contact Message
+                </h2>
+                <p style="margin:8px 0 0 0;font-size:14px;color:#475569;font-family:Inter,Segoe UI,Arial,sans-serif;">
+                  Let's build something extraordinary together.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 24px 16px 24px;">
+                <div style="height:3px;background:linear-gradient(90deg,#00C6FF,#38BDF8);border-radius:6px;"></div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding:0 24px 16px 24px;">
+                <p style="margin:0;font-size:16px;line-height:1.6;color:#334155;font-family:Inter,Segoe UI,Arial,sans-serif;">
+                  Hello <strong style="color:#0d1117;">{{to_name}}</strong>,
+                </p>
+                <p style="margin:8px 0 0 0;font-size:15px;line-height:1.6;color:#475569;font-family:Inter,Segoe UI,Arial,sans-serif;">
+                  You received a new message from
+                  <strong style="color:#00C6FF;">{{name}}</strong>
+                  (<a href="mailto:{{email}}" style="color:#00C6FF;text-decoration:none;">{{email}}</a>).
+                </p>
+                <p style="margin:6px 0 0 0;font-size:14px;color:#64748b;font-family:Inter,Segoe UI,Arial,sans-serif;">
+                  Subject: <strong style="color:#0d1117;">{{subject}}</strong>
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding:0 24px 0 24px;">
+                <div style="background-color:#f8fafc;border-left:4px solid #00C6FF;border-radius:8px;padding:16px 18px;">
+                  <div style="font-size:15px;line-height:1.7;color:#334155;font-family:Inter,Segoe UI,Arial,sans-serif;white-space:pre-wrap;">
+                    {{message}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td align="center" style="padding:20px 24px 8px 24px;">
+                <table role="presentation" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="center" style="border-radius:10px;" bgcolor="#00C6FF">
+                      <a href="mailto:{{email}}" style="display:inline-block;padding:12px 18px;border-radius:10px;background-color:#00C6FF;color:#0D1117;text-decoration:none;font-weight:600;font-size:14px;font-family:Inter,Segoe UI,Arial,sans-serif;">Reply to {{name}}</a>
+                    </td>
+                    <td width="10"></td>
+                    <td align="center" style="border-radius:10px;" bgcolor="#0D1117">
+                      <a href="https://omardev.engineer" style="display:inline-block;padding:12px 18px;border-radius:10px;background-color:#0D1117;color:#E2E8F0;text-decoration:none;font-weight:600;font-size:14px;font-family:Inter,Segoe UI,Arial,sans-serif;border:1px solid #1f2937;">Visit Portfolio</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding:12px 24px 0 24px;">
+                <p style="margin:0;font-size:12px;line-height:1.6;color:#6b7280;font-family:Inter,Segoe UI,Arial,sans-serif;">
+                  This is an automated notification from your website’s contact form.<br>
+                  To reply, respond directly to this email or click the button above.
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td align="center" style="padding:22px 24px 24px 24px;">
+                <p style="margin:0 0 8px 0;font-size:12px;color:#64748b;font-family:JetBrains Mono,Consolas,Menlo,monospace;">
+                  © 2025 Omar Aglan Portfolio
+                </p>
+                <p style="margin:0;font-size:12px;color:#94a3b8;font-family:Inter,Segoe UI,Arial,sans-serif;">
+                  <a href="https://github.com/OmarAglan" style="color:#38BDF8;text-decoration:none;">GitHub</a> •
+                  <a href="https://linkedin.com/in/omar-aglan-5078b3235" style="color:#38BDF8;text-decoration:none;">LinkedIn</a> •
+                  <a href="https://omardev.engineer" style="color:#38BDF8;text-decoration:none;">Website</a>
+                </p>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

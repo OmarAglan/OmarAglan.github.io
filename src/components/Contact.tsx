@@ -1,7 +1,7 @@
-import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { useRef, useState, useEffect, type JSX } from 'react';
-import { FaEnvelope, FaGithub, FaLinkedin, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import { AnimatePresence, motion, type Variants } from 'framer-motion';
+import { useEffect, useRef, useState, type JSX } from 'react';
+import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPaperPlane, FaPhone } from 'react-icons/fa';
 
 /**
  * Contact Section with EmailJS integration
@@ -126,10 +126,10 @@ function Contact(): JSX.Element {
       // - Template ID
       // - Public Key
       await emailjs.sendForm(
-        'YOUR_SERVICE_ID',  // TODO: replace with your EmailJS Service ID
-        'YOUR_TEMPLATE_ID', // TODO: replace with your EmailJS Template ID (expects: name, email, subject, message)
+        'service_bxugq1a',  // TODO: replace with your EmailJS Service ID
+        'template_tmydnql', // TODO: replace with your EmailJS Template ID (expects: name, email, subject, message)
         formRef.current!,
-        'YOUR_PUBLIC_KEY'   // TODO: replace with your EmailJS Public Key
+        'ZIalrcivTy9lQg5ZX'   // TODO: replace with your EmailJS Public Key
       );
 
       setStatus('success');
