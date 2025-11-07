@@ -159,7 +159,7 @@ function Footer(): JSX.Element {
               className="flex items-center gap-3"
             >
               {socialLinks.map(({ label, icon: Icon, href }) => {
-                const isExternal = href.startsWith('http');
+                const isExternal = href.startsWith('http') || href.startsWith('mailto:');
                 return (
                   <motion.li key={label} variants={itemVariants}>
                     <a
@@ -213,6 +213,10 @@ function Footer(): JSX.Element {
           >
             <span
               className="pointer-events-none absolute -inset-1 rounded-full bg-accent/0 group-hover:bg-accent/10 transition"
+              aria-hidden="true"
+            />
+            <span
+              className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-accent/20 animate-pulse"
               aria-hidden="true"
             />
             <FaArrowUp className="text-xl drop-shadow-[0_0_8px_rgba(0,198,255,0.5)]" aria-hidden="true" />
