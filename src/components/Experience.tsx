@@ -1,7 +1,7 @@
-import type { JSX } from 'react';
-import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { FaCalendar, FaMapMarkerAlt, FaBriefcase } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import type { JSX } from 'react';
+import { FaBriefcase, FaCalendar, FaMapMarkerAlt } from 'react-icons/fa';
 
 interface Experience {
   company: string;
@@ -15,7 +15,7 @@ interface Experience {
 const EXPERIENCES: Experience[] = [
   {
     company: 'Pyramid Systems Inc.',
-    position: 'Founder & Lead Software Engineer',
+    position: 'Founder & Lead Engineer',
     location: 'Remote',
     duration: '2023 – Present',
     current: true,
@@ -154,11 +154,10 @@ function Experience(): JSX.Element {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, amount: 0.3 }}
-                    className={`relative mt-2 md:mt-0 ${
-                      side === 'left'
+                    className={`relative mt-2 md:mt-0 ${side === 'left'
                         ? 'md:col-start-1 md:pr-12 md:text-right'
                         : 'md:col-start-2 md:pl-12'
-                    } pl-14 md:pl-0`}
+                      } pl-14 md:pl-0`}
                     aria-label={`${exp.position} at ${exp.company}`}
                   >
                     <div className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 shadow-lg transition duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_0_40px_rgba(56,189,248,0.25)]">
@@ -171,9 +170,8 @@ function Experience(): JSX.Element {
                         </h4>
 
                         <div
-                          className={`mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 ${
-                            side === 'left' ? 'md:justify-end' : ''
-                          }`}
+                          className={`mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 ${side === 'left' ? 'md:justify-end' : ''
+                            }`}
                         >
                           <div className="inline-flex items-center gap-2 text-sm text-text/70">
                             <FaCalendar aria-hidden="true" className="text-accent" />

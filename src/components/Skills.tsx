@@ -36,6 +36,11 @@ const categories: SkillCategory[] = [
     skills: ['Docker', 'GitHub Actions', 'CI/CD', 'Git', 'Makefile', 'CMake']
   },
   {
+    title: 'Game Development',
+    icon: FaGamepad,
+    skills: ['Unity', 'OpenGL', 'DirectX']
+  },
+  {
     title: 'Architecture & Concepts',
     icon: FaProjectDiagram,
     skills: ['REST APIs', 'Microservices', 'Authentication (JWT/OAuth2)', 'Testing (Unit/Integration)', 'Compiler Design', 'Low-level Programming']
