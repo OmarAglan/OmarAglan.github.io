@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import type { JSX } from 'react'
 import About from './components/About'
 import Contact from './components/Contact'
@@ -9,7 +10,7 @@ import Skills from './components/Skills'
 
 function App(): JSX.Element {
   return (
-    <main className="min-h-screen bg-background text-text font-inter antialiased">
+    <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, ease: 'easeOut' }} className="min-h-screen bg-background text-text font-inter antialiased">
       <Hero />
       <About />
       <Projects />
@@ -17,7 +18,7 @@ function App(): JSX.Element {
       <Experience />
       <Contact />
       <Footer />
-    </main>
+    </motion.main>
   )
 }
 

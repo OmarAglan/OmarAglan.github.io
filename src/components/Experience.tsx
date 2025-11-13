@@ -1,5 +1,4 @@
-import type { Variants } from 'framer-motion';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import type { JSX } from 'react';
 import { FaBriefcase, FaCalendar, FaMapMarkerAlt } from 'react-icons/fa';
 
@@ -80,6 +79,7 @@ const cardVariants = (side: 'left' | 'right'): Variants => ({
 });
 
 function Experience(): JSX.Element {
+  const reduce = useReducedMotion();
   return (
     <section id="experience" className="min-h-screen py-20 md:py-28">
       <motion.div
@@ -134,12 +134,12 @@ function Experience(): JSX.Element {
                     {exp.current && (
                       <motion.span
                         className="absolute inset-0 rounded-full bg-accent"
-                        style={{ filter: 'blur(8px)' }}
-                        animate={{
+                        style={{ filter: 'blur(8px)', willChange: 'transform, opacity' }}
+                        animate={reduce ? undefined : {
                           opacity: [0.65, 0.25, 0.65],
                           scale: [1, 1.6, 1]
                         }}
-                        transition={{
+                        transition={reduce ? undefined : {
                           duration: 1.6,
                           repeat: Infinity,
                           ease: 'easeInOut'
@@ -156,6 +156,8 @@ function Experience(): JSX.Element {
                     viewport={{ once: true, amount: 0.3 }}
                     whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                     whileTap={{ scale: 0.98 }}
+                    layout
+                    style={{ willChange: 'transform' }}
                     className={`relative mt-2 md:mt-0 ${side === 'left'
                       ? 'md:col-start-1 md:pr-12 md:text-right'
                       : 'md:col-start-2 md:pl-12'

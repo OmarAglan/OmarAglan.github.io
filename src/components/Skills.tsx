@@ -111,6 +111,8 @@ function Skills(): JSX.Element {
               variants={cardVariants}
               whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               whileTap={{ scale: 0.98 }}
+              layout
+              style={{ willChange: 'transform' }}
               className="group relative rounded-xl min-h-[260px]"
             >
               {/* Hover gradient glow */}
