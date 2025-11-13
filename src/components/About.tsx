@@ -158,10 +158,10 @@ function About(): JSX.Element {
           {technologies.map((tech) => {
             const Icon = tech.icon;
             return (
-              <motion.li key={tech.name} variants={itemVariants}>
+              <motion.li key={tech.name} variants={itemVariants} whileHover={{ scale: 1.05, transition: { duration: 0.2 } }} whileTap={{ scale: 0.98 }}>
                 <div className="group relative flex flex-col items-center">
                   <div
-                    className="rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 md:p-6 text-text transition-all duration-200 ease-out outline-none ring-0 hover:scale-110 hover:bg-white/10 hover:shadow-[0_0_0_3px_rgba(56,189,248,0.18),0_0_35px_rgba(0,198,255,0.25)] focus-visible:scale-110 focus-visible:bg-white/10 focus-visible:shadow-[0_0_0_3px_rgba(56,189,248,0.25),0_0_35px_rgba(0,198,255,0.35)]"
+                    className="rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5 md:p-6 text-text transition-all duration-200 ease-out outline-none ring-0 hover:bg-white/10 hover:shadow-[0_0_0_3px_rgba(56,189,248,0.18),0_0_35px_rgba(0,198,255,0.25)] focus-visible:bg-white/10 focus-visible:shadow-[0_0_0_3px_rgba(56,189,248,0.25),0_0_35px_rgba(0,198,255,0.35)]"
                     aria-label={tech.name}
                     tabIndex={0}
                   >

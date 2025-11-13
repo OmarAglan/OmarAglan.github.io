@@ -56,7 +56,7 @@ const sectionVariants: Variants = {
 };
 
 const headingVariants: Variants = {
-  hidden: { y: -24, opacity: 0 },
+  hidden: { opacity: 0, y: 50 },
   show: {
     y: 0,
     opacity: 1,

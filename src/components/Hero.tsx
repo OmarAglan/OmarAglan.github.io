@@ -1,5 +1,5 @@
-import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { useEffect, useState, type JSX } from "react";
+import { motion, useReducedMotion, useScroll, useTransform, type Variants } from "framer-motion";
+import { useEffect, useRef, useState, type JSX } from "react";
 
 /**
  * Simple typing effect hook for the tagline
@@ -101,6 +101,10 @@ function Background(): JSX.Element {
 
 function Hero(): JSX.Element {
   const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement | null>(null);
+  // Subtle parallax on scroll, disabled for reduced-motion users
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -20]);
 
   const name = "Omar Aglan";
   const title = "Full Stack Software Engineer & Game Developer";
@@ -117,6 +121,7 @@ function Hero(): JSX.Element {
   return (
     <section
       id="hero"
+      ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center bg-background px-6 py-24 sm:py-28"
     >
       <Background />
@@ -126,6 +131,7 @@ function Hero(): JSX.Element {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2, margin: "-100px" }}
+        style={{ y: reduce ? 0 : parallaxY, willChange: "transform" }}
         className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center text-center"
       >
         {/* Name */}

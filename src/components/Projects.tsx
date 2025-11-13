@@ -1,5 +1,5 @@
 import { motion, type Variants } from 'framer-motion';
-import type { JSX, CSSProperties } from 'react';
+import type { CSSProperties, JSX } from 'react';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 
 type Project = {
@@ -70,7 +70,7 @@ const sectionVariants: Variants = {
 };
 
 const headingVariants: Variants = {
-  hidden: { y: -24, opacity: 0 },
+  hidden: { opacity: 0, y: 50 },
   show: {
     y: 0,
     opacity: 1,
@@ -188,8 +188,8 @@ function Projects(): JSX.Element {
                     whileHover={demoDisabled ? undefined : { scale: 1.05, transition: { duration: 0.2 } }}
                     whileTap={demoDisabled ? undefined : { scale: 0.98 }}
                     className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors ${demoDisabled
-                        ? 'cursor-not-allowed border-white/10 text-text/40 bg-white/5'
-                        : 'border-highlight/40 bg-highlight/10 text-highlight hover:bg-highlight/20'
+                      ? 'cursor-not-allowed border-white/10 text-text/40 bg-white/5'
+                      : 'border-highlight/40 bg-highlight/10 text-highlight hover:bg-highlight/20'
                       }`}
                     aria-label={
                       demoDisabled ? `${p.title} demo unavailable` : `Open ${p.title} live demo`

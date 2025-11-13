@@ -61,7 +61,7 @@ const sectionVariants: Variants = {
 };
 
 const headingVariants: Variants = {
-  hidden: { y: -24, opacity: 0 },
+  hidden: { opacity: 0, y: 50 },
   show: { y: 0, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
@@ -154,6 +154,8 @@ function Experience(): JSX.Element {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, amount: 0.3 }}
+                    whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                    whileTap={{ scale: 0.98 }}
                     className={`relative mt-2 md:mt-0 ${side === 'left'
                       ? 'md:col-start-1 md:pr-12 md:text-right'
                       : 'md:col-start-2 md:pl-12'
