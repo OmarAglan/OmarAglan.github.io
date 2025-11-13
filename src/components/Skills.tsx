@@ -1,7 +1,7 @@
 import { motion, type Variants } from 'framer-motion';
 import type { JSX } from 'react';
 import type { IconType } from 'react-icons';
-import { FaCode, FaDatabase, FaDocker, FaProjectDiagram, FaReact, FaServer, FaGamepad } from 'react-icons/fa';
+import { FaCode, FaDatabase, FaDocker, FaGamepad, FaProjectDiagram, FaReact, FaServer } from 'react-icons/fa';
 
 type SkillCategory = {
   title: string;
@@ -51,7 +51,7 @@ const sectionVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { when: 'beforeChildren', staggerChildren: 0.12 }
+    transition: { when: 'beforeChildren', staggerChildren: 0.1 }
   }
 };
 
@@ -60,13 +60,13 @@ const headingVariants: Variants = {
   show: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6, ease: 'easeOut' }
   }
 };
 
 const gridVariants: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
+  show: { transition: { staggerChildren: 0.1 } }
 };
 
 const cardVariants: Variants = {
@@ -75,7 +75,7 @@ const cardVariants: Variants = {
     y: 0,
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6, ease: 'easeOut' }
   }
 };
 
@@ -86,7 +86,7 @@ function Skills(): JSX.Element {
       className="min-h-screen py-24 px-4 sm:px-6 lg:px-8"
       initial="hidden"
       whileInView="show"
-      viewport={{ once: false, amount: 0.2, margin: '-100px' }}
+      viewport={{ once: true, amount: 0.2, margin: '-100px' }}
       variants={sectionVariants}
     >
       <motion.div
@@ -109,8 +109,8 @@ function Skills(): JSX.Element {
             <motion.article
               key={cat.title}
               variants={cardVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.98 }}
               className="group relative rounded-xl min-h-[260px]"
             >
               {/* Hover gradient glow */}
@@ -137,12 +137,13 @@ function Skills(): JSX.Element {
                 {/* Skills as badge pills */}
                 <ul className="mt-1 flex flex-wrap gap-2">
                   {cat.skills.map((s) => (
-                    <li
+                    <motion.li
                       key={s}
+                      whileHover={{ scale: 1.05 }}
                       className="text-[11px] px-2.5 py-1 rounded-full bg-highlight/10 text-highlight border border-highlight/20"
                     >
                       {s}
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
 

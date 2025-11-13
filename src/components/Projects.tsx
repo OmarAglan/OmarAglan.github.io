@@ -65,7 +65,7 @@ const sectionVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { when: 'beforeChildren', staggerChildren: 0.12 }
+    transition: { when: 'beforeChildren', staggerChildren: 0.1 }
   }
 };
 
@@ -74,13 +74,13 @@ const headingVariants: Variants = {
   show: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6, ease: 'easeOut' }
   }
 };
 
 const gridVariants: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
+  show: { transition: { staggerChildren: 0.1 } }
 };
 
 const cardVariants: Variants = {
@@ -89,7 +89,7 @@ const cardVariants: Variants = {
     y: 0,
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6, ease: 'easeOut' }
   }
 };
 
@@ -100,7 +100,7 @@ function Projects(): JSX.Element {
       className="min-h-screen py-24 px-4 sm:px-6 lg:px-8"
       initial="hidden"
       whileInView="show"
-      viewport={{ once: false, amount: 0.2, margin: '-100px' }}
+      viewport={{ once: true, amount: 0.2, margin: '-100px' }}
       variants={sectionVariants}
     >
       <motion.div
@@ -125,8 +125,8 @@ function Projects(): JSX.Element {
             <motion.article
               key={p.title}
               variants={cardVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.98 }}
               className="group relative rounded-xl"
             >
               {/* Hover gradient glow */}
@@ -155,12 +155,13 @@ function Projects(): JSX.Element {
                 {/* Tech stack badges */}
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {p.tech.map((t) => (
-                    <li
+                    <motion.li
                       key={t}
+                      whileHover={{ scale: 1.05 }}
                       className="text-[11px] px-2.5 py-1 rounded-full bg-highlight/10 text-highlight border border-highlight/20"
                     >
                       {t}
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
 
@@ -170,7 +171,7 @@ function Projects(): JSX.Element {
                     href={p.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.06 }}
+                    whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                     whileTap={{ scale: 0.98 }}
                     className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-accent/40 bg-accent/10 text-accent hover:bg-accent/20 transition-colors"
                     aria-label={`View code for ${p.title}`}
@@ -184,7 +185,7 @@ function Projects(): JSX.Element {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-disabled={demoDisabled}
-                    whileHover={demoDisabled ? undefined : { scale: 1.06 }}
+                    whileHover={demoDisabled ? undefined : { scale: 1.05, transition: { duration: 0.2 } }}
                     whileTap={demoDisabled ? undefined : { scale: 0.98 }}
                     className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors ${demoDisabled
                         ? 'cursor-not-allowed border-white/10 text-text/40 bg-white/5'

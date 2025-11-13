@@ -34,12 +34,12 @@ const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.15 }
+    transition: { staggerChildren: 0.1 }
   }
 };
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 50 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
@@ -124,7 +124,8 @@ function Hero(): JSX.Element {
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        animate="show"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2, margin: "-100px" }}
         className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center text-center"
       >
         {/* Name */}
@@ -162,9 +163,11 @@ function Hero(): JSX.Element {
           variants={fadeUp}
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
         >
-          <button
+          <motion.button
             type="button"
             onClick={handleScrollToProjects}
+            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+            whileTap={{ scale: 0.98 }}
             className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-inter text-sm sm:text-base text-text/95
                        bg-white/5 hover:bg-white/10 backdrop-blur-md
                        ring-1 ring-white/10 hover:ring-accent/50
@@ -173,11 +176,13 @@ function Hero(): JSX.Element {
             aria-label="View My Projects"
           >
             View My Projects
-          </button>
+          </motion.button>
 
-          <a
+          <motion.a
             href="/assets/resume.pdf"
             download
+            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+            whileTap={{ scale: 0.98 }}
             className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-inter text-sm sm:text-base text-background
                        bg-accent/90 hover:bg-accent transition-all duration-300
                        ring-0 hover:ring-2 hover:ring-highlight/60
@@ -186,7 +191,7 @@ function Hero(): JSX.Element {
             aria-label="Download Resume"
           >
             Download Resume
-          </a>
+          </motion.a>
         </motion.div>
       </motion.div>
     </section>

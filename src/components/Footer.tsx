@@ -1,7 +1,7 @@
-import { useEffect, useState, type JSX, type MouseEvent as ReactMouseEvent } from 'react';
 import { AnimatePresence, motion, type Variants } from 'framer-motion';
+import { useEffect, useState, type JSX, type MouseEvent as ReactMouseEvent } from 'react';
 import type { IconType } from 'react-icons';
-import { FaArrowUp, FaEnvelope, FaGithub, FaLinkedin, FaLaptopCode } from 'react-icons/fa';
+import { FaArrowUp, FaEnvelope, FaGithub, FaLaptopCode, FaLinkedin } from 'react-icons/fa';
 
 interface NavLink {
   label: string;
@@ -32,13 +32,13 @@ const sectionVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.5, ease: 'easeOut' }
+    transition: { duration: 0.6, ease: 'easeOut' }
   }
 };
 
 const listVariants: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } }
+  visible: { transition: { staggerChildren: 0.1 } }
 };
 
 const itemVariants: Variants = {

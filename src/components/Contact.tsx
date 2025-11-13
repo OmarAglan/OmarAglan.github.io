@@ -44,22 +44,22 @@ const sectionVariants: Variants = {
 
 const headingVariants: Variants = {
   hidden: { y: -24, opacity: 0 },
-  show: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+  show: { y: 0, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
 const leftVariants: Variants = {
   hidden: { x: -24, opacity: 0, scale: 0.98 },
-  show: { x: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+  show: { x: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
 const rightVariants: Variants = {
   hidden: { x: 24, opacity: 0, scale: 0.98 },
-  show: { x: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+  show: { x: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
 const itemVariants: Variants = {
-  hidden: { y: 12, opacity: 0 },
-  show: { y: 0, opacity: 1, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }
+  hidden: { y: 50, opacity: 0 },
+  show: { y: 0, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
 function Contact(): JSX.Element {
@@ -201,7 +201,7 @@ function Contact(): JSX.Element {
       className="min-h-screen py-24 px-4 sm:px-6 lg:px-8"
       initial="hidden"
       whileInView="show"
-      viewport={{ once: false, amount: 0.2, margin: '-100px' }}
+      viewport={{ once: true, amount: 0.2, margin: '-100px' }}
       variants={sectionVariants}
     >
       {/* Heading */}
@@ -423,9 +423,11 @@ function Contact(): JSX.Element {
               </div>
 
               {/* Submit */}
-              <button
+              <motion.button
                 type="submit"
                 disabled={isLoading}
+                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.98 }}
                 className={`inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 font-inter text-sm sm:text-base
                   text-background bg-accent/90 hover:bg-accent transition-all duration-300
                   ring-0 hover:ring-2 hover:ring-highlight/60
@@ -448,7 +450,7 @@ function Contact(): JSX.Element {
                     Send Message
                   </>
                 )}
-              </button>
+              </motion.button>
 
             </form>
           </div>

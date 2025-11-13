@@ -56,7 +56,7 @@ const sectionVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { duration: 0.5, staggerChildren: 0.12 }
+    transition: { duration: 0.6, staggerChildren: 0.12 }
   }
 };
 
@@ -155,8 +155,8 @@ function Experience(): JSX.Element {
                     whileInView="show"
                     viewport={{ once: true, amount: 0.3 }}
                     className={`relative mt-2 md:mt-0 ${side === 'left'
-                        ? 'md:col-start-1 md:pr-12 md:text-right'
-                        : 'md:col-start-2 md:pl-12'
+                      ? 'md:col-start-1 md:pr-12 md:text-right'
+                      : 'md:col-start-2 md:pl-12'
                       } pl-14 md:pl-0`}
                     aria-label={`${exp.position} at ${exp.company}`}
                   >
