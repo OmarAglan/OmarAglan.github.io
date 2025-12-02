@@ -103,6 +103,17 @@
             "endYear": 2022
         }
     ],
+    "certificates": [
+        {
+            "name": "Certified Kubernetes Administrator (CKA)",
+            "issuer": "Linux Foundation",
+            "issueDate": "2025",
+            "certificateId": "LF-fo87wpb5ee",
+            "url": "https://www.credly.com/badges/2bc89238-bd2b-425f-a810-68cee6972a57",
+            "badgeImageUrl": "https://images.credly.com/images/8b8ed108-e77d-4396-ac59-2504583b9d54/cka_from_cncfsite__281_29.png"
+        }
+    ],
+    "cvUrl": "/SYCV.pdf",
     "skills": {
         "software": [
             "Microsoft Office",

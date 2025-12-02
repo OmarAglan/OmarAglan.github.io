@@ -9,13 +9,19 @@
     "experience": "Experience",
     "skills": "Skills",
     "education": "Education",
+    "certificates": "Certificates",
     "contact": "Contact",
     "connect": "Connect",
     "location": "Location",
     "email": "Email",
     "allRightsReserved": "All rights reserved",
     "at": "at",
-    "in": "in"
+    "in": "in",
+    "downloadCV": "Get my CV",
+    "issuedBy": "Issued by",
+    "issueDate": "Issue Date",
+    "certificateId": "Certificate ID",
+    "viewCertificate": "View Certificate"
   },
   "repos": {
     "title": "My GitHub Repositories",

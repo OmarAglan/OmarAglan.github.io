@@ -3,7 +3,14 @@
     <template #default>
       <main class="container mx-auto mt-8 px-4">
         <section class="mb-12 animate-fadeIn">
-          <h2 class="text-3xl font-semibold mb-4 text-primary dark:text-primary-dark">{{ $t("home.about") }}</h2>
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-4">
+            <h2 class="text-3xl font-semibold text-primary dark:text-primary-dark">{{ $t("home.about") }}</h2>
+            <a v-if="personalInfo.cvUrl" :href="personalInfo.cvUrl" download
+              class="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex items-center gap-2">
+              <FontAwesomeIcon icon="fa-solid fa-download" class="text-sm"></FontAwesomeIcon>
+              <span>{{ $t('home.downloadCV') }}</span>
+            </a>
+          </div>
           <p class="text-gray-700 dark:text-gray-300 text-lg">
             {{ personalInfo.summary }}
           </p>
@@ -75,6 +82,42 @@
               </p>
             </template>
           </HighlightedCard>
+        </section>
+
+        <section class="mb-12" v-if="personalInfo.certificates && personalInfo.certificates.length > 0">
+          <h2 class="text-3xl font-semibold mb-4 text-primary dark:text-primary-dark animate-fadeIn">{{ $t("home.certificates") }}</h2>
+          <div class="space-y-6">
+            <HighlightedCard :highlightPosition="HighlightPosition.Start" v-for="(certificate, index) in personalInfo.certificates" :key="index">
+              <div class="flex flex-col sm:flex-row gap-4 items-start">
+                <a v-if="certificate.badgeImageUrl" :href="certificate.url" target="_blank" rel="noopener noreferrer" class="flex-shrink-0">
+                  <img :src="certificate.badgeImageUrl" :alt="certificate.name" 
+                    class="w-32 h-32 object-contain hover:scale-105 transition-transform duration-300">
+                </a>
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold text-primary dark:text-primary-dark mb-2">
+                    {{ certificate.name }}
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 mb-2">
+                    <strong class="text-primary dark:text-primary-dark">{{ $t("home.issuedBy") }}: </strong>
+                    {{ certificate.issuer }}
+                  </p>
+                  <p class="text-gray-600 dark:text-gray-400 mb-2">
+                    <strong class="text-primary dark:text-primary-dark">{{ $t("home.issueDate") }}: </strong>
+                    {{ certificate.issueDate }}
+                  </p>
+                  <p v-if="certificate.certificateId" class="text-gray-600 dark:text-gray-400 mb-2">
+                    <strong class="text-primary dark:text-primary-dark">{{ $t("home.certificateId") }}: </strong>
+                    <span class="font-mono text-sm">{{ certificate.certificateId }}</span>
+                  </p>
+                  <a v-if="certificate.url" :href="certificate.url" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center text-primary dark:text-primary-dark hover:text-primary-dark dark:hover:text-primary transition-colors mt-2">
+                    <FontAwesomeIcon icon="fa-solid fa-external-link" class="me-2"></FontAwesomeIcon>
+                    {{ $t("home.viewCertificate") }}
+                  </a>
+                </div>
+              </div>
+            </HighlightedCard>
+          </div>
         </section>
 
         <section class="mb-12">
