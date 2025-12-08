@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Tailwind v4 theme variables (kept) */
 @theme {
   --color-background: #0D1117;
   --color-accent: #00C6FF;
@@ -8,32 +7,38 @@
   --color-text: #E2E8F0;
 }
 
-/* Root tokens and system hints */
 :root {
-  /* Inform UA of dark UI; improves built-in components in dark mode */
   color-scheme: dark;
-
-  /* Elevation tones for scrollbars/overlays */
-  --bg-elev-1: #0b0f15;
-  --bg-elev-2: #0a0e14;
-
-  /* Sticky header + anchor offset (adjust header height if it changes) */
-  --header-height: 72px;
-  --scroll-margin: calc(var(--header-height) + 16px);
 }
 
-/* Smooth scroll + stable scrollbars (respects reduced motion below) */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--scroll-margin);
-  /* Prevent layout shift when scrollbars appear */
-  scrollbar-gutter: stable both-edges;
+/* === Custom Scrollbar === */
+::-webkit-scrollbar {
+  width: 10px;
+}
 
-  /* Firefox scrollbar defaults */
+::-webkit-scrollbar-track {
+  background: #0D1117;
+  /* Matches body background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  /* Slate-800 */
+  border-radius: 5px;
+  border: 2px solid #0D1117;
+  /* Creates padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38BDF8;
+  /* Highlight color on hover */
+}
+
+/* Firefox Support */
+html {
   scrollbar-width: thin;
-  /* Fallback then enhanced color-mix */
-  scrollbar-color: var(--color-accent) var(--bg-elev-1);
-  scrollbar-color: color-mix(in oklab, var(--color-accent) 60%, #0b0f15) var(--bg-elev-1);
+  scrollbar-color: #1e293b #0D1117;
+  scroll-behavior: smooth;
 }
 
 /* Motion reduction: turn off smooth scrolling and CSS animations */
@@ -249,8 +254,16 @@ section,
 
 /* Caret blink for Hero typing effect */
 @keyframes caret-blink {
-  0%, 49% { opacity: 1 }
-  50%, 100% { opacity: 0 }
+
+  0%,
+  49% {
+    opacity: 1
+  }
+
+  50%,
+  100% {
+    opacity: 0
+  }
 }
 
 .animate-caret-blink {
