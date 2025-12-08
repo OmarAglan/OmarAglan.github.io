@@ -25,6 +25,7 @@ import {
   SiUnity
 } from 'react-icons/si';
 import { TbBrandAws, TbBrandAzure, TbBrandCSharp } from 'react-icons/tb';
+import GithubActivity from './GithubActivity';
 
 type Category = 'Frontend' | 'Backend' | 'Databases' | 'DevOps & Tools' | 'Game Development';
 
@@ -179,6 +180,7 @@ function About(): JSX.Element {
           })}
         </motion.ul>
       </div>
+      <GithubActivity />
     </motion.section>
   );
 }

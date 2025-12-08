@@ -5,12 +5,19 @@ import Contact from './components/Contact'
 import Experience from './components/Experience'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
+import Navbar from './components/Navbar'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 
 function App(): JSX.Element {
   return (
-    <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, ease: 'easeOut' }} className="min-h-screen bg-background text-text font-inter antialiased">
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="min-h-screen bg-background text-text font-inter antialiased selection:bg-accent/30 selection:text-white"
+    >
+      <Navbar />
       <Hero />
       <About />
       <Projects />
