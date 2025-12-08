@@ -1,9 +1,7 @@
 import { motion, type Variants } from 'framer-motion';
 import type { JSX } from 'react';
 import type { IconType } from 'react-icons';
-import {
-  DiMsqlServer
-} from 'react-icons/di';
+import { DiMsqlServer } from 'react-icons/di';
 import {
   FaCode,
   FaDatabase,
@@ -40,14 +38,14 @@ import {
   SiUnity
 } from 'react-icons/si';
 import { TbBrandCSharp } from 'react-icons/tb';
+import SpotlightCard from './SpotlightCard';
 
-// Define the structure for a single skill
+// --- Types ---
 type Skill = {
   name: string;
   icon: IconType;
 };
 
-// Define the structure for a category
 type SkillCategory = {
   title: string;
   icon: IconType;
@@ -55,6 +53,7 @@ type SkillCategory = {
   skills: Skill[];
 };
 
+// --- Data ---
 const categories: SkillCategory[] = [
   {
     title: 'Languages & Core',
@@ -123,11 +122,12 @@ const categories: SkillCategory[] = [
     skills: [
       { name: 'Unity', icon: SiUnity },
       { name: 'OpenGL', icon: SiOpengl },
-      { name: 'DirectX', icon: FaGamepad }, // Generic fallback using FontAwesome gamepad
+      { name: 'DirectX', icon: FaGamepad },
     ]
   }
 ];
 
+// --- Animations ---
 const sectionVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
@@ -155,9 +155,9 @@ function Skills(): JSX.Element {
       viewport={{ once: true, amount: 0.1, margin: '-50px' }}
       variants={sectionVariants}
     >
-      {/* Background Ambience */}
-      <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-      <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+      {/* Background Ambience Lines */}
+      <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -176,41 +176,42 @@ function Skills(): JSX.Element {
           {categories.map((cat) => {
             const Icon = cat.icon;
             return (
-              <motion.article
+              <motion.div
                 key={cat.title}
                 variants={cardVariants}
-                className="group relative h-full rounded-2xl bg-[#12171e] border border-white/5 p-6 hover:border-accent/30 transition-all duration-300 hover:bg-[#161b22]"
+                className="h-full"
               >
-                {/* Header */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-background transition-colors duration-300">
-                    <Icon className="text-2xl" />
+                <SpotlightCard className="h-full p-6 hover:border-accent/40 transition-colors duration-300 bg-[#161b22]">
+                  {/* Header */}
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent/10 text-accent transition-colors duration-300">
+                      <Icon className="text-2xl" />
+                    </div>
+                    <div>
+                      <h3 className="font-jetbrains-mono text-lg font-bold text-text">
+                        {cat.title}
+                      </h3>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-jetbrains-mono text-lg font-bold text-text">
-                      {cat.title}
-                    </h3>
+
+                  <p className="text-sm text-text/60 mb-6 font-inter min-h-[2.5em] leading-relaxed">
+                    {cat.description}
+                  </p>
+
+                  {/* Skills Pills */}
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill) => (
+                      <div
+                        key={skill.name}
+                        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/5 text-sm text-text/80 transition-all cursor-default hover:bg-white/10 hover:text-white hover:border-white/10"
+                      >
+                        <skill.icon className="text-accent" />
+                        <span>{skill.name}</span>
+                      </div>
+                    ))}
                   </div>
-                </div>
-
-                <p className="text-sm text-text/60 mb-6 font-inter min-h-[2.5em]">
-                  {cat.description}
-                </p>
-
-                {/* Skills Grid */}
-                <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill) => (
-                    <motion.div
-                      key={skill.name}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/5 hover:border-accent/40 hover:bg-white/10 text-sm text-text/80 hover:text-white transition-all cursor-default"
-                    >
-                      <skill.icon className="text-accent" />
-                      <span>{skill.name}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.article>
+                </SpotlightCard>
+              </motion.div>
             );
           })}
         </motion.div>

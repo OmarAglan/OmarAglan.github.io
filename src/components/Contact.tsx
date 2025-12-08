@@ -1,22 +1,10 @@
 import emailjs from '@emailjs/browser';
 import { AnimatePresence, motion, type Variants } from 'framer-motion';
 import { useEffect, useRef, useState, type JSX } from 'react';
-import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPaperPlane, FaPhone } from 'react-icons/fa';
+import { FaCheck, FaCopy, FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPaperPlane, FaPhone } from 'react-icons/fa';
 
 /**
- * Contact Section with EmailJS integration
- *
- * Setup steps:
- * 1) Create a free account at https://www.emailjs.com/
- * 2) Add an Email Service (e.g., Gmail, Outlook, or SMTP)
- * 3) Create an Email Template that uses variables: name, email, subject, message
- * 4) In this file, replace the placeholders below with your actual IDs:
- *    - YOUR_SERVICE_ID
- *    - YOUR_TEMPLATE_ID
- *    - YOUR_PUBLIC_KEY
- *
- * Alternative (no JS): You can use Formspree:
- *   <form action="https://formspree.io/f/{form_id}" method="POST"> ... </form>
+ * Contact Section with EmailJS and Clipboard Copy
  */
 
 interface FormData {
@@ -42,11 +30,6 @@ const sectionVariants: Variants = {
   }
 };
 
-const headingVariants: Variants = {
-  hidden: { y: -24, opacity: 0 },
-  show: { y: 0, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } }
-};
-
 const leftVariants: Variants = {
   hidden: { x: -24, opacity: 0, scale: 0.98 },
   show: { x: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } }
@@ -57,24 +40,17 @@ const rightVariants: Variants = {
   show: { x: 0, opacity: 1, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } }
 };
 
-const itemVariants: Variants = {
-  hidden: { y: 50, opacity: 0 },
-  show: { y: 0, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } }
-};
-
 function Contact(): JSX.Element {
   const formRef = useRef<HTMLFormElement>(null);
 
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
+  // Form State
+  const [formData, setFormData] = useState<FormData>({ name: '', email: '', subject: '', message: '' });
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<FormStatus>('idle');
   const [showAlert, setShowAlert] = useState(false);
+
+  // Copy State
+  const [emailCopied, setEmailCopied] = useState(false);
 
   const isLoading = status === 'loading';
   const maxMessageLen = 1000;
@@ -91,16 +67,12 @@ function Contact(): JSX.Element {
   const validate = (data: FormData): FormErrors => {
     const v: FormErrors = {};
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     if (!data.name?.trim()) v.name = 'Name is required.';
     else if (data.name.trim().length < 2) v.name = 'Name must be at least 2 characters.';
-
     if (!data.email?.trim()) v.email = 'Email is required.';
     else if (!emailPattern.test(data.email)) v.email = 'Please enter a valid email address.';
-
     if (!data.message?.trim()) v.message = 'Message is required.';
     else if (data.message.trim().length < 10) v.message = 'Message must be at least 10 characters.';
-
     return v;
   };
 
@@ -117,83 +89,25 @@ function Contact(): JSX.Element {
       setErrors(v);
       return;
     }
-
     setStatus('loading');
-
     try {
-      // Replace placeholders below with your EmailJS credentials:
-      // - Service ID
-      // - Template ID
-      // - Public Key
-      await emailjs.sendForm(
-        'service_bxugq1a',  // TODO: replace with your EmailJS Service ID
-        'template_tmydnql', // TODO: replace with your EmailJS Template ID (expects: name, email, subject, message)
-        formRef.current!,
-        'ZIalrcivTy9lQg5ZX'   // TODO: replace with your EmailJS Public Key
-      );
-
+      // TODO: Replace with your actual keys
+      await emailjs.sendForm('service_bxugq1a', 'template_tmydnql', formRef.current!, 'ZIalrcivTy9lQg5ZX');
       setStatus('success');
-
-      // Reset form (controlled inputs)
       setFormData({ name: '', email: '', subject: '', message: '' });
-
-      // If you configure Formspree instead, comment out the sendForm call above
-      // and set the <form> element to use action="https://formspree.io/f/{form_id}" method="POST"
-      // keeping the same input "name" attributes.
     } catch (err) {
       console.error(err);
       setStatus('error');
     } finally {
-      // Keep loading state in sync even if exceptions occur
-      // The explicit isLoading boolean derives from `status`
-      setTimeout(() => {
-        if (status === 'loading') setStatus('idle');
-      }, 0);
+      setStatus('idle');
     }
   };
 
-  const infoItems = [
-    {
-      key: 'email',
-      Icon: FaEnvelope,
-      label: 'Email',
-      value: 'Omar.aglan91@gmail.com',
-      href: 'mailto:Omar.aglan91@gmail.com',
-      external: false
-    },
-    {
-      key: 'github',
-      Icon: FaGithub,
-      label: 'GitHub',
-      value: 'github.com/OmarAglan',
-      href: 'https://github.com/OmarAglan',
-      external: true
-    },
-    {
-      key: 'linkedin',
-      Icon: FaLinkedin,
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/omar-aglan-5078b3235',
-      href: 'https://linkedin.com/in/omar-aglan-5078b3235',
-      external: true
-    },
-    {
-      key: 'phone',
-      Icon: FaPhone,
-      label: 'Phone',
-      value: '+20 102 474 1021',
-      href: 'tel:+201024741021',
-      external: false
-    },
-    {
-      key: 'location',
-      Icon: FaMapMarkerAlt,
-      label: 'Location',
-      value: 'Kafr El-Sheikh, Egypt',
-      href: undefined,
-      external: false
-    }
-  ] as const;
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('Omar.aglan91@gmail.com');
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
 
   return (
     <motion.section
@@ -204,195 +118,176 @@ function Contact(): JSX.Element {
       viewport={{ once: true, amount: 0.2, margin: '-100px' }}
       variants={sectionVariants}
     >
-      {/* Heading */}
-      <motion.div variants={headingVariants} className="max-w-3xl mx-auto text-center mb-12">
-        <h2 className="text-3xl sm:text-4xl font-jetbrains-mono font-bold text-text">Get In Touch</h2>
+      <motion.div variants={{ hidden: { y: -20, opacity: 0 }, show: { y: 0, opacity: 1 } }} className="max-w-3xl mx-auto text-center mb-12">
+        <h2 className="text-3xl sm:text-4xl font-jetbrains-mono font-bold text-text">Get In <span className="text-accent">Touch</span></h2>
         <p className="mt-3 text-text/70 font-inter">Let's build something extraordinary together.</p>
       </motion.div>
 
-      {/* Layout */}
       <div className="mx-auto grid max-w-6xl grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
 
-        {/* Contact Info - on mobile first, on desktop at right */}
-        <motion.aside
-          variants={rightVariants}
-          className="order-1 lg:order-2 lg:col-span-5 rounded-xl relative"
-        >
-          {/* Glow overlay */}
-          <div
-            className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent/0 via-highlight/0 to-accent/0 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-            aria-hidden="true"
-          />
-          <div className="relative h-full rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 shadow-[0_0_0_rgba(0,0,0,0)] hover:shadow-[0_0_40px_rgba(0,198,255,0.20)] transition-all duration-300">
-            <h3 className="text-lg sm:text-xl font-jetbrains-mono font-semibold text-text mb-4">
-              Contact Information
-            </h3>
+        {/* Contact Info (Right Side on Desktop) */}
+        <motion.aside variants={rightVariants} className="order-1 lg:order-2 lg:col-span-5">
+          <div className="relative h-full rounded-2xl border border-white/10 bg-[#161b22] p-6 shadow-lg">
+            <h3 className="text-lg sm:text-xl font-jetbrains-mono font-semibold text-text mb-6">Contact Information</h3>
+            <ul className="space-y-4">
 
-            <ul className="space-y-3">
-              {infoItems.map(({ key, Icon, label, value, href, external }) => {
-                const content = (
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex items-center justify-center rounded-lg border border-highlight/30 bg-highlight/10 text-highlight w-10 h-10 shrink-0">
-                      <Icon className="text-lg" aria-hidden="true" />
-                    </span>
-                    <div className="flex flex-col">
-                      <span className="text-sm text-text/70">{label}</span>
-                      <span className="text-text font-inter break-all">{value}</span>
-                    </div>
+              {/* Email (Copyable) */}
+              <li>
+                <button
+                  onClick={handleCopyEmail}
+                  className="group w-full flex items-center gap-4 rounded-xl border border-white/5 bg-white/5 p-4 transition-all hover:bg-white/10 hover:border-accent/30 text-left"
+                  type="button"
+                >
+                  <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 text-accent group-hover:scale-110 transition-transform">
+                    {emailCopied ? <FaCheck /> : <FaEnvelope />}
+                  </span>
+                  <div className="flex-1">
+                    <span className="block text-xs text-text/50 uppercase tracking-wider">Email</span>
+                    <span className="text-sm sm:text-base text-text break-all">Omar.aglan91@gmail.com</span>
                   </div>
-                );
+                  <div className="text-text/40 group-hover:text-accent transition-colors">
+                    {emailCopied ? <span className="text-xs font-bold text-green-400">Copied!</span> : <FaCopy />}
+                  </div>
+                </button>
+              </li>
 
-                return (
-                  <motion.li
-                    key={key}
-                    variants={itemVariants}
-                    whileHover={{ x: 4 }}
-                    className="group"
-                  >
-                    {href ? (
-                      <a
-                        href={href}
-                        target={external ? '_blank' : undefined}
-                        rel={external ? 'noopener noreferrer' : undefined}
-                        className="block rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors px-3 py-3"
-                        aria-label={`${label}: ${value}`}
-                      >
-                        {content}
-                      </a>
-                    ) : (
-                      <div className="rounded-lg border border-white/10 bg-white/5 px-3 py-3">
-                        {content}
-                      </div>
-                    )}
-                  </motion.li>
-                );
-              })}
+              {/* LinkedIn */}
+              <li>
+                <a
+                  href="https://linkedin.com/in/omar-aglan-5078b3235"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 rounded-xl border border-white/5 bg-white/5 p-4 transition-all hover:bg-white/10 hover:border-accent/30"
+                >
+                  <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 text-accent group-hover:scale-110 transition-transform">
+                    <FaLinkedin />
+                  </span>
+                  <div>
+                    <span className="block text-xs text-text/50 uppercase tracking-wider">LinkedIn</span>
+                    <span className="text-sm sm:text-base text-text">linkedin.com/in/omar-aglan</span>
+                  </div>
+                </a>
+              </li>
+
+              {/* GitHub */}
+              <li>
+                <a
+                  href="https://github.com/OmarAglan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 rounded-xl border border-white/5 bg-white/5 p-4 transition-all hover:bg-white/10 hover:border-accent/30"
+                >
+                  <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 text-accent group-hover:scale-110 transition-transform">
+                    <FaGithub />
+                  </span>
+                  <div>
+                    <span className="block text-xs text-text/50 uppercase tracking-wider">GitHub</span>
+                    <span className="text-sm sm:text-base text-text">github.com/OmarAglan</span>
+                  </div>
+                </a>
+              </li>
+
+              {/* Phone */}
+              <li>
+                <a
+                  href="tel:+201024741021"
+                  className="group flex items-center gap-4 rounded-xl border border-white/5 bg-white/5 p-4 transition-all hover:bg-white/10 hover:border-accent/30"
+                >
+                  <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 text-accent group-hover:scale-110 transition-transform">
+                    <FaPhone />
+                  </span>
+                  <div>
+                    <span className="block text-xs text-text/50 uppercase tracking-wider">Phone</span>
+                    <span className="text-sm sm:text-base text-text">+20 102 474 1021</span>
+                  </div>
+                </a>
+              </li>
+
+              {/* Location */}
+              <li>
+                <div className="flex items-center gap-4 rounded-xl border border-white/5 bg-white/5 p-4">
+                  <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 text-accent">
+                    <FaMapMarkerAlt />
+                  </span>
+                  <div>
+                    <span className="block text-xs text-text/50 uppercase tracking-wider">Location</span>
+                    <span className="text-sm sm:text-base text-text">Kafr El-Sheikh, Egypt</span>
+                  </div>
+                </div>
+              </li>
             </ul>
-
-            {/* Decorative footer line */}
-            <div className="mt-6">
-              <div className="h-px w-24 bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
-            </div>
           </div>
         </motion.aside>
 
-        {/* Form - on mobile second, on desktop at left */}
-        <motion.div
-          variants={leftVariants}
-          className="order-2 lg:order-1 lg:col-span-7 rounded-xl relative"
-        >
-          {/* Glow overlay */}
-          <div
-            className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent/0 via-highlight/0 to-accent/0 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-            aria-hidden="true"
-          />
+        {/* Contact Form (Left Side on Desktop) */}
+        <motion.div variants={leftVariants} className="order-2 lg:order-1 lg:col-span-7">
+          <div className="relative rounded-2xl border border-white/10 bg-[#161b22] p-6 shadow-lg">
 
-          <div className="relative rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 shadow-[0_0_0_rgba(0,0,0,0)] hover:shadow-[0_0_40px_rgba(0,198,255,0.20)] transition-all duration-300">
-
-            {/* Status messages */}
             <AnimatePresence>
-              {showAlert && status === 'success' && (
+              {showAlert && (
                 <motion.div
-                  key="success"
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  className="mb-4 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-emerald-300"
-                  role="status"
-                  aria-live="polite"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className={`mb-6 rounded-lg border px-4 py-3 ${status === 'success'
+                      ? 'border-green-500/30 bg-green-500/10 text-green-400'
+                      : 'border-red-500/30 bg-red-500/10 text-red-400'
+                    }`}
                 >
-                  Your message has been sent successfully. I'll get back to you soon.
-                </motion.div>
-              )}
-              {showAlert && status === 'error' && (
-                <motion.div
-                  key="error"
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  className="mb-4 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-red-300"
-                  role="alert"
-                  aria-live="assertive"
-                >
-                  Something went wrong while sending your message. Please try again later.
+                  {status === 'success'
+                    ? "Message sent successfully! I'll get back to you soon."
+                    : "Something went wrong. Please try again later."}
                 </motion.div>
               )}
             </AnimatePresence>
 
-            {/* Contact Form */}
-            <form ref={formRef} onSubmit={handleSubmit} noValidate>
-              {/* Name */}
-              <div className="mb-4">
-                <label htmlFor="name" className="block text-sm font-medium text-text/90">
-                  Name<span className="text-red-400 ml-0.5" aria-hidden="true">*</span>
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  aria-invalid={Boolean(errors.name)}
-                  aria-describedby={errors.name ? 'name-error' : undefined}
-                  className={`mt-2 w-full rounded-lg bg-white/5 border border-white/10 px-4 py-3 text-text placeholder:text-text/40 outline-none transition-all
-                    focus:border-accent/60 focus:ring-2 focus:ring-accent/40
-                    ${errors.name ? 'border-red-500/50 focus:ring-red-400/30 focus:border-red-400/70' : ''}`}
-                  placeholder="Your name"
-                  autoComplete="name"
-                />
-                {errors.name && (
-                  <p id="name-error" className="mt-1 text-xs text-red-400">{errors.name}</p>
-                )}
+            <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-text/80 mb-1">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    className={`w-full rounded-lg bg-white/5 border px-4 py-3 text-text placeholder:text-text/30 outline-none transition-all focus:border-accent/50 focus:ring-1 focus:ring-accent/50 ${errors.name ? 'border-red-500/50' : 'border-white/10'}`}
+                    placeholder="John Doe"
+                  />
+                  {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name}</p>}
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-text/80 mb-1">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={`w-full rounded-lg bg-white/5 border px-4 py-3 text-text placeholder:text-text/30 outline-none transition-all focus:border-accent/50 focus:ring-1 focus:ring-accent/50 ${errors.email ? 'border-red-500/50' : 'border-white/10'}`}
+                    placeholder="john@example.com"
+                  />
+                  {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
+                </div>
               </div>
 
-              {/* Email */}
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-medium text-text/90">
-                  Email<span className="text-red-400 ml-0.5" aria-hidden="true">*</span>
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  aria-invalid={Boolean(errors.email)}
-                  aria-describedby={errors.email ? 'email-error' : undefined}
-                  className={`mt-2 w-full rounded-lg bg-white/5 border border-white/10 px-4 py-3 text-text placeholder:text-text/40 outline-none transition-all
-                    focus:border-accent/60 focus:ring-2 focus:ring-accent/40
-                    ${errors.email ? 'border-red-500/50 focus:ring-red-400/30 focus:border-red-400/70' : ''}`}
-                  placeholder="you@example.com"
-                  autoComplete="email"
-                />
-                {errors.email && (
-                  <p id="email-error" className="mt-1 text-xs text-red-400">{errors.email}</p>
-                )}
-              </div>
-
-              {/* Subject (optional) */}
-              <div className="mb-4">
-                <label htmlFor="subject" className="block text-sm font-medium text-text/90">
-                  Subject <span className="text-text/50 text-xs">(optional)</span>
-                </label>
+              <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-text/80 mb-1">Subject</label>
                 <input
                   id="subject"
                   name="subject"
                   type="text"
-                  value={formData.subject ?? ''}
+                  value={formData.subject}
                   onChange={handleChange}
-                  className="mt-2 w-full rounded-lg bg-white/5 border border-white/10 px-4 py-3 text-text placeholder:text-text/40 outline-none transition-all focus:border-accent/60 focus:ring-2 focus:ring-accent/40"
-                  placeholder="How can I help?"
-                  autoComplete="off"
+                  className="w-full rounded-lg bg-white/5 border border-white/10 px-4 py-3 text-text placeholder:text-text/30 outline-none transition-all focus:border-accent/50 focus:ring-1 focus:ring-accent/50"
+                  placeholder="Project Inquiry"
                 />
               </div>
 
-              {/* Message */}
-              <div className="mb-5">
-                <label htmlFor="message" className="block text-sm font-medium text-text/90">
-                  Message<span className="text-red-400 ml-0.5" aria-hidden="true">*</span>
-                </label>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-text/80 mb-1">Message</label>
                 <textarea
                   id="message"
                   name="message"
@@ -401,57 +296,30 @@ function Contact(): JSX.Element {
                   maxLength={maxMessageLen}
                   value={formData.message}
                   onChange={handleChange}
-                  aria-invalid={Boolean(errors.message)}
-                  aria-describedby={errors.message ? 'message-error' : 'message-help'}
-                  className={`mt-2 w-full rounded-lg bg-white/5 border border-white/10 px-4 py-3 text-text placeholder:text-text/40 outline-none transition-all resize-y
-                    focus:border-accent/60 focus:ring-2 focus:ring-accent/40
-                    ${errors.message ? 'border-red-500/50 focus:ring-red-400/30 focus:border-red-400/70' : ''}`}
-                  placeholder="Write your message..."
+                  className={`w-full rounded-lg bg-white/5 border px-4 py-3 text-text placeholder:text-text/30 outline-none transition-all resize-none focus:border-accent/50 focus:ring-1 focus:ring-accent/50 ${errors.message ? 'border-red-500/50' : 'border-white/10'}`}
+                  placeholder="Tell me about your project..."
                 />
-                <div className="mt-1 flex items-center justify-between text-xs">
-                  {errors.message ? (
-                    <p id="message-error" className="text-red-400">{errors.message}</p>
-                  ) : (
-                    <p id="message-help" className={`text-text/50 ${messageLen < 10 ? 'text-yellow-300/80' : ''}`}>
-                      Minimum 10 characters
-                    </p>
-                  )}
-                  <span className={`text-text/50 ${messageLen >= maxMessageLen ? 'text-yellow-300/80' : ''}`}>
-                    {messageLen}/{maxMessageLen}
-                  </span>
+                <div className="mt-1 flex justify-end">
+                  <span className="text-xs text-text/40">{messageLen}/{maxMessageLen}</span>
                 </div>
+                {errors.message && <p className="mt-1 text-xs text-red-400">{errors.message}</p>}
               </div>
 
-              {/* Submit */}
               <motion.button
                 type="submit"
                 disabled={isLoading}
-                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 font-inter text-sm sm:text-base
-                  text-background bg-accent/90 hover:bg-accent transition-all duration-300
-                  ring-0 hover:ring-2 hover:ring-highlight/60
-                  shadow-[0_0_0_0_rgba(56,189,248,0)] hover:shadow-[0_0_24px_rgba(56,189,248,0.35)]
-                  disabled:opacity-60 disabled:cursor-not-allowed`}
-                aria-busy={isLoading}
-                aria-live="polite"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent text-background font-bold py-3.5 hover:bg-accent/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_20px_rgba(0,198,255,0.3)]"
               >
                 {isLoading ? (
-                  <>
-                    <svg className="h-4 w-4 animate-spin text-background" viewBox="0 0 24 24" aria-hidden="true">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-                    </svg>
-                    Sending...
-                  </>
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-background border-t-transparent" />
                 ) : (
                   <>
-                    <FaPaperPlane aria-hidden="true" />
-                    Send Message
+                    <FaPaperPlane /> Send Message
                   </>
                 )}
               </motion.button>
-
             </form>
           </div>
         </motion.div>
