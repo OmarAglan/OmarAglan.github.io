@@ -3,7 +3,7 @@
         class="bg-primary/10 dark:bg-primary/5 text-primary dark:text-primary-dark py-4 px-4 sm:px-6 relative overflow-hidden">
         <div class="container mx-auto relative z-10 flex sm:flex-row items-center justify-between gap-4 sm:gap-0">
             <div class="flex sm:flex-row items-center text-start">
-                <img src="/profile-photo.jpg" alt="Salem Yaslem Al-saiari"
+                <img src="/profile-photo.png" alt="Omar Aglan"
                     class="w-16 h-16 sm:w-20 sm:h-20 rounded-full me-4 border-2 border-primary dark:border-primary-dark shadow-lg animate-fadeIn">
                 <div>
                     <h1 class="text-base sm:text-3xl font-bold animate-slideInFromRight">{{ personalInfo.name }}</h1>
@@ -20,9 +20,6 @@
                     <NuxtLink :to="localePath('/repos')"
                         class="text-primary dark:text-primary-dark hover:text-primary-dark dark:hover:text-primary transition-colors mx-2">
                         {{ $t('navigation.repositories') }}</NuxtLink>
-                    <NuxtLink :to="localePath('/services')"
-                        class="text-primary dark:text-primary-dark hover:text-primary-dark dark:hover:text-primary transition-colors mx-2">
-                        {{ $t('navigation.services') }}</NuxtLink>
                 </nav>
                 <a @click="switchLanguage($i18n.locale === 'en' ? 'ar' : 'en'); $event.preventDefault()" :href="switchLocalePath($i18n.locale === 'en' ? 'ar' : 'en')"
                     class="mx-1 px-3 py-1 rounded-md text-sm font-medium text-primary dark:text-primary-dark hover:bg-primary/10 dark:hover:bg-primary/5 transition-colors flex items-center">
@@ -68,10 +65,6 @@
                         </NuxtLink>
                         <NuxtLink :to="localePath('/repos')" class="text-2xl font-semibold" @click="menuOpen = false">
                             {{ $t('navigation.repositories') }}
-                        </NuxtLink>
-                        <NuxtLink :to="localePath('/services')" class="text-2xl font-semibold"
-                            @click="menuOpen = false">
-                            {{ $t('navigation.services') }}
                         </NuxtLink>
                         <a @click="switchLanguage($i18n.locale === 'en' ? 'ar' : 'en'); menuOpen = false; $event.preventDefault()" :href="switchLocalePath($i18n.locale === 'en' ? 'ar' : 'en')"
                             class="px-3 py-1 text-lg font-medium mt-4 rounded-md font-medium text-primary dark:text-primary-dark hover:bg-primary/10 dark:hover:bg-primary/5 transition-colors flex items-center">

@@ -9,7 +9,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  site: {  url: 'https://sy.sa',  name: 'Salem AlSaiari'  }, 
+  site: { url: '', name: 'Omar Aglan' },
   app: {
     buildAssetsDir: 'assets',
   },

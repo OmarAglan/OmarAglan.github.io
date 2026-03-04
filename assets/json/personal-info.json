@@ -1,8 +1,8 @@
 {
-    "name": "Salem Yaslem Al-Saiari",
-    "title": "Software Engineer | DevOps Engineer",
-    "dateOfBirth": "9th September 1998",
-    "nationality": "Saudi",
+    "name": "Omar Aglan",
+    "title": "Full-Stack Software Engineer",
+    "dateOfBirth": "1998",
+    "nationality": "Egyptian",
     "addresses": [
         {
             "city": "Riyadh",
@@ -10,195 +10,139 @@
             "country": "Saudi Arabia"
         }
     ],
-    "email": "s@sy.sa",
-    "summary": "Experienced professional with a strong background in utilizing various tools and technologies related to cloud computing, web development, DevOps, system administration, version control, containerization, and continuous integration/continuous deployment (CI/CD).",
+    "email": "Omar.aglan91@gmail.com",
+    "summary": "Full-Stack Software Engineer with strong backend experience building production web applications using Node.js (Express and NestJS), React and Next.js, and ASP.NET Core. Skilled in designing scalable REST APIs, integrating SQL and NoSQL databases, implementing JWT or OAuth2 authentication, and automating delivery with Docker + CI-CD (GitHub Actions). Additional experience in C/C++ and Unity (C#) for game development and performance-focused programming.",
     "experiences": [
         {
-            "company": "Saudi Data and AI Authority (SDAIA)",
-            "position": "DevOps and Automation Specialist",
-            "type": "Part-time",
+            "company": "Pyramid Systems Inc.",
+            "position": "Founder & Lead Software Engineer",
+            "type": "Self-employed",
             "startDate": "February 2025",
             "endDate": "Present",
             "responsibilities": [
-                "Develop and maintain Deem Meet backend services and infrastructure using Kubernetes, Helm, and Ansible",
-                "Configure and optimize LiveKit platform for Deem Meet requirements, including performance tuning and issue resolution",
-                "Implement and manage CI/CD pipelines using GitLab CI and ArgoCD for automated deployment processes"
+                "Designed backend services and REST APIs; implemented authentication/authorization and database integrations.",
+                "Set up containerized environments using Docker and automated build/test/release pipelines.",
+                "Established engineering practices: task breakdown, estimation, code review workflows, and release coordination.",
+                "Tech: Node.js, ExpressJS and NestJS, React, TypeScript, Docker, GitHub Actions, SQL and NoSQL"
             ]
         },
         {
-            "company": "Jaras",
-            "position": "DevOps Engineer",
-            "type": "Part-time",
-            "startDate": "August 2024",
-            "endDate": "September 2025",
-            "responsibilities": [
-                "Developed and implemented Zatca Phase 2 integration using Django",
-                "Managed DevOps processes for Django-based applications",
-                "Oversaw DevOps processes for web applications using Kubernetes"
-            ]
-        },
-        {
-            "company": "Alwasaet",
-            "position": "Software Engineer / DevOps Engineer",
+            "company": "Rafeek Academy",
+            "position": "Software Engineer",
             "type": "Full-time",
-            "startDate": "August 2021",
-            "endDate": "November 2024",
+            "startDate": "January 2025",
+            "endDate": "June 2025",
             "responsibilities": [
-                {
-                    "period": "Year 3 (2023 - November 2024)",
-                    "tasks": [
-                        "Migrated infrastructure to Google Cloud Platform using Terraform for Infrastructure as Code (IaC)",
-                        "Set up and managed databases, storage buckets, and various GCP services including Cloud Run, Load Balancers, Cloud DNS, Redis, and Cloud Build",
-                        "Implemented and managed Elasticsearch using Kubernetes",
-                        "Continued development and maintenance of back-end applications using NestJS, NuxtJS and ExpressJS"
-                    ]
-                },
-                {
-                    "period": "Aramco - MyLearning Project",
-                    "tasks": [
-                        "Created and managed 4 environments: Development, Staging, UAT, and Production",
-                        "Utilized Jenkins for building and deploying changes across all environments",
-                        "Developed back-end features using NestJS, creating numerous API endpoints with NuxtJS",
-                        "Set up and configured Directus as a headless CMS",
-                        "Implemented integration between Camunda, Directus, and MyLearning platforms"
-                    ]
-                },
-                {
-                    "period": "Year 2 (2022 – 2023)",
-                    "tasks": [
-                        "Created new separated infrastructure for Alwasaet LXP, DAM, and CMS SaaS in Oracle Cloud (Jeddah region)",
-                        "Set up Jenkins instances for CI/CD pipelines",
-                        "Configured and managed databases",
-                        "Automated the development process",
-                        "Initiated and developed the DAM project using NestJS as a back-end developer",
-                        "Maintained and enhanced the LXP application built with ExpressJS"
-                    ]
-                },
-                {
-                    "period": "Year 1 (2021 – 2022)",
-                    "tasks": [
-                        "Managed on-premise infrastructure for Alwasaet LXP at MOMRA",
-                        "Configured and managed proxies and load balancers",
-                        "Handled image setup, upload, configuration, and new release deployments"
-                    ]
-                }
+                "Developed full-stack web applications using React and Next.js frontends and Node.js backends.",
+                "Built secure authentication and authorization flows; delivered APIs integrated with SQL Server and MongoDB.",
+                "Participated in feature planning, implementation, and deployment across staging and production environments.",
+                "Tech: React, Next.js, Node.js, ASP.NET Core, SQL Server, MongoDB"
             ]
         },
         {
-            "company": "Bahr",
-            "position": "Freelance",
-            "startDate": "January 2016",
-            "endDate": "October 2021",
+            "company": "Freelance",
+            "position": "Full-Stack Engineer",
+            "startDate": "January 2023",
+            "endDate": "Present",
             "responsibilities": [
-                "Successfully delivered two projects on the Bahr platform, each receiving a five-star rating for exceptional performance and client satisfaction."
+                "Delivered custom web solutions using React and Vue frontends and Node.js backends based on client requirements.",
+                "Migrated and modernized legacy codebases, improving maintainability via improved structure and reusable components.",
+                "Collaborated with international clients across time zones to scope requirements, estimate work, and deliver milestones.",
+                "Tech: React, Vue.js, Node.js, Express, Docker, GitHub Actions"
             ]
         }
     ],
     "educations": [
         {
-            "institution": "Northern Border University",
+            "institution": "ALX Africa",
+            "degree": "Professional Diploma",
+            "field": "Software Engineering",
+            "startYear": 2024,
+            "endYear": 2025
+        },
+        {
+            "institution": "Higher Institute of MIS, Kafr El-Sheikh",
             "degree": "Bachelor's degree",
-            "field": "Computer Science",
-            "startYear": 2017,
+            "field": "Management Information Systems",
+            "startYear": 2018,
             "endYear": 2022
         }
     ],
-    "certificates": [
-        {
-            "name": "Certified Kubernetes Administrator (CKA)",
-            "issuer": "Linux Foundation",
-            "issueDate": "2025",
-            "certificateId": "LF-fo87wpb5ee",
-            "url": "https://www.credly.com/badges/2bc89238-bd2b-425f-a810-68cee6972a57",
-            "badgeImageUrl": "https://images.credly.com/images/8b8ed108-e77d-4396-ac59-2504583b9d54/cka_from_cncfsite__281_29.png"
-        }
-    ],
-    "cvUrl": "/SYCV.pdf",
+    "certificates": [],
+    "cvUrl": "/Omar Aglan CV.pdf",
     "skills": {
         "software": [
-            "Microsoft Office",
-            "LibreOffice",
             "Git",
             "Docker",
-            "Jenkins"
+            "GitHub Actions",
+            "Makefile",
+            "CMake"
         ],
         "programming": [
-            "JavaScript/TypeScript",
-            "Rust",
+            "JavaScript",
+            "TypeScript",
+            "C#",
             "C/C++",
-            "Python"
+            "Python",
+            "SQL",
+            "HTML",
+            "CSS"
         ],
         "operating": [
-            "Linux System Administrator",
             "PostgreSQL",
-            "Elasticsearch",
-            "Redis",
-            "Nginx",
-            "Apache"
+            "MySQL",
+            "MongoDB",
+            "SQLite",
+            "Firebase"
         ],
         "extra": [
-            "HTML",
-            "CSS",
-            "HTML5",
-            "CSS3",
-            "Automation"
+            "REST APIs",
+            "Microservices",
+            "Unit/Integration Testing",
+            "SDLC",
+            "OOP",
+            "JWT/OAuth2"
         ],
         "frameworks": [
+            "React",
+            "Next.js",
+            "Vue.js",
+            "Node.js",
+            "Express.js",
             "NestJS",
-            "NextJS/ReactJS",
-            "NuxtJS/VueJS",
-            "NodeJS"
+            "ASP.NET Core",
+            "Tailwind CSS",
+            "Bootstrap"
         ],
         "cloud": [
-            "Oracle Cloud Infrastructure",
-            "Google Cloud Platform",
-            "Kubernetes",
-            "Terraform",
-            "Domain Name System (DNS)",
-            "Object Storage",
-            "Block Storage",
-            "Load Balancer",
-            "Containers"
+            "Docker",
+            "CI/CD"
         ],
         "other": [
-            "GTK",
-            "Ffmpeg",
-            "Camunda",
-            "Directus",
-            "LXC",
-            "Incus"
+            "Unity",
+            "Gameplay Systems"
         ]
     },
     "accounts": {
         "Email": {
             "icon": "fa-solid fa-envelope",
             "name": "Email",
-            "url": "mailto:s@sy.sa"
-        },
-        "Telegram": {
-            "icon": "fa-brands fa-telegram",
-            "name": "Telegram",
-            "url": "https://t.me/xlmnxp"
-        },
-        "x-twitter": {
-            "icon": "fa-brands fa-x-twitter",
-            "name": "X",
-            "url": "https://x.com/xlmnxp"
+            "url": "mailto:Omar.aglan91@gmail.com"
         },
         "Github": {
             "icon": "fa-brands fa-github",
             "name": "GitHub",
-            "url": "https://github.com/xlmnxp"
+            "url": "https://github.com/OmarAglan"
         },
         "LinkedIn": {
             "icon": "fa-brands fa-linkedin",
             "name": "LinkedIn",
-            "url": "https://sa.linkedin.com/in/salem-yaslem-98b494193"
+            "url": "https://sa.linkedin.com/in/omar-aglan"
         },
-        "Bahr": {
-            "icon": "fa-solid fa-question",
-            "name": "Bahr",
-            "url": "https://bahr.sa/en/profile/freelancer/0190c221-fb0f-7c50-ba46-a8f616ab7917"
+        "Phone": {
+            "icon": "fa-solid fa-phone",
+            "name": "Phone",
+            "url": "tel:+966597047098"
         }
     }
 }

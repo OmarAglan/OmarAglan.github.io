@@ -42,7 +42,7 @@ interface Repository {
     updated_at: string
 }
 
-const { data: repos, status, error } = await useLazyFetch<Repository[]>('https://api.github.com/users/xlmnxp/repos?per_page=100')
+const { data: repos, status, error } = await useLazyFetch<Repository[]>('https://api.github.com/users/OmarAglan/repos?per_page=100')
 
 const searchQuery = ref('')
 const sortBy = ref('stars')

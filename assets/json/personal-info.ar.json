@@ -1,8 +1,8 @@
 {
-    "name": "سالم يسلم الصيعري",
-    "title": "مهندس برمجيات | مهندس عمليات",
-    "dateOfBirth": "9 سبتمبر 1998",
-    "nationality": "سعودي",
+    "name": "عمر أنور عجلان",
+    "title": "مهندس برمجيات متكامل (Full-Stack)",
+    "dateOfBirth": "1998",
+    "nationality": "مصري",
     "addresses": [
         {
             "city": "الرياض",
@@ -10,195 +10,139 @@
             "country": "المملكة العربية السعودية"
         }
     ],
-    "email": "s@sy.sa",
-    "summary": "محترف ذو خبرة مع خلفية قوية في استخدام مختلف الأدوات والتقنيات المتعلقة بالحوسبة السحابية، وتطوير الويب، وعمليات التطوير والتشغيل، وإدارة النظم، والتحكم بالإصدارات، والحوسبة المحوسبة، والتكامل والنشر المستمر.",
+    "email": "Omar.aglan91@gmail.com",
+    "summary": "مهندس برمجيات متكامل يمتلك خبرة قوية في تطوير الواجهات الخلفية وبناء تطبيقات الويب الإنتاجية باستخدام Node.js (Express و NestJS) و React و Next.js و ASP.NET Core. يتمتع بمهارة عالية في تصميم واجهات برمجة التطبيقات (REST APIs) القابلة للتطوير، ودمج قواعد بيانات SQL و NoSQL، وتنفيذ المصادقة (JWT أو OAuth2)، وأتمتة النشر باستخدام Docker و CI-CD (GitHub Actions). يمتلك أيضاً خبرة إضافية في C/C++ و Unity (C#) لتطوير الألعاب والبرمجة التي تركز على الأداء.",
     "experiences": [
         {
-            "company": "الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا)",
-            "position": "أخصائي عمليات وأتمتة",
-            "type": "دوام جزئي",
+            "company": "بيراميد سيستمز (Pyramid Systems Inc.)",
+            "position": "مؤسس ومهندس برمجيات رئيسي",
+            "type": "عمل حر",
             "startDate": "فبراير 2025",
             "endDate": "حتى الآن",
             "responsibilities": [
-                "تطوير وصيانة خدمات الواجهة الخلفية والبنية التحتية لمنصة اجتماعات ديم باستخدام Kubernetes وHelm وAnsible",
-                "تكوين وتحسين منصة LiveKit لتلبية متطلبات اجتماعات ديم، بما في ذلك ضبط الأداء وحل المشاكل",
-                "تنفيذ وإدارة خطوط التكامل والنشر المستمر باستخدام GitLab CI وArgoCD لعمليات النشر الآلية"
+                "تصميم خدمات الواجهة الخلفية وواجهات برمجة التطبيقات (REST APIs)؛ وتنفيذ عمليات المصادقة والترخيص وتكامل قواعد البيانات.",
+                "إعداد بيئات معزولة باستخدام Docker وأتمتة مسارات البناء والاختبار والنشر.",
+                "تأسيس الممارسات الهندسية: تقسيم المهام، التقدير، مسارات عمل مراجعة الكود، وتنسيق الإصدارات.",
+                "التقنيات: Node.js, ExpressJS, NestJS, React, TypeScript, Docker, GitHub Actions, SQL, NoSQL"
             ]
         },
         {
-            "company": "جرس",
-            "position": "مهندس عمليات",
-            "type": "دوام جزئي",
-            "startDate": "أغسطس 2024",
-            "endDate": "سبتمبر 2025",
-            "responsibilities": [
-                "تطوير وتنفيذ تكامل زاتكا المرحلة 2 باستخدام Django",
-                "إدارة عمليات التطوير والتشغيل لتطبيقات Django",
-                "ادارة عمليات التطوير والتشغيل لتطبيقات الويب باستخدام Kubernetes"
-            ]
-        },
-        {
-            "company": "الوسائط",
-            "position": "مهندس برمجيات / مهندس عمليات",
+            "company": "أكاديمية رفيق",
+            "position": "مهندس برمجيات",
             "type": "دوام كامل",
-            "startDate": "أغسطس 2021",
-            "endDate": "نوفمبر 2024",
+            "startDate": "يناير 2025",
+            "endDate": "يونيو 2025",
             "responsibilities": [
-                {
-                    "period": "السنة الثالثة (2023 - نوفمبر 2024)",
-                    "tasks": [
-                        "ترحيل البنية التحتية إلى Google Cloud Platform باستخدام Terraform للبنية التحتية كرمز",
-                        "إعداد وإدارة قواعد البيانات، وحاويات التخزين، وخدمات GCP المختلفة بما في ذلك Cloud Run وموازنات التحميل وCloud DNS وRedis وCloud Build",
-                        "تنفيذ وإدارة Elasticsearch باستخدام Kubernetes",
-                        "مواصلة تطوير وصيانة تطبيقات الواجهة الخلفية باستخدام NestJS وNuxtJS وExpressJS"
-                    ]
-                },
-                {
-                    "period": "أرامكو - مشروع MyLearning",
-                    "tasks": [
-                        "إنشاء وإدارة 4 بيئات: التطوير، والتجريب، واختبار قبول المستخدم، والإنتاج",
-                        "استخدام Jenkins لبناء ونشر التغييرات عبر جميع البيئات",
-                        "تطوير ميزات الواجهة الخلفية باستخدام NestJS، وإنشاء العديد من نقاط النهاية API مع NuxtJS",
-                        "إعداد وتكوين Directus كنظام إدارة محتوى headless",
-                        "تنفيذ التكامل بين منصات Camunda وDirectus وMyLearning"
-                    ]
-                },
-                {
-                    "period": "السنة الثانية (2022 – 2023)",
-                    "tasks": [
-                        "إنشاء بنية تحتية جديدة منفصلة لـ Alwasaet LXP وDAM وCMS SaaS في Oracle Cloud (منطقة جدة)",
-                        "إعداد خوادم Jenkins لخطوط CI/CD",
-                        "تكوين وإدارة قواعد البيانات",
-                        "أتمتة عملية التطوير",
-                        "بدء وتطوير مشروع DAM باستخدام NestJS كمطور واجهة خلفية",
-                        "صيانة وتحسين تطبيق LXP المبني باستخدام ExpressJS"
-                    ]
-                },
-                {
-                    "period": "السنة الأولى (2021 – 2022)",
-                    "tasks": [
-                        "إدارة البنية التحتية المحلية لـ Alwasaet LXP في وزارة الشؤون البلدية والقروية والإسكان",
-                        "تكوين وإدارة البروكسي وموازنات التحميل",
-                        "التعامل مع إعداد الصور والرفع والتكوين ونشر الإصدارات الجديدة"
-                    ]
-                }
+                "تطوير تطبيقات ويب متكاملة باستخدام واجهات أمامية بـ React و Next.js وواجهات خلفية بـ Node.js.",
+                "بناء مسارات مصادقة وترخيص آمنة؛ وتقديم واجهات برمجة تطبيقات متكاملة مع SQL Server و MongoDB.",
+                "المشاركة في تخطيط الميزات وتنفيذها ونشرها عبر بيئات الاختبار والإنتاج.",
+                "التقنيات: React, Next.js, Node.js, ASP.NET Core, SQL Server, MongoDB"
             ]
         },
         {
-            "company": "بحر",
-            "position": "مستقل",
-            "startDate": "يناير 2016",
-            "endDate": "أكتوبر 2021",
+            "company": "مشاريع مستقلة",
+            "position": "مهندس برمجيات متكامل",
+            "startDate": "يناير 2023",
+            "endDate": "حتى الآن",
             "responsibilities": [
-                "نجحت في تسليم مشروعين على منصة بحر، وحصل كلاهما على تقييم خمس نجوم للأداء المتميز ورضا العملاء."
+                "تقديم حلول ويب مخصصة باستخدام واجهات أمامية بـ React و Vue وواجهات خلفية بـ Node.js بناءً على متطلبات العملاء.",
+                "نقل وتحديث الأكواد البرمجية القديمة، مما أدى إلى تحسين قابلية الصيانة من خلال بنية أفضل ومكونات قابلة لإعادة الاستخدام.",
+                "التعاون مع عملاء دوليين عبر مناطق زمنية مختلفة لتحديد المتطلبات، وتقدير العمل، وتقديم المراحل الأساسية للمشروع.",
+                "التقنيات: React, Vue.js, Node.js, Express, Docker, GitHub Actions"
             ]
         }
     ],
     "educations": [
         {
-            "institution": "جامعة الحدود الشمالية",
+            "institution": "ALX أفريقيا",
+            "degree": "دبلوم مهني",
+            "field": "هندسة البرمجيات",
+            "startYear": 2024,
+            "endYear": 2025
+        },
+        {
+            "institution": "المعهد العالي لنظم المعلومات الإدارية، كفر الشيخ",
             "degree": "بكالوريوس",
-            "field": "علوم الحاسب",
-            "startYear": 2017,
+            "field": "نظم المعلومات الإدارية",
+            "startYear": 2018,
             "endYear": 2022
         }
     ],
-    "certificates": [
-        {
-            "name": "مدير Kubernetes معتمد (CKA)",
-            "issuer": "مؤسسة Linux",
-            "issueDate": "2025",
-            "certificateId": "LF-fo87wpb5ee",
-            "url": "https://www.credly.com/badges/2bc89238-bd2b-425f-a810-68cee6972a57",
-            "badgeImageUrl": "https://images.credly.com/images/8b8ed108-e77d-4396-ac59-2504583b9d54/cka_from_cncfsite__281_29.png"
-        }
-    ],
-    "cvUrl": "/SYCV.pdf",
+    "certificates": [],
+    "cvUrl": "/Omar Aglan CV.pdf",
     "skills": {
         "البرمجيات": [
-            "مايكروسوفت أوفيس (Microsoft Office)",
-            "ليبر أوفيس (LibreOffice)",
             "جيت (Git)",
             "دوكر (Docker)",
-            "جنكنز (Jenkins)"
+            "GitHub Actions",
+            "Makefile",
+            "CMake"
         ],
         "البرمجة": [
-            "جافاسكريبت/تايبسكريبت (JavaScript/TypeScript)",
-            "رست (Rust)",
+            "جافاسكريبت (JavaScript)",
+            "تايبسكريبت (TypeScript)",
+            "سي شارب (C#)",
             "سي/سي++ (C/C++)",
-            "بايثون (Python)"
+            "بايثون (Python)",
+            "SQL",
+            "HTML",
+            "CSS"
         ],
         "العمليات": [
-            "إدارة نظام لينكس (Linux System Administrator)",
-            "بوستجريسكل (PostgreSQL)",
-            "إلستيك سيرش (Elasticsearch)",
-            "ريديس (Redis)",
-            "انجنيكس (Nginx)",
-            "أباتشي (Apache)"
+            "PostgreSQL",
+            "MySQL",
+            "MongoDB",
+            "SQLite",
+            "Firebase"
         ],
         "اضافية": [
-            "HTML",
-            "CSS",
-            "HTML5",
-            "CSS3",
-            "أتمتة"
+            "REST APIs",
+            "Microservices",
+            "Unit/Integration Testing",
+            "SDLC",
+            "OOP",
+            "JWT/OAuth2"
         ],
         "أطر العمل": [
+            "React",
+            "Next.js",
+            "Vue.js",
+            "Node.js",
+            "Express.js",
             "NestJS",
-            "NextJS/ReactJS",
-            "NuxtJS/VueJS",
-            "NodeJS"
+            "ASP.NET Core",
+            "Tailwind CSS",
+            "Bootstrap"
         ],
         "الخدمات السحابية": [
-            "البنية التحتية السحابية لأوراكل (OCI)",
-            "منصة جوجل السحابية (GCP)",
-            "كوبرنيتس (Kubernetes)",
-            "تيرافورم (Terraform)",
-            "أنظمة أسماء النطاقات (DNS)",
-            "تخزين الكائنات (Object Storage)",
-            "تخزين الكتل (Block Storage)",
-            "توزيع الحمل (Load Balancing)",
-            "الحاويات (Containers)"
+            "دوكر (Docker)",
+            "CI/CD"
         ],
         "أخرى": [
-            "GTK",
-            "Ffmpeg",
-            "Camunda",
-            "Directus",
-            "LXC",
-            "Incus"
+            "Unity",
+            "Gameplay Systems"
         ]
     },
     "accounts": {
         "Email": {
             "icon": "fa-solid fa-envelope",
             "name": "البريد الإلكتروني",
-            "url": "mailto:s@sy.sa"
-        },
-        "Telegram": {
-            "icon": "fa-brands fa-telegram",
-            "name": "تيليجرام",
-            "url": "https://t.me/xlmnxp"
-        },
-        "x-twitter": {
-            "icon": "fa-brands fa-x-twitter",
-            "name": "تويتر او اكس",
-            "url": "https://x.com/xlmnxp"
+            "url": "mailto:Omar.aglan91@gmail.com"
         },
         "Github": {
             "icon": "fa-brands fa-github",
             "name": "جيت هاب",
-            "url": "https://github.com/xlmnxp"
+            "url": "https://github.com/OmarAglan"
         },
         "LinkedIn": {
             "icon": "fa-brands fa-linkedin",
             "name": "لينكد إن",
-            "url": "https://sa.linkedin.com/in/salem-yaslem-98b494193"
+            "url": "https://linkedin.com/in/omar-aglan"
         },
-        "Bahr": {
-            "icon": "fa-solid fa-question",
-            "name": "بحر",
-            "url": "https://bahr.sa/en/profile/freelancer/0190c221-fb0f-7c50-ba46-a8f616ab7917"
+        "Phone": {
+            "icon": "fa-solid fa-phone",
+            "name": "رقم الهاتف",
+            "url": "tel:+966597047098"
         }
     }
 }
