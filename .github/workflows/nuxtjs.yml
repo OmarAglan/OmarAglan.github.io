@@ -57,9 +57,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            dist
+            .output/public
             .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
+          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('.output/public') }}
           restore-keys: |
             ${{ runner.os }}-nuxt-build-
       - name: Install dependencies
