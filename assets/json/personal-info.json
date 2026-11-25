@@ -1,7 +1,6 @@
 {
     "name": "Omar Aglan",
     "title": "Full-Stack Developer | Available for freelance projects",
-    "dateOfBirth": "1998",
     "nationality": "Egyptian",
     "addresses": [
         {
@@ -142,7 +141,7 @@
         "Phone": {
             "icon": "fa-solid fa-phone",
             "name": "Phone",
-            "url": "tel:+966597047098"
+            "url": "tel:+966581359559"
         }
     }
 }
