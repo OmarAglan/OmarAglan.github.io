@@ -1,6 +1,6 @@
 {
     "name": "Omar Aglan",
-    "title": "Full-Stack Software Engineer",
+    "title": "Full-Stack Developer | Available for freelance projects",
     "dateOfBirth": "1998",
     "nationality": "Egyptian",
     "addresses": [
@@ -11,7 +11,7 @@
         }
     ],
     "email": "Omar.aglan91@gmail.com",
-    "summary": "Full-Stack Software Engineer with strong backend experience building production web applications using Node.js (Express and NestJS), React and Next.js, and ASP.NET Core. Skilled in designing scalable REST APIs, integrating SQL and NoSQL databases, implementing JWT or OAuth2 authentication, and automating delivery with Docker + CI-CD (GitHub Actions). Additional experience in C/C++ and Unity (C#) for game development and performance-focused programming.",
+    "summary": "Full-Stack Software Engineer with 2+ years of experience building production web applications and APIs with React, Next.js, Node.js (Express and NestJS) and ASP.NET Core. Based in Riyadh and available for freelance web projects: business websites, web apps, dashboards and REST APIs, with secure authentication, SQL and NoSQL databases, and Docker with CI/CD. I agree the scope first and deliver a small first milestone early. $15/hr, or a fixed price once the scope is clear.",
     "experiences": [
         {
             "company": "Pyramid Systems Inc.",
@@ -137,7 +137,7 @@
         "LinkedIn": {
             "icon": "fa-brands fa-linkedin",
             "name": "LinkedIn",
-            "url": "https://sa.linkedin.com/in/omar-aglan"
+            "url": "https://www.linkedin.com/in/omar-aglan919"
         },
         "Phone": {
             "icon": "fa-solid fa-phone",
